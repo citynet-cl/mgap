@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @aer.email %>
+</p>
+
+<p>
+  <strong>Password digest:</strong>
+  <%= @aer.password_digest %>
+</p>
+
+<%= link_to 'Edit', edit_aer_path(@aer) %> |
+<%= link_to 'Back', aers_path %>

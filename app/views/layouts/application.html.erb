@@ -8,6 +8,18 @@
 </head>
 <body>
 
+<% if current_user %>
+	logeado como <%= current_user.email %>	
+<%= link_to "salir", session_path("current"), method: :delete %>
+<% else %>
+	<%= link_to 'registro', new_user_path %> or 
+	<%= link_to 'login', new_session_path %> 
+<% end %>
+
+<% flash.each do |name, msg|  %>
+	<%= content_tag :div, msg, id: "flash_#{name}" %>
+<% end %>
+
 <%= yield %>
 
 </body>
