@@ -36,6 +36,10 @@ end
  gem 'bcrypt-ruby', '~> 3.0.0'
 
  gem 'simple_form'
+
+ gem 'pry-rails'
+
+ gem 'thin'
 # Use unicorn as the app server
 # gem 'unicorn'
 
