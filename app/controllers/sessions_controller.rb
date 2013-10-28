@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
 	  user = User.find_by_email(params[:email])
 	  if user && user.authenticate(params[:password])
 		  session[:user_id] = user.id
-		  redirect_to root_url, notice: "logeado!"
+		  redirect_to proyectos_url, notice: "logeado!"
 	  else
 		  flash.now.alert = "datos invalidos"
 		  render "new"	  	

@@ -1,11 +1,10 @@
 MgapUser::Application.routes.draw do
-  get "asdad/index"
+  get "home/index"
   resources :proyectos
 
   resources :tareas
 
   #get "session/new"
-  get "home/index"
   resources :users
   resources :sessions
 
