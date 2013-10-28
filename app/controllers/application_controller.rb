@@ -3,6 +3,10 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  def authorize
+  	redirect_to root_url, alert: "logeate primero" if current_user.nil?
+  end
+
   private
 
   def current_user
@@ -10,4 +14,6 @@ class ApplicationController < ActionController::Base
   end
 
   helper_method :current_user
+
+
 end
