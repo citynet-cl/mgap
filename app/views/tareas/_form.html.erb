@@ -10,6 +10,10 @@
       </ul>
     </div>
   <% end %>
+  <div class="field">
+    <%= f.label :proyecto_id %>
+    <%= collection_select(:tarea, :proyecto_id, Proyecto.all, :id, :nombre) %>   
+  </div>
 
   <div class="field">
     <%= f.label :hh %><br>

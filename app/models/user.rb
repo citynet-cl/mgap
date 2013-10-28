@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
 	has_many :tareas
+	has_many :proyectos, through: :tareas
 
 	has_secure_password
 

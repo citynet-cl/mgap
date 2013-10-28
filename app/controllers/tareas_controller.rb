@@ -4,7 +4,8 @@ class TareasController < ApplicationController
   # GET /tareas
   # GET /tareas.json
   def index
-    @tareas = Tarea.all
+	  	@user = User.find(current_user)
+		@tareas = @user.tareas
   end
 
   # GET /tareas/1
@@ -24,14 +25,21 @@ class TareasController < ApplicationController
   # POST /tareas
   # POST /tareas.json
   def create
-    @tarea = Tarea.new(tarea_params)
+		#@proyecto = Proyecto.find(params[:proyecto_id])
+		#@proyectos = Proyecto.all
+		#@user = User.find(session[:user_id])
+		#@tarea(:user_id) = @user(:user_id)
+	  	@user = User.find(current_user)
+		@tarea = @user.tareas.create(tarea_params)
+
+    #@tarea = Tarea.new(tarea_params)
 
     respond_to do |format|
       if @tarea.save
-        format.html { redirect_to @tarea, notice: 'Tarea was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @tarea }
-      else
-        format.html { render action: 'new' }
+      format.html { redirect_to @tarea, notice: 'Tarea was successfully created.' }
+      format.json { render action: 'show', status: :created, location: @tarea }
+     else
+       format.html { render action: 'new' }
         format.json { render json: @tarea.errors, status: :unprocessable_entity }
       end
     end
@@ -69,6 +77,6 @@ class TareasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tarea_params
-      params.require(:tarea).permit(:hh, :actividad)
+      params.require(:tarea).permit(:hh, :actividad, :proyecto_id, :user_id)
     end
 end
