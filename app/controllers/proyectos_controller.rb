@@ -1,5 +1,6 @@
 class ProyectosController < ApplicationController
   before_action :set_proyecto, only: [:show, :edit, :update, :destroy]
+  before_filter :authorize#, only: [:edit,:update]
 
   # GET /proyectos
   # GET /proyectos.json
