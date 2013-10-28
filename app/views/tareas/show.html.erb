@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Hh:</strong>
+  <%= @tarea.hh %>
+</p>
+
+<p>
+  <strong>Actividad:</strong>
+  <%= @tarea.actividad %>
+</p>
+
+<%= link_to 'Edit', edit_tarea_path(@tarea) %> |
+<%= link_to 'Back', tareas_path %>
