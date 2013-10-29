@@ -6,6 +6,7 @@ class TareasController < ApplicationController
   def index
 	  	@user = User.find(current_user)
 		@tareas = @user.tareas
+		@proyectos = Proyecto.all
   end
 
   # GET /tareas/1

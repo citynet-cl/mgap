@@ -40,6 +40,9 @@ end
  gem 'pry-rails'
 
  gem 'thin'
+gem 'simple_form'
+gem 'bootstrap-generators', :git => 'git://github.com/decioferreira/bootstrap-generators.git'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 
