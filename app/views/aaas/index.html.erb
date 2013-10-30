@@ -1,0 +1,31 @@
+<div class="page-header">
+  <%= link_to new_aaa_path, :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    New Aaa
+  <% end %>
+  <h1>Listing aaas</h1>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+            <th>Name</th>
+            <th>Number</th>
+            <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @aaas) do |aaa| %>
+            <td><%= aaa.name %></td>
+            <td><%= aaa.number %></td>
+            <td><%= link_to 'Show', aaa %></td>
+        <td><%= link_to 'Edit', edit_aaa_path(aaa) %></td>
+        <td><%= link_to 'Destroy', aaa, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+    </tbody>
+  </table>
+</div>

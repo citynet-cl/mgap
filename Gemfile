@@ -43,6 +43,7 @@ end
 gem 'simple_form'
 gem 'bootstrap-generators', :git => 'git://github.com/decioferreira/bootstrap-generators.git'
 
+gem 'rails-erd'
 # Use unicorn as the app server
 # gem 'unicorn'
 

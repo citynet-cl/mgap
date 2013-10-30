@@ -1,5 +1,6 @@
 class TareasController < ApplicationController
   before_action :set_tarea, only: [:show, :edit, :update, :destroy]
+  before_filter :authorize#, only: [:edit,:update]
 
   # GET /tareas
   # GET /tareas.json
@@ -26,6 +27,7 @@ class TareasController < ApplicationController
   # POST /tareas
   # POST /tareas.json
   def create
+		@proyectos = Proyecto.all
 		#@proyecto = Proyecto.find(params[:proyecto_id])
 		#@proyectos = Proyecto.all
 		#@user = User.find(session[:user_id])
@@ -37,7 +39,7 @@ class TareasController < ApplicationController
 
     respond_to do |format|
       if @tarea.save
-      format.html { redirect_to @tarea, notice: 'Tarea was successfully created.' }
+      format.html { redirect_to tareas_path, notice: 'Tarea was successfully created.' }
       format.json { render action: 'show', status: :created, location: @tarea }
      else
        format.html { render action: 'new' }

@@ -1,4 +1,6 @@
 MgapUser::Application.routes.draw do
+  resources :aaas
+
   get "home/index"
   resources :proyectos
 
