@@ -13,6 +13,7 @@
             <th>Nombre</th>
             <th>Proyecto</th>
             <th>HH</th>
+            <th>Fecha</th>
 	    <th>Acciones</th>
 	    <th></th>
       </tr>
@@ -23,6 +24,7 @@
             <td><%= tarea.actividad %></td>
             <td><%= tarea.proyecto.nombre %></td>
             <td><%= tarea.hh %></td>
+            <td><%= tarea.fecha_registro %></td>
             <td><%= link_to 'Detalles', tarea %></td>
         <td><%= link_to 'Anular', tarea, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       <% end %>
