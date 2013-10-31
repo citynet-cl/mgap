@@ -1,1 +1,1 @@
-json.extract! @proyecto, :nombre, :hh, :descripcion, :created_at, :updated_at
+json.extract! @tarea, :hh, :actividad, :created_at, :updated_at

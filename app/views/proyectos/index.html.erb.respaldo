@@ -1,0 +1,31 @@
+<h1>Listing tareas</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Hh</th>
+      <th>Actividad</th>
+      <th>Proyecto</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tareas.each do |tarea| %>
+      <tr>
+        <td><%= tarea.hh %></td>
+        <td><%= tarea.actividad %></td>
+        <td><%= tarea.proyecto_id %></td>
+        <td><%= link_to 'Show', tarea %></td>
+        <td><%= link_to 'Edit', edit_tarea_path(tarea) %></td>
+        <td><%= link_to 'Destroy', tarea, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Tarea', new_tarea_path %>
