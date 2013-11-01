@@ -1,6 +1,27 @@
-<p id="notice"><%= notice %></p>
+<div class="table-responsive">
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+            <th>Desarrollador</th>
+            <th>Nombre</th>
+            <th>HH dedicadas</th>
+            <th>Fecha</th>
+	    <th>Acciones</th>
+	    <th></th>
+      </tr>
+    </thead>
 
-<p>
+    <tbody>
+      <%= content_tag_for(:tr, @proyecto.tareas) do |tarea| %>
+            <td><%= tarea.user.email %></td>
+            <td><%= tarea.nombre %></td>
+            <td><%= tarea.hh %></td>
+            <td><%= tarea.fecha_registro %></td>
+	    <td><%= detalles_link tarea %></td>
+      <% end %>
+    </tbody>
+  </table>
+</div>
   <strong>Hh:</strong>
   <%= @proyecto.hh %>
 </p>

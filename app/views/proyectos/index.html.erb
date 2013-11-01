@@ -11,7 +11,8 @@
     <thead>
       <tr>
             <th>Nombre</th>
-            <th>HH</th>
+            <th>HH Planificadas</th>
+            <th>HH Dedicadas</th>
 	    <th>Acciones</th>
 	    <th></th>
       </tr>
@@ -20,7 +21,8 @@
     <tbody>
       <%= content_tag_for(:tr, @proyectos) do |proyecto| %>
             <td><%= proyecto.nombre %></td>
-            <td><%= proyecto.hh %></td>
+	    <td><%= proyecto.hh %></td>
+	    <td><%= proyecto.tareas.sum(:hh) %></td>
 	    <td><%= detalles_link proyecto %></td>
 	    <td><%= delete_link proyecto_path(proyecto) %></td>
       <% end %>
