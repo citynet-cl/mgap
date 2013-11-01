@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class AerTest < ActiveSupport::TestCase
+class ClienteTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

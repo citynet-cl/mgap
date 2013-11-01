@@ -1,4 +1,6 @@
 MgapUser::Application.routes.draw do
+  resources :clientes
+
   resources :aaas
 
   get "home/index"

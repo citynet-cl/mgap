@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131030200524) do
+ActiveRecord::Schema.define(version: 20131031060747) do
 
   create_table "aaas", force: true do |t|
     t.string   "name"
@@ -39,12 +39,40 @@ ActiveRecord::Schema.define(version: 20131030200524) do
     t.datetime "updated_at"
   end
 
+  create_table "clientes", force: true do |t|
+    t.string   "nombre"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "perfiles", force: true do |t|
+    t.string   "permiso"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "permisos", force: true do |t|
+    t.string   "nombre"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "permisos_usuarios", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+    t.string   "permiso_id_integer"
+  end
+
   create_table "proyectos", force: true do |t|
     t.string   "nombre"
     t.integer  "hh"
     t.text     "descripcion"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.date     "fecha_inicio"
+    t.date     "fecha_fin"
+    t.integer  "cliente_id"
   end
 
   create_table "tareas", force: true do |t|
@@ -54,6 +82,9 @@ ActiveRecord::Schema.define(version: 20131030200524) do
     t.datetime "updated_at"
     t.integer  "proyecto_id"
     t.integer  "user_id"
+    t.string   "nombre"
+    t.text     "observaciones"
+    t.date     "fecha_registro"
   end
 
   create_table "users", force: true do |t|
