@@ -1,4 +1,5 @@
 MgapUser::Application.routes.draw do
+  get "reportes/index", to: 'reportes#index', as: 'reportes'
   resources :clientes
 
   resources :aaas
