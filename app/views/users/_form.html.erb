@@ -24,8 +24,14 @@
     <%= f.password_field :password_confirmation%>
   </div>
   <div class="field">
-	  <%= f.label :admin %><br>
-	  <%= f.check_box :admin, {}, "TRUE","FALSE" %>
+  <% if current_user.has_role? :admin %>
+	  <% for role in Role.find(:all) %>
+    <div>
+      <%= check_box_tag "user[role_ids][]", role.id, @user.roles.include?(role) %>
+      <%= role.name %>
+    </div>
+  <% end %>
+  <% end %>
   </div>
   <div class="actions">
     <%= f.submit %>

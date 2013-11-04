@@ -36,6 +36,7 @@ GEM
     atomic (1.1.14)
     bcrypt-ruby (3.0.1)
     builder (3.1.4)
+    cancan (1.6.10)
     choice (0.1.6)
     coderay (1.0.9)
     coffee-rails (4.0.1)
@@ -96,6 +97,7 @@ GEM
     rake (10.1.0)
     rdoc (3.12.2)
       json (~> 1.4)
+    rolify (3.2.0)
     ruby-graphviz (1.0.9)
     sass (3.2.12)
     sass-rails (4.0.1)
@@ -143,12 +145,14 @@ PLATFORMS
 DEPENDENCIES
   bcrypt-ruby (~> 3.0.0)
   bootstrap-generators!
+  cancan
   coffee-rails (~> 4.0.0)
   jbuilder (~> 1.2)
   jquery-rails
   pry-rails
   rails (= 4.0.0)
   rails-erd
+  rolify
   sass-rails (~> 4.0.0)
   sdoc
   simple_form

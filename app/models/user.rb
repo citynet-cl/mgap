@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  rolify
 	has_many :tareas
 	has_many :proyectos, through: :tareas
 
@@ -6,6 +7,8 @@ class User < ActiveRecord::Base
 
 	validates_uniqueness_of :email
 
-	validates :password, length: {in: 5..20}
+	#validates :password, :presence => false 
+
+	validates :password, length: {in: 5..20}, allow_blank: true
 	validates_confirmation_of :password
 end

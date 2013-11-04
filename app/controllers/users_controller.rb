@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_filter :authorize#, only: [:edit,:update]
+  load_and_authorize_resource
 
 	def index
 		@users = User.all
@@ -25,10 +26,11 @@ class UsersController < ApplicationController
 
 
   	def update
-	  if params[:user][:password].blank? or params[:user][:password_confirmation].blank?  
+	  if params[:user][:password].blank? 
 		  params[:user].delete(:password)
 		  params[:user].delete(:password_confirmation)
 	  end
+	  params[:user][:role_ids] ||= []
 		if @user.update(user_params)
 			redirect_to users_url, notice: "usuario editado exitosamente"
 		else
@@ -50,6 +52,6 @@ class UsersController < ApplicationController
 
 
 	def user_params
-		params.require(:user).permit(:email, :password, :password_confirmation, :admin )
+		params.require(:user).permit(:email, :password, :password_confirmation, :role_ids => [])
 	end
 end
