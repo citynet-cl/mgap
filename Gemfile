@@ -49,11 +49,12 @@ gem 'rolify'
 
 gem 'cancan'
 
-gem 'sunspot_rails', '>= 2.1.0'
+#gem 'sunspot_solr', :git => "https://github.com/mrcsparker/sunspot.git"
+gem 'sunspot_rails', github: 'sunspot/sunspot', branch: 'master'
 
-group :development do
-	gem 'sunspot_solr'
-end
+#gem 'sunspot_rails', '>= 2.1.0'
+
+#gem 'sunspot_solr'
 # Use unicorn as the app server
 # gem 'unicorn'
 

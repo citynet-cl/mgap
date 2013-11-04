@@ -6,4 +6,7 @@ class Tarea < ActiveRecord::Base
 	validates_presence_of :hh, :actividad
 
 
+	searchable do
+		text :nombre, :actividad
+	end
 end
