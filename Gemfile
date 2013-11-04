@@ -48,6 +48,12 @@ gem 'rails-erd'
 gem 'rolify'
 
 gem 'cancan'
+
+gem 'sunspot_rails', '>= 2.1.0'
+
+group :development do
+	gem 'sunspot_solr'
+end
 # Use unicorn as the app server
 # gem 'unicorn'
 

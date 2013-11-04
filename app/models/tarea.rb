@@ -4,4 +4,6 @@ class Tarea < ActiveRecord::Base
 	resourcify
 	
 	validates_presence_of :hh, :actividad
+
+
 end

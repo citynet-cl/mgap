@@ -7,7 +7,7 @@ class TareasController < ApplicationController
   # GET /tareas.json
   def index
 	  	@user = User.find(current_user)
-		@tareas = @user.tareas
+		@tareas = @user.tareas.order(:fecha_registro).all.reverse
 		@proyectos = Proyecto.all
   end
 
