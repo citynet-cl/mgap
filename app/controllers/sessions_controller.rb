@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-	  user = User.find_by_email(params[:sessions][:email])
+	  user = User.find_by_usuario(params[:sessions][:usuario])
 	  if user && user.authenticate(params[:sessions][:password])
 		  session[:user_id] = user.id
 		  redirect_to tareas_url, notice: "logeado!"
@@ -22,6 +22,6 @@ class SessionsController < ApplicationController
 	private
 
 	def user_params
-		params.require(:user).permit(:email, :password)
+		params.require(:user).permit(:usuario, :password)
 	end
 end

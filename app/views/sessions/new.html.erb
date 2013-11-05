@@ -1,12 +1,10 @@
-<h1>ingresar</h1>
-
 <%= simple_form_for :sessions, { url: sessions_path} do |f| %>
 	<div class="form-group">
-		<%= f.input :email, :required => false  %>
+		<%= f.input :usuario, :required => false  %>
 		<%= f.input :password , :required => false %>
 	</div>
 
 	<div class="form-actions">
-		<%= f.button :submit, "ingresar" %>
+		<%= f.button :submit, "Ingresar" %>
 	</div>
 <% end %>

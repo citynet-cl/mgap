@@ -5,7 +5,9 @@ class User < ActiveRecord::Base
 
 	has_secure_password
 
-	validates_uniqueness_of :email, :usuario
+	validates_uniqueness_of  :usuario, :email
+	validates_presence_of :usuario, :email
+	validates :email, :presence => true, :uniqueness => true, :email_format => true
 
 	#validates :password, :presence => false 
 
