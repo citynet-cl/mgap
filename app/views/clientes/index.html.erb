@@ -1,9 +1,9 @@
 <div class="page-header">
   <%= link_to new_cliente_path, :class => 'btn btn-primary' do %>
     <span class="glyphicon glyphicon-plus"></span>
-    New Cliente
+    Nuevo Cliente
   <% end %>
-  <h1>Listing clientes</h1>
+  <h1>Listado clientes</h1>
 </div>
 
 <div class="table-responsive">
@@ -17,7 +17,8 @@
 
     <tbody>
       <%= content_tag_for(:tr, @clientes) do |cliente| %>
-	      <td><%= link_to cliente.nombre.humanize, edit_cliente_path(cliente) %></td>
+	      <td><%= cliente.nombre.humanize %></td>
+	      <td><%= link_to "Editar", edit_cliente_path(cliente), class: "btn btn-primary btn-sm" %></td>
               <td><%= delete_link cliente_path(cliente) %></td>
       <% end %>
     </tbody>
