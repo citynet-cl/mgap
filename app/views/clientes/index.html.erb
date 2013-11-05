@@ -11,18 +11,14 @@
     <thead>
       <tr>
             <th>Nombre</th>
-            <th></th>
-        <th></th>
-        <th></th>
+            <th>Acciones</th>
       </tr>
     </thead>
 
     <tbody>
       <%= content_tag_for(:tr, @clientes) do |cliente| %>
-            <td><%= cliente.nombre %></td>
-            <td><%= link_to 'Show', cliente %></td>
-        <td><%= link_to 'Edit', edit_cliente_path(cliente) %></td>
-        <td><%= link_to 'Destroy', cliente, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+	      <td><%= link_to cliente.nombre.humanize, edit_cliente_path(cliente) %></td>
+              <td><%= delete_link cliente_path(cliente) %></td>
       <% end %>
     </tbody>
   </table>
