@@ -1,9 +1,55 @@
-<%= simple_form_for @proyecto do |f| %>
-      <%= f.association :cliente, label_method: :nombre, value_method: :id, include_blank: false %>
-      <%= f.input :nombre %>
-      <%= f.input :hh %>
-      <%= f.input :fecha_inicio %>
-      <%= f.input :fecha_fin %>
-      <%= f.input :descripcion %><br />
+<%= simple_form_for(@proyecto, :html => { :class => "form-horizontal" }) do |f| %>
+  <% if @proyecto.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@proyecto.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @proyecto.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="form-group">
+    <%= f.label :nombre, :class => "col-lg-2 control-label" %>
+    <div class="col-lg-10">
+      <%= f.text_field :nombre, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :cliente, :class => "col-lg-2 control-label" %>
+    <div class="col-lg-10">
+    <%= collection_select(:proyecto, :cliente_id, Cliente.all, :id, :nombre, { },{:class => 'form-control'}) %>   
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :hh, :class => "col-lg-2 control-label" %>
+    <div class="col-lg-10">
+      <%= f.text_field :hh, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :fecha_inicio, :class => "col-lg-2 control-label" %>
+    <div class="col-lg-10">
+      <%= f.date_select :fecha_inicio, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :fecha_fin, :class => "col-lg-2 control-label" %>
+    <div class="col-lg-10">
+      <%= f.date_select :fecha_fin, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :descripcion, :class => "col-lg-2 control-label" %>
+    <div class="col-lg-10">
+      <%= f.text_area :descripcion, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
       <%= f.submit :class => "btn btn-primary" %>
+    </div>
+  </div>
 <% end %>

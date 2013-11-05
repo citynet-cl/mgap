@@ -22,14 +22,27 @@
     </tbody>
   </table>
 </div>
-  <strong>Hh:</strong>
-  <%= @proyecto.hh %>
-</p>
 
-<p>
-  <strong>Actividad:</strong>
-  <%= @proyecto.descripcion %>
-</p>
+<div class="page-header">
+  <%= link_to proyectos_path, :class => 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Volver 
+  <% end %>
+  <%= link_to edit_proyecto_path(@proyecto), :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+    Editar
+  <% end %>
+  <h1>Detalles del proyecto</h1>
+</div>
 
-<%= link_to 'Edit', edit_proyecto_path(@proyecto) %> |
-<%= link_to 'Back', proyectos_path %>
+<dl class="dl-horizontal">
+  <dt>Nombre:</dt>
+  <dd><%= @proyecto.nombre %></dd>
+
+  <dt>Cliente:</dt>
+  <dd><%= @proyecto.cliente.nombre %></dd>
+
+  <dt>HH:</dt>
+  <dd><%= @proyecto.hh %></dd>
+
+</dl>

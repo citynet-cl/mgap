@@ -15,6 +15,7 @@
             <th>HH Dedicadas</th>
 	    <th>Acciones</th>
 	    <th></th>
+	    <th></th>
       </tr>
     </thead>
 
@@ -23,6 +24,7 @@
             <td><%= proyecto.nombre %></td>
 	    <td><%= proyecto.hh %></td>
 	    <td><%= proyecto.tareas.sum(:hh) %></td>
+	    <td><%= link_to "Tareas" %></td>
 	    <td><%= detalles_link proyecto %></td>
 	    <td><%= delete_link proyecto_path(proyecto) %></td>
       <% end %>
