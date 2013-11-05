@@ -37,12 +37,17 @@
 
 <dl class="dl-horizontal">
   <dt>Nombre:</dt>
-  <dd><%= @proyecto.nombre %></dd>
+  <dd><%= @proyecto.nombre.humanize %></dd>
 
   <dt>Cliente:</dt>
-  <dd><%= @proyecto.cliente.nombre %></dd>
+  <dd><%= @proyecto.cliente.nombre.humanize %></dd>
 
   <dt>HH:</dt>
   <dd><%= @proyecto.hh %></dd>
 
+  <dt>Fecha Inicio:</dt>
+  <dd><%= @proyecto.fecha_inicio %></dd>
+
+  <dt>Fecha Fin:</dt>
+  <dd><%= @proyecto.fecha_fin %></dd>
 </dl>

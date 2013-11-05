@@ -3,7 +3,7 @@
     <span class="glyphicon glyphicon-plus"></span>
     Nuevo Proyecto 
   <% end %>
-  <h1>Listing proyectos</h1>
+  <h1>Listado Proyectos</h1>
 </div>
 
 <div class="table-responsive">
@@ -21,10 +21,11 @@
 
     <tbody>
       <%= content_tag_for(:tr, @proyectos) do |proyecto| %>
-            <td><%= proyecto.nombre %></td>
+            <td><%= proyecto.nombre.humanize %></td>
 	    <td><%= proyecto.hh %></td>
 	    <td><%= proyecto.tareas.sum(:hh) %></td>
 	    <td><%= link_to "Tareas" %></td>
+	    <td><%= link_to "Cerrar" %></td>
 	    <td><%= detalles_link proyecto %></td>
 	    <td><%= delete_link proyecto_path(proyecto) %></td>
       <% end %>
