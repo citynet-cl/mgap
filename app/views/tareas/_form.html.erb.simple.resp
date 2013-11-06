@@ -1,0 +1,9 @@
+<%= simple_form_for @tarea do |f| %>
+	<%= f.association :proyecto, label_method: :nombre, value_method: :id, include_blank: false %>
+	<%= f.input :nombre %>
+	<%= f.input :hh %>
+	<%= f.input :actividad %>
+	<%= f.input :fecha_registro %>
+	<%= f.input :observaciones %><br />
+	<%= f.submit :class => "btn btn-primary" %>
+<% end %>

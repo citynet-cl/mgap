@@ -16,6 +16,7 @@
 	    <th>Acciones</th>
 	    <th></th>
 	    <th></th>
+	    <th></th>
       </tr>
     </thead>
 
@@ -26,6 +27,7 @@
 	    <td><%= proyecto.tareas.sum(:hh) %></td>
 	    <td><%= link_to "Tareas" %></td>
 	    <td><%= link_to "Cerrar" %></td>
+	    <td><%= link_to "Editar", edit_proyecto_path(proyecto), class: "btn btn-primary btn-sm " %></td>
 	    <td><%= detalles_link proyecto %></td>
 	    <td><%= delete_link proyecto_path(proyecto) %></td>
       <% end %>

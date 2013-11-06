@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  nombre: MyString
+  algo: MyText
+  hm: false
+  nacimiento: 2013-11-05
+  edad: 1
+
+two:
+  nombre: MyString
+  algo: MyText
+  hm: false
+  nacimiento: 2013-11-05
+  edad: 1

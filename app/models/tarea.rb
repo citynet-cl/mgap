@@ -4,9 +4,7 @@ class Tarea < ActiveRecord::Base
 	resourcify
 	
 	validates_presence_of :hh, :actividad
+	validates :hh, :numericality => { :greater_than => 1, :less_than => 24 }
 
 
-	searchable do
-		text :nombre, :actividad
-	end
 end

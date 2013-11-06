@@ -13,4 +13,12 @@ class User < ActiveRecord::Base
 
 	validates :password, length: {in: 5..20}, allow_blank: true
 	validates_confirmation_of :password
+
+  	before_save :downcase_fields
+
+    	def downcase_fields
+	        self.usuario.downcase
+		      end
+
 end
+

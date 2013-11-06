@@ -13,7 +13,7 @@
 
     <tbody>
       <%= content_tag_for(:tr, @proyecto.tareas) do |tarea| %>
-            <td><%= tarea.user.email %></td>
+            <td><%= tarea.user.usuario %></td>
             <td><%= tarea.nombre %></td>
             <td><%= tarea.hh %></td>
             <td><%= tarea.fecha_registro %></td>
@@ -27,10 +27,6 @@
   <%= link_to proyectos_path, :class => 'btn btn-default' do %>
     <span class="glyphicon glyphicon-list-alt"></span>
     Volver 
-  <% end %>
-  <%= link_to edit_proyecto_path(@proyecto), :class => 'btn btn-primary' do %>
-    <span class="glyphicon glyphicon-pencil"></span>
-    Editar
   <% end %>
   <h1>Detalles del proyecto</h1>
 </div>
