@@ -1,0 +1,26 @@
+# Place all the behaviors and hooks related to the matching controller here.
+# All this logic will automatically be available in application.js.
+# You can use CoffeeScript in this file: http://coffeescript.org/
+#
+
+#jQuery ->
+#	Morris.Bar
+#		element: 'annual'
+#		data: [
+#			{y: 'P1',   hh: 100}
+#			{y: 'P2',   hh: 75}
+#		]
+#		xkey : 'y'
+#		ykeys: ['hh']
+#		labels: ['HH Planificadas x Proyectos']
+
+
+
+jQuery ->
+	Morris.Bar
+		element: 'hhp_vs_hhu'
+		data: $('#hhp_vs_hhu').data('proyectos')
+		xkey : ['nombre']
+		ykeys: ['hh', 'hhi']
+		labels: ['HH Planificadas x Proyectos']
+

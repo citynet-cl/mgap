@@ -4,5 +4,6 @@ class ReportesController < ApplicationController
 
   def index
 	  @tareas = Tarea.find(:all, :order => :proyecto_id)
+	  @proyectos = Proyecto.all
   end
 end
