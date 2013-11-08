@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  nombre: MyString
+  ciudad: MyString
+  area: MyString
+  planta: MyString
+  belongs_to: 
+
+two:
+  nombre: MyString
+  ciudad: MyString
+  area: MyString
+  planta: MyString
+  belongs_to: 
