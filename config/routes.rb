@@ -1,4 +1,5 @@
 MgapUser::Application.routes.draw do
+  get "reportes1/index", to: 'reportes1#index', as: 'reportes1'
   resources :ccccs
 
   get "reportes/index", to: 'reportes#index', as: 'reportes'

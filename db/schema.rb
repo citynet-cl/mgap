@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131105200825) do
+ActiveRecord::Schema.define(version: 20131106154006) do
 
   create_table "aaas", force: true do |t|
     t.string   "name"
@@ -88,6 +88,7 @@ ActiveRecord::Schema.define(version: 20131105200825) do
     t.date     "fecha_inicio"
     t.date     "fecha_fin"
     t.integer  "cliente_id"
+    t.integer  "hhi"
   end
 
   create_table "roles", force: true do |t|

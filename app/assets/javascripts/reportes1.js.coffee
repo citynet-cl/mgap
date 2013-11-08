@@ -22,5 +22,6 @@ jQuery ->
 		data: $('#hhp_vs_hhu').data('proyectos')
 		xkey : ['nombre']
 		ykeys: ['hh', 'hhi']
-		labels: ['HH Planificadas x Proyectos']
+		labels: ['HH Planificadas', 'HH Invertidas']
+		barColors: ['#0b62a4','green']
 
