@@ -1,0 +1,50 @@
+<%= form_for(@lugar, :html => { :class => "form-horizontal" }) do |f| %>
+  <% if @lugar.errors.any? %>
+    <div class="alert alert-danger alert-dismissable">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <h4><%= pluralize(@lugar.errors.count, "error") %> prohibited this lugar from being saved:</h4>
+
+      <ul>
+      <% @lugar.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :nombre, :class => "col-lg-2 control-label" %>
+    <div class="col-lg-10">
+      <%= f.text_field :nombre, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :ciudad, :class => "col-lg-2 control-label" %>
+    <div class="col-lg-10">
+      <%= f.text_field :ciudad, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :area, :class => "col-lg-2 control-label" %>
+    <div class="col-lg-10">
+      <%= f.text_field :area, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :planta, :class => "col-lg-2 control-label" %>
+    <div class="col-lg-10">
+      <%= f.text_field :planta, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :cliente, :class => "col-lg-2 control-label" %>
+    <div class="col-lg-10">
+    <%= collection_select(:lugar, :cliente_id, Cliente.all, :id, :nombre, { },{:class => 'form-control'}) %>   
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+      <%= f.submit :class => "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>

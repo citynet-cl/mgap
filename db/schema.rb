@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131106154006) do
+ActiveRecord::Schema.define(version: 20131111192921) do
 
   create_table "aaas", force: true do |t|
     t.string   "name"
@@ -60,6 +60,18 @@ ActiveRecord::Schema.define(version: 20131106154006) do
     t.integer  "fono"
   end
 
+  create_table "lugares", force: true do |t|
+    t.string   "nombre"
+    t.string   "ciudad"
+    t.string   "area"
+    t.string   "planta"
+    t.integer  "cliente_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "lugares", ["cliente_id"], name: "index_lugares_on_cliente_id"
+
   create_table "perfiles", force: true do |t|
     t.string   "permiso"
     t.datetime "created_at"
@@ -89,6 +101,7 @@ ActiveRecord::Schema.define(version: 20131106154006) do
     t.date     "fecha_fin"
     t.integer  "cliente_id"
     t.integer  "hhi"
+    t.integer  "user_id"
   end
 
   create_table "roles", force: true do |t|

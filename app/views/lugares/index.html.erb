@@ -1,0 +1,37 @@
+<div class="page-header">
+  <%= link_to new_lugar_path, :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    New Lugar
+  <% end %>
+  <h1>Listing lugares</h1>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+            <th>Nombre</th>
+            <th>Ciudad</th>
+            <th>Area</th>
+            <th>Planta</th>
+            <th>Cliente</th>
+            <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @lugares, @clientes) do |lugar| %>
+            <td><%= lugar.nombre %></td>
+            <td><%= lugar.ciudad %></td>
+            <td><%= lugar.area %></td>
+            <td><%= lugar.planta %></td>
+            <td><%= lugar.cliente.nombre %></td>
+            <td><%= link_to 'Show', lugar %></td>
+        <td><%= link_to 'Edit', edit_lugar_path(lugar) %></td>
+        <td><%= link_to 'Destroy', lugar, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+    </tbody>
+  </table>
+</div>

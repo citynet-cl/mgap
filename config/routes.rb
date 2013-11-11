@@ -1,29 +1,29 @@
 MgapUser::Application.routes.draw do
+
+
   get "graficos/index"
   get "reportes1/index", to: 'reportes1#index', as: 'reportes1'
-  resources :ccccs
-
   get "reportes/index", to: 'reportes#index', as: 'reportes'
-  resources :clientes
-
-  resources :aaas
-
   get "home/index"
+
+  resources :clientes do
+	  resources :lugares
+  end
+
   resources :proyectos do
 	  resources :tareas
   end
 
+  resources :lugares
   resources :tareas
-
-  #get "session/new"
   resources :users
   resources :sessions
 
+   root 'home#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-   root 'home#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
