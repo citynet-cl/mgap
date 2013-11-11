@@ -1,6 +1,8 @@
 MgapUser::Application.routes.draw do
 
 
+  resources :responsables
+
   get "graficos/index"
   get "reportes1/index", to: 'reportes1#index', as: 'reportes1'
   get "reportes/index", to: 'reportes#index', as: 'reportes'

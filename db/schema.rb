@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131111192921) do
+ActiveRecord::Schema.define(version: 20131111203820) do
 
   create_table "aaas", force: true do |t|
     t.string   "name"
@@ -103,6 +103,17 @@ ActiveRecord::Schema.define(version: 20131111192921) do
     t.integer  "hhi"
     t.integer  "user_id"
   end
+
+  create_table "responsables", force: true do |t|
+    t.string   "nombre"
+    t.string   "email"
+    t.integer  "fono"
+    t.integer  "lugar_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "responsables", ["lugar_id"], name: "index_responsables_on_lugar_id"
 
   create_table "roles", force: true do |t|
     t.string   "name"
