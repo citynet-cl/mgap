@@ -1,4 +1,6 @@
 MgapUser::Application.routes.draw do
+  resources :lugares
+
   resources :lugars
 
   get "graficos/index"

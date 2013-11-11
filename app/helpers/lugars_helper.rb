@@ -1,2 +1,0 @@
-module LugarsHelper
-end
