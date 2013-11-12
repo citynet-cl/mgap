@@ -16,7 +16,6 @@ MgapUser::Application.routes.draw do
 	  resources :tareas
   end
 
-  resources :lugares
   resources :tareas
   resources :users
   resources :sessions

@@ -1,5 +1,5 @@
 <div class="page-header">
-  <%= link_to new_lugar_path, :class => 'btn btn-primary' do %>
+  <%= link_to new_cliente_lugar_path, :class => 'btn btn-primary' do %>
     <span class="glyphicon glyphicon-plus"></span>
     New Lugar
   <% end %>
@@ -22,15 +22,15 @@
     </thead>
 
     <tbody>
-      <%= content_tag_for(:tr, @lugares, @clientes) do |lugar| %>
+      <%= content_tag_for(:tr, @lugares) do |lugar| %>
             <td><%= lugar.nombre %></td>
             <td><%= lugar.ciudad %></td>
             <td><%= lugar.area %></td>
             <td><%= lugar.planta %></td>
             <td><%= lugar.cliente.nombre %></td>
-            <td><%= link_to 'Show', lugar %></td>
-        <td><%= link_to 'Edit', edit_lugar_path(lugar) %></td>
-        <td><%= link_to 'Destroy', lugar, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= link_to 'Show', [@cliente,lugar] %></td>
+        <td><%= link_to 'Edit', edit_cliente_lugar_path(@cliente,lugar) %></td>
+        <td><%= link_to 'Destroy', [@cliente,lugar], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       <% end %>
     </tbody>
   </table>

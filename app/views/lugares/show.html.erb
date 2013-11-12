@@ -1,9 +1,9 @@
 <div class="page-header">
-  <%= link_to lugares_path, :class => 'btn btn-default' do %>
+  <%= link_to cliente_lugares_path, :class => 'btn btn-default' do %>
     <span class="glyphicon glyphicon-list-alt"></span>
     Back
   <% end %>
-  <%= link_to edit_lugar_path(@lugar), :class => 'btn btn-primary' do %>
+  <%= link_to edit_cliente_lugar_path(@cliente,@lugar), :class => 'btn btn-primary' do %>
     <span class="glyphicon glyphicon-pencil"></span>
     Edit
   <% end %>
