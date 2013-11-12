@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131111203820) do
+ActiveRecord::Schema.define(version: 20131112031853) do
 
   create_table "aaas", force: true do |t|
     t.string   "name"
@@ -136,6 +136,9 @@ ActiveRecord::Schema.define(version: 20131111203820) do
     t.string   "nombre"
     t.text     "observaciones"
     t.date     "fecha_registro"
+    t.string   "responsable_planta"
+    t.string   "lugar_id"
+    t.string   "responsable_sistema"
   end
 
   create_table "users", force: true do |t|

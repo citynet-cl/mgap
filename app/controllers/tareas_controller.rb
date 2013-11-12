@@ -29,6 +29,7 @@ class TareasController < ApplicationController
   # POST /tareas.json
   def create
 		@proyectos = Proyecto.all
+		@lugares= Lugar.all
 		#@proyecto = Proyecto.find(params[:proyecto_id])
 		#@proyectos = Proyecto.all
 		#@user = User.find(session[:user_id])
@@ -81,6 +82,6 @@ class TareasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tarea_params
-      params.require(:tarea).permit(:nombre, :hh, :actividad, :proyecto_id, :user_id, :fecha_registro, :observaciones)
+      params.require(:tarea).permit(:nombre, :hh, :actividad, :proyecto_id, :user_id, :fecha_registro, :observaciones, :lugar_id, :responsable_planta, :responsable_sistema)
     end
 end

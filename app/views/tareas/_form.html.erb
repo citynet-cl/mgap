@@ -13,7 +13,7 @@
   <div class="form-group">
     <%= f.label :proyecto, :class => "col-lg-2 control-label" %>
     <div class="col-lg-10">
-    <%= collection_select(:tarea, :proyecto_id, Proyecto.all, :id, :nombre, { },{:class => 'form-control'}) %>   
+	    <%= f.collection_select :proyecto_id, Proyecto.order(:nombre), :id, :nombre,{}, class: "form-control" %>   
     </div>
   </div>
   <div class="form-group">
