@@ -1,6 +1,7 @@
 class Cliente < ActiveRecord::Base
 	has_many :proyectos
 	has_many :lugares
+	has_many :responsables, through: :lugares
 
 	validates_uniqueness_of  :nombre, :email
 	validates_presence_of :nombre, :email

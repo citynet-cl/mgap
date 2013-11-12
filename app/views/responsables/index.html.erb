@@ -21,11 +21,11 @@
     </thead>
 
     <tbody>
-      <%= content_tag_for(:tr, @responsables, @lugares) do |responsable| %>
+      <%= content_tag_for(:tr, @responsables) do |responsable| %>
             <td><%= responsable.nombre %></td>
             <td><%= responsable.email %></td>
             <td><%= responsable.fono %></td>
-            <td><%= responsable.lugar.nombre %></td>
+            <td><%= responsable.lugar %></td>
             <td><%= link_to 'Show', responsable %></td>
         <td><%= link_to 'Edit', edit_responsable_path(responsable) %></td>
         <td><%= link_to 'Destroy', responsable, method: :delete, data: { confirm: 'Are you sure?' } %></td>
