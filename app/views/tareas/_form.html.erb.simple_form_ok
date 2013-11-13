@@ -1,0 +1,29 @@
+<%= simple_form_for @tarea do |f| %>
+    <%= f.error_notification %>
+	  <%= f.association :proyecto, label_method: :nombre, include_blank: false, collection: Proyecto.all(order: 'nombre'), wrapper_html: { class: 'form-group' } %>
+  <div class="form-group">
+  
+  <%= f.input :lugar do %>
+	    <%= f.select :lugar_id, Lugar.all.map { |r| [r.nombre, r.id] }, include_blank: false %>
+	    <% end %>
+  <div class="form-group">
+  </div>
+  <div class="form-group">
+	  <%= f.input :nombre %>
+  </div>
+  <div class="form-group">
+	  <%= f.input :hh %>
+  </div>
+  <div class="form-group">
+	  <%= f.input :actividad %>
+  </div>
+  <div class="form-group">
+	  <%= f.input :fecha_registro, :input_html => { data: {behaviour: "datepicker1"}}, :as => :string %>
+  </div>
+  <div class="form-group">
+	  <%= f.input :observaciones %>
+  </div>
+  <div class="form-group">
+      <%= f.button :submit ,:class => "btn btn-primary" %>
+  </div>
+<% end  %>

@@ -4,7 +4,7 @@
 #
 #jQuery ($) ->
 #	$('[data-behaviour~=datepicker1]').datepicker
-#	#endDate: "today"
+	#endDate: "today"
 #		todayBtn: "linked"
 #		language: "es"
 #		todayHighlight: true

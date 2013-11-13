@@ -31,5 +31,5 @@ jQuery ($) ->
 		xkey : ['fecha_registro']
 		ykeys: ['hh', 'proyecto.tareas']
 		labels: ['HH x Tarea', 'Tarea x Proyecto']
-		barColors: ['#0b62a4']
+#		barColors: ['#0b62a4']
 
