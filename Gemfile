@@ -49,7 +49,13 @@ gem 'rolify'
 
 gem 'cancan'
 
-#gem 'sunspot_solr', :git => "https://github.com/mrcsparker/sunspot.git"
+gem 'will_paginate'
+
+
+gem 'bootstrap-datepicker-rails', :require => 'bootstrap-datepicker-rails',
+	                              :git => 'git://github.com/Nerian/bootstrap-datepicker-rails.git'
+#"gem 'sunspot_solr', :git => "https://github.com/mrcsparker/sunspot.git"
+#
 #gem 'sunspot_rails', github: 'sunspot/sunspot', branch: 'master'
 
 #gem 'sunspot_rails', '>= 2.1.0'

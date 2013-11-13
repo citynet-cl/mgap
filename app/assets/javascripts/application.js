@@ -12,8 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap
+//= require bootstrap-datepicker 
 //= require raphael 
 //= require morris 
-//= require bootstrap
 //= require turbolinks
 //= require_tree .
+//= require_self
