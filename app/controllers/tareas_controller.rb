@@ -7,7 +7,7 @@ class TareasController < ApplicationController
   # GET /tareas.json
   def index
 	  	@user = User.find(current_user)
-		@tareas = @user.tareas.page(params[:page]).per_page(10).order('id DESC')
+		@tareas = @user.tareas.page(params[:page]).per_page(5).order('id DESC')
 		@proyectos = Proyecto.all
 		
   end
@@ -83,6 +83,6 @@ class TareasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tarea_params
-      params.require(:tarea).permit(:nombre, :hh, :actividad, :proyecto_id, :user_id, :fecha_registro, :observaciones, :lugar_id, :responsable_planta, :responsable_sistema)
+      params.require(:tarea).permit(:nombre, :hh, :actividad, :proyecto_id, :user_id, :fecha_registro, :observaciones, :lugar_id, :responsable_planta_id, :responsable_sistema_id, :modulo_id)
     end
 end

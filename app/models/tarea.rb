@@ -1,6 +1,9 @@
 class Tarea < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :proyecto
+	belongs_to :modulo
+	belongs_to :lugar
+	has_and_belongs_to_many :responsables
 
 	resourcify
 	

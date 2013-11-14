@@ -11,43 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131112031853) do
-
-  create_table "aaas", force: true do |t|
-    t.string   "name"
-    t.integer  "number"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "aas", force: true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "aers", force: true do |t|
-    t.string   "email"
-    t.string   "password_digest"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "bbs", force: true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "ccccs", force: true do |t|
-    t.string   "nombre"
-    t.text     "algo"
-    t.boolean  "hm"
-    t.date     "nacimiento"
-    t.integer  "edad"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+ActiveRecord::Schema.define(version: 20131114154824) do
 
   create_table "clientes", force: true do |t|
     t.string   "nombre"
@@ -59,6 +23,18 @@ ActiveRecord::Schema.define(version: 20131112031853) do
     t.string   "direccion"
     t.integer  "fono"
   end
+
+  create_table "etapas", force: true do |t|
+    t.string   "nombre"
+    t.integer  "hh"
+    t.date     "fecha_inicio"
+    t.date     "fecha_fin"
+    t.integer  "proyecto_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "etapas", ["proyecto_id"], name: "index_etapas_on_proyecto_id"
 
   create_table "lugares", force: true do |t|
     t.string   "nombre"
@@ -72,24 +48,15 @@ ActiveRecord::Schema.define(version: 20131112031853) do
 
   add_index "lugares", ["cliente_id"], name: "index_lugares_on_cliente_id"
 
-  create_table "perfiles", force: true do |t|
-    t.string   "permiso"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "permisos", force: true do |t|
+  create_table "modulos", force: true do |t|
     t.string   "nombre"
+    t.text     "descripcion"
+    t.integer  "proyecto_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "permisos_usuarios", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "user_id"
-    t.string   "permiso_id_integer"
-  end
+  add_index "modulos", ["proyecto_id"], name: "index_modulos_on_proyecto_id"
 
   create_table "proyectos", force: true do |t|
     t.string   "nombre"
@@ -139,6 +106,9 @@ ActiveRecord::Schema.define(version: 20131112031853) do
     t.string   "responsable_planta"
     t.string   "lugar_id"
     t.string   "responsable_sistema"
+    t.integer  "tareable_id"
+    t.string   "tareable_type"
+    t.integer  "modulo_id"
   end
 
   create_table "users", force: true do |t|

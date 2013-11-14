@@ -1,0 +1,33 @@
+<div class="page-header">
+  <%= link_to new_modulo_path, :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    New Modulo
+  <% end %>
+  <h1>Listing modulos</h1>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+            <th>Nombre</th>
+            <th>Descripcion</th>
+            <th>Proyecto</th>
+            <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @modulos) do |modulo| %>
+            <td><%= modulo.nombre %></td>
+            <td><%= modulo.descripcion %></td>
+            <td><%= modulo.proyecto %></td>
+            <td><%= link_to 'Show', modulo %></td>
+        <td><%= link_to 'Edit', edit_modulo_path(modulo) %></td>
+        <td><%= link_to 'Destroy', modulo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+    </tbody>
+  </table>
+</div>

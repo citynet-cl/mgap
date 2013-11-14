@@ -1,6 +1,8 @@
 MgapUser::Application.routes.draw do
 
 
+  resources :modulos
+
   resources :responsables
 
   get "graficos/index"

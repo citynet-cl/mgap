@@ -3,6 +3,7 @@ class Proyecto < ActiveRecord::Base
 
 	has_many :tareas, dependent: :destroy
 	has_many :users, through: :tareas
+	has_many :modulos
 
 	belongs_to :cliente
 
