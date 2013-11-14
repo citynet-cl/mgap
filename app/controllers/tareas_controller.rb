@@ -7,7 +7,7 @@ class TareasController < ApplicationController
   # GET /tareas.json
   def index
 	  	@user = User.find(current_user)
-		@tareas = @user.tareas.order(:fecha_registro).page(params[:page]).per_page(5).order('id DESC')
+		@tareas = @user.tareas.page(params[:page]).per_page(10).order('id DESC')
 		@proyectos = Proyecto.all
 		
   end

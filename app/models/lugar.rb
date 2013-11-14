@@ -1,4 +1,5 @@
 class Lugar < ActiveRecord::Base
-  belongs_to :cliente
-  has_many :responsables
+	has_many :responsables
+	
+	belongs_to :cliente
 end

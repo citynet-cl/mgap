@@ -1,3 +1,3 @@
 class Responsable < ActiveRecord::Base
-  belongs_to :lugar
+	belongs_to :lugar
 end

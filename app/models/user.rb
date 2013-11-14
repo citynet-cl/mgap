@@ -1,7 +1,8 @@
 class User < ActiveRecord::Base
-  rolify
 	has_many :tareas
 	has_many :proyectos, through: :tareas
+
+	rolify
 
 	has_secure_password
 
@@ -17,8 +18,9 @@ class User < ActiveRecord::Base
   	before_save :downcase_fields
 
     	def downcase_fields
-	        self.usuario.downcase
-		      end
+		self.usuario.downcase
+	end
+
 
 end
 

@@ -1,11 +1,4 @@
 GIT
-  remote: git://github.com/Nerian/bootstrap-datepicker-rails.git
-  revision: 8400591e149d0e9f50957c76fe7f51a73972b887
-  specs:
-    bootstrap-datepicker-rails (1.1.1.9)
-      railties (>= 3.0)
-
-GIT
   remote: git://github.com/decioferreira/bootstrap-generators.git
   revision: 4e5e0e3aa463dd68df31139ca98b5e00c4377b45
   specs:
@@ -152,7 +145,6 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt-ruby (~> 3.0.0)
-  bootstrap-datepicker-rails!
   bootstrap-generators!
   cancan
   coffee-rails (~> 4.0.0)
