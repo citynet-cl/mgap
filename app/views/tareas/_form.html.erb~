@@ -1,0 +1,83 @@
+<%= simple_form_for(@tarea, :html => { :class => "form-horizontal" }) do |f| %>
+  <% if @tarea.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@tarea.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @tarea.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="col-lg-6">
+  <div class="form-group">
+    <%= f.label :proyecto, :class => "col-lg-2 control-label" %>
+    <div class="col-lg-4">
+	    <%= f.collection_select :proyecto_id, Proyecto.order(:nombre), :id, :nombre,{}, class: "form-control" %>   
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :Modulo, :class => "col-lg-2 control-label" %>
+    <div class="col-lg-4">
+	    <%= f.collection_select :modulo_id, Modulo.order(:nombre), :id, :nombre,{}, class: "form-control" %>   
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label "Planta", :class => "col-lg-2 control-label" %>
+    <div class="col-lg-4">
+	    <%= f.collection_select :lugar_id, Lugar.order(:nombre), :id, :nombre,{}, class: "form-control" %>   
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label "Responsable Sistema", :class => "col-lg-2 control-label" %>
+    <div class="col-lg-4">
+	    <%= f.collection_select(:responsable_sistema_id, Responsable.all, :id, :nombre,{}, class: "form-control") %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label "Responsable Planta", :class => "col-lg-2 control-label" %>
+    <div class="col-lg-4">
+	    <%= f.collection_select(:responsable_planta_id, Responsable.all, :id, :nombre,{}, class: "form-control") %>
+    </div>
+  </div>
+  </div>
+  <div class="col-lg-6">
+  <div class="form-group">
+    <%= f.label :nombre, :class => "col-lg-2 control-label" %>
+    <div class="col-lg-4">
+      <%= f.text_field :nombre, :class => "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :hh, :class => "col-lg-2 control-label" %>
+    <div class="col-lg-4">
+      <%= f.text_field :hh, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :actividad, :class => "col-lg-2 control-label" %>
+    <div class="col-lg-4">
+      <%= f.text_area :actividad, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+	  <%= f.label :fecha_registro, :class => "col-lg-2 control-label" %>
+    <div class="col-lg-4">
+      <%= f.date_select :fecha_registro, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :observaciones, :class => "col-lg-2 control-label" %>
+    <div class="col-lg-4">
+      <%= f.text_area :observaciones, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-4">
+      <%= f.submit :class => "btn btn-primary" %>
+    </div>
+  </div>
+  </div>
+<% end  %>

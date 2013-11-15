@@ -15,6 +15,7 @@ class TareasController < ApplicationController
   # GET /tareas/1
   # GET /tareas/1.json
   def show
+	        @responsables = Responsable.all
   end
 
   # GET /tareas/new
@@ -31,6 +32,7 @@ class TareasController < ApplicationController
   def create
 		@proyectos = Proyecto.all
 		@lugares= Lugar.all
+		#@responsables = Responsable.all
 		#@proyecto = Proyecto.find(params[:proyecto_id])
 		#@proyectos = Proyecto.all
 		#@user = User.find(session[:user_id])
