@@ -1,6 +1,6 @@
 module ApplicationHelper
   def delete_link(url)
-    link_to "Anular",   url, method: :delete, data: { confirm: 'Destroy?' }, class: "btn btn-danger btn-sm"
+    link_to "Anular",   url, method: :delete, data: { confirm: 'Seguro?' }, class: "btn btn-danger btn-sm"
   end
 
   def detalles_link(recurso)

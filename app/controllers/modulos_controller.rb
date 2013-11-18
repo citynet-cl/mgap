@@ -28,7 +28,7 @@ class ModulosController < ApplicationController
 
     respond_to do |format|
       if @modulo.save
-        format.html { redirect_to @modulo, notice: 'Modulo was successfully created.' }
+        format.html { redirect_to modulos_path, notice: 'Modulo was successfully created.' }
         format.json { render action: 'show', status: :created, location: @modulo }
       else
         format.html { render action: 'new' }
@@ -42,7 +42,7 @@ class ModulosController < ApplicationController
   def update
     respond_to do |format|
       if @modulo.update(modulo_params)
-        format.html { redirect_to @modulo, notice: 'Modulo was successfully updated.' }
+        format.html { redirect_to modulos_path, notice: 'Modulo was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -69,6 +69,6 @@ class ModulosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def modulo_params
-      params.require(:modulo).permit(:nombre, :descripcion, :proyecto_id)
+      params.require(:modulo).permit(:nombre, :descripcion, :cliente_id)
     end
 end

@@ -1,35 +1,43 @@
 class ResponsablesController < ApplicationController
-  before_action :set_responsable, only: [:show, :edit, :update, :destroy]
+  before_action :set_cliente_lugar#, only: [:show, :edit, :update, :destroy]
+  ####before_action :set_cliente#, only: [:show, :edit, :update, :destroy]
 
-  # GET /responsables
-  # GET /responsables.json
+  # GET /responsable
+  # GET /responsable.json
   def index
-    @responsables = Responsable.all
-    @lugares = Lugar.all
+	  #@lugar = Lugar.find(params[:lugar_id])
+	  @responsables = @lugar.responsables
   end
 
-  # GET /responsables/1
-  # GET /responsables/1.json
+  # GET /responsable/1
+  # GET /responsable/1.json
   def show
+	  #@lugar = Lugar.find(params[:lugar_id])
+	  @responsable = @lugar.responsables.find(params[:id])
   end
 
-  # GET /responsables/new
+  # GET /responsable/new
   def new
-    @responsable = Responsable.new
+	  @lugar = Lugar.find(params[:lugar_id])
+	  @responsable = @lugar.responsables.build
   end
 
-  # GET /responsables/1/edit
+  # GET /responsable/1/edit
   def edit
+	  #@lugar = Lugar.find(params[:lugar_id])
+	  @responsable = @lugar.responsables.find(params[:id])
   end
 
-  # POST /responsables
-  # POST /responsables.json
+  # POST /responsable
+  # POST /responsable.json
   def create
-    @responsable = Responsable.new(responsable_params)
+	  #@lugar = Lugar.find(params[:lugar_id])
+	  @responsable = @lugar.responsables.build(params[:responsable])
+    #@responsable = Lugar.new(responsable_params)
 
     respond_to do |format|
       if @responsable.save
-        format.html { redirect_to @responsable, notice: 'Responsable was successfully created.' }
+        format.html { redirect_to cliente_lugar_responsables_path, notice: 'Lugar was successfully created.' }
         format.json { render action: 'show', status: :created, location: @responsable }
       else
         format.html { render action: 'new' }
@@ -38,12 +46,13 @@ class ResponsablesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /responsables/1
-  # PATCH/PUT /responsables/1.json
+  # PATCH/PUT /responsable/1
+  # PATCH/PUT /responsable/1.json
   def update
+	  @responsable = @lugar.responsables.find(params[:id])
     respond_to do |format|
       if @responsable.update(responsable_params)
-        format.html { redirect_to @responsable, notice: 'Responsable was successfully updated.' }
+        format.html { redirect_to cliente_lugar_responsables_path, notice: 'Lugar was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -52,20 +61,24 @@ class ResponsablesController < ApplicationController
     end
   end
 
-  # DELETE /responsables/1
-  # DELETE /responsables/1.json
+  # DELETE /responsable/1
+  # DELETE /responsable/1.json
   def destroy
-    @responsable.destroy
+	  #@lugar = Lugar.find(params[:lugar_id])
+	  @responsable = @lugar.responsables.find(params[:id])
+	  @responsable.destroy
+
     respond_to do |format|
-      format.html { redirect_to responsables_url }
+      format.html { redirect_to cliente_lugar_responsables_url }
       format.json { head :no_content }
     end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_responsable
-      @responsable = Responsable.find(params[:id])
+    def set_cliente_lugar
+	    @cliente = Cliente.find(params[:cliente_id])
+	    @lugar = @cliente.lugares.find(params[:lugar_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

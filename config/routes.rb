@@ -11,7 +11,9 @@ MgapUser::Application.routes.draw do
   get "home/index"
 
   resources :clientes do
-	  resources :lugares
+	  resources :lugares do
+		  resources :responsables
+	  end
   end
 
   resources :proyectos do
@@ -22,7 +24,7 @@ MgapUser::Application.routes.draw do
   resources :users
   resources :sessions
 
-   root 'home#index'
+	  root 'home#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

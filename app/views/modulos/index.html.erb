@@ -12,7 +12,6 @@
       <tr>
             <th>Nombre</th>
             <th>Descripcion</th>
-            <th>Proyecto</th>
             <th></th>
         <th></th>
         <th></th>
@@ -23,7 +22,6 @@
       <%= content_tag_for(:tr, @modulos) do |modulo| %>
             <td><%= modulo.nombre %></td>
             <td><%= modulo.descripcion %></td>
-            <td><%= modulo.proyecto %></td>
             <td><%= link_to 'Show', modulo %></td>
         <td><%= link_to 'Edit', edit_modulo_path(modulo) %></td>
         <td><%= link_to 'Destroy', modulo, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -25,6 +25,7 @@
 			<% if current_user %>
 				<li><%= link_to "Tareas", tareas_path %></li>
 				<li><%= link_to "Proyectos", proyectos_path %></li>
+				<li><%= link_to "Modulos", modulos_path %></li>
 
 				<% if current_user.has_role? :admin %>
 
