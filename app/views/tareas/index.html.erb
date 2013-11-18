@@ -7,14 +7,21 @@
   <h1>Listado de tareas</h1>
 </div>
 
+<%= form_tag tareas_path, method: 'get' do %>
+	<p>
+		<%= text_field_tag :search, params[:search] %>
+		<%= submit_tag "Buscar", name: nil %>
+		</p>
+<% end %>
+
 <div class="table-responsive">
   <table class="table table-striped table-hover">
     <thead>
       <tr>
-            <th>Nombre</th>
-            <th>Proyecto</th>
-            <th>HH</th>
-            <th>Fecha</th>
+	    <th><%= ordenable "nombre" %></th>
+	    <th><%= ordenable "proyecto_id" %></th>
+	    <th><%= ordenable "hh" %></th>
+	    <th><%= ordenable "fecha_registro" %></th>
 	    <th>Acciones</th>
 	    <th></th>
 	    <th></th>

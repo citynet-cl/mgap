@@ -7,8 +7,9 @@ class TareasController < ApplicationController
   # GET /tareas.json
   def index
 	  	@user = User.find(current_user)
-		@tareas = @user.tareas.page(params[:page]).per_page(5).order('id DESC')
-		@proyectos = Proyecto.all
+		#@tareas = @user.tareas.search(params[:search]).page(params[:page]).per_page(5).order('id DESC')
+		@tareas = @user.tareas.order(ordenar_columna + ' ' + ordenar_direccion).search(params[:search]).page(params[:page]).per_page(5)
+		#@proyectos = Proyecto.order(params[:sort])
 		
   end
 
@@ -87,4 +88,5 @@ class TareasController < ApplicationController
     def tarea_params
       params.require(:tarea).permit(:nombre, :hh, :actividad, :proyecto_id, :user_id, :fecha_registro, :observaciones, :lugar_id, :responsable_planta_id, :responsable_sistema_id, :modulo_id)
     end
+
 end

@@ -109,7 +109,7 @@ ActiveRecord::Schema.define(version: 20131114165328) do
     t.integer  "user_id"
     t.string   "nombre"
     t.text     "observaciones"
-    t.date     "fecha_registro"
+    t.datetime "fecha_registro"
     t.string   "lugar_id"
     t.string   "responsable_tarea_id"
     t.integer  "modulo_id"
