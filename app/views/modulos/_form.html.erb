@@ -14,7 +14,7 @@
   <div class="form-group">
     <%= f.label :cliente, :class => "col-lg-2 control-label" %>
     <div class="col-lg-10">
-    <%= collection_select(:proyecto, :cliente_id, Cliente.all, :id, :nombre, { },{:class => 'form-control'}) %>   
+    <%= collection_select(:modulo, :cliente_id, Cliente.all, :id, :nombre, { },{:class => 'form-control'}) %>   
     </div>
   </div>
 
