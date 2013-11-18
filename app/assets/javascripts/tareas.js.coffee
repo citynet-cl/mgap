@@ -8,3 +8,10 @@
 #		todayBtn: "linked"
 #		language: "es"
 #		todayHighlight: true
+#
+
+jQuery ->
+	lugares = $('#tarea_lugar_id').html
+	console.log(lugares)
+	$('#tarea_proyecto_id').change ->
+		proyecto = $('#')

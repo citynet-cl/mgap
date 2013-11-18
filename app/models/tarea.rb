@@ -2,6 +2,7 @@ class Tarea < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :proyecto
 	belongs_to :modulo
+	belongs_to :lugar
 
 	resourcify
 	

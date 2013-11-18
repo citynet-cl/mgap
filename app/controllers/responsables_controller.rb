@@ -5,14 +5,12 @@ class ResponsablesController < ApplicationController
   # GET /responsable
   # GET /responsable.json
   def index
-	  #@lugar = Lugar.find(params[:lugar_id])
 	  @responsables = @lugar.responsables
   end
 
   # GET /responsable/1
   # GET /responsable/1.json
   def show
-	  #@lugar = Lugar.find(params[:lugar_id])
 	  @responsable = @lugar.responsables.find(params[:id])
   end
 
@@ -24,16 +22,13 @@ class ResponsablesController < ApplicationController
 
   # GET /responsable/1/edit
   def edit
-	  #@lugar = Lugar.find(params[:lugar_id])
 	  @responsable = @lugar.responsables.find(params[:id])
   end
 
   # POST /responsable
   # POST /responsable.json
   def create
-	  #@lugar = Lugar.find(params[:lugar_id])
 	  @responsable = @lugar.responsables.build(params[:responsable])
-    #@responsable = Lugar.new(responsable_params)
 
     respond_to do |format|
       if @responsable.save
@@ -64,7 +59,6 @@ class ResponsablesController < ApplicationController
   # DELETE /responsable/1
   # DELETE /responsable/1.json
   def destroy
-	  #@lugar = Lugar.find(params[:lugar_id])
 	  @responsable = @lugar.responsables.find(params[:id])
 	  @responsable.destroy
 
