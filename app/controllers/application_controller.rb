@@ -25,5 +25,16 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user
 
+    def ordenar_direccion
+	   # params[:sort] || "fecha_registro"
+	%w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+    end
+
+    def ordenar_columna
+	    #params[:direction] || "desc"
+	Tarea.column_names.include?(params[:sort]) ? params[:sort] : "nombre"
+    end
+
+  helper_method :ordenar_columna, :ordenar_direccion
 
 end
