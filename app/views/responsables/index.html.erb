@@ -1,13 +1,13 @@
 <div class="page-header">
-  <%= link_to cliente_lugares_path, :class => 'btn btn-default' do %>
+  <%= link_to clientes_path, :class => 'btn btn-default' do %>
     <span class="glyphicon glyphicon-list-alt"></span>
     Volver
   <% end %>
-  <%= link_to new_cliente_lugar_responsable_path, :class => 'btn btn-primary' do %>
+  <%= link_to new_cliente_responsable_path, :class => 'btn btn-primary' do %>
     <span class="glyphicon glyphicon-plus"></span>
     Nuevo Responsable
   <% end %>
-  <%= content_tag :h4, "Listado Personal" + " -> " + @cliente.nombre.humanize + " -> " + @lugar.nombre.humanize %>
+  <%= content_tag :h4, "Listado Personal" + " -> " + @cliente.nombre.humanize  %>
 </div>
 
 <div class="table-responsive">
@@ -24,11 +24,9 @@
 
     <tbody>
       <%= content_tag_for(:tr, @responsables) do |responsable| %>
-            <td><%= responsable.nombre %></td>
-            <!--td><%# link_to 'Detalles', [@cliente,@lugar, responsable] %></td-->
-        <td><%= link_to 'Editar', edit_cliente_lugar_responsable_path(@cliente ,@lugar, responsable), class: "btn btn-primary btn-sm" %></td>
-        <td><!--%= link_to 'Anular', [@cliente, @lugar, responsable], method: :delete, data: { confirm: 'Are you sure?' } %--></td>
-	    <td><%= delete_link cliente_lugar_responsable_path(@cliente,@lugar,responsable) %></td>
+	      <td><%= responsable.nombre %></td>
+	      <td><%= link_to 'Editar', edit_cliente_responsable_path(@cliente, responsable), class: "btn btn-primary btn-sm" %></td>
+	      <td><%= delete_link cliente_responsable_path(@cliente, responsable) %></td>
       <% end %>
     </tbody>
   </table>

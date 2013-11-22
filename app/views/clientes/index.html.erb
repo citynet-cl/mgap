@@ -11,7 +11,8 @@
     <thead>
       <tr>
             <th>Nombre</th>
-            <th>Lugares</th>
+	    <th>Lugares</th>
+	    <th>Personal</th>
             <th>Acciones</th>
       </tr>
     </thead>
@@ -20,6 +21,7 @@
       <%= content_tag_for(:tr, @clientes) do |cliente| %>
 	      <td><%= cliente.nombre.humanize %></td>
               <td><%= link_to 'Lugares', cliente_lugares_path(cliente), class: "btn btn-success btn-sm" %></td>
+	      <td><%= link_to 'Responsables', cliente_responsables_path(cliente),  class: "btn btn-success btn-sm" %></td>
 	      <td><%= link_to "Editar", edit_cliente_path(cliente), class: "btn btn-primary btn-sm" %></td>
               <td><%= delete_link cliente_path(cliente) %></td>
       <% end %>

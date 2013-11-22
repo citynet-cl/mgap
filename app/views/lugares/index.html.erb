@@ -15,7 +15,6 @@
     <thead>
       <tr>
             <th>Nombre</th>
-            <th>Lugares</th>
         <th>Acciones</th>
         <th></th>
         <th></th>
@@ -25,7 +24,6 @@
     <tbody>
       <%= content_tag_for(:tr, @lugares) do |lugar| %>
             <td><%= lugar.nombre %></td>
-	    <td><%= link_to 'Responsables', cliente_lugar_responsables_path(@cliente,lugar),  class: "btn btn-success btn-sm" %></td>
 	    <td><%= link_to 'Editar', edit_cliente_lugar_path(@cliente,lugar) , class: "btn btn-primary btn-sm" %></td>
 	    <td><%= delete_link cliente_lugar_path(@cliente,lugar) %></td>
       <% end %>

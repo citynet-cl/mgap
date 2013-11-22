@@ -3,7 +3,7 @@ class Cliente < ActiveRecord::Base
 	has_many :lugares
 	has_many :modulos
 	has_many :tareas
-#	has_many :responsables, through: :lugares
+	has_many :responsables
 
 
 	validates_uniqueness_of  :nombre, :email
