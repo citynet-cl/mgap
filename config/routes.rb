@@ -1,6 +1,8 @@
 MgapUser::Application.routes.draw do
 
 
+  resources :etapas
+
   resources :modulos
 
   #resources :responsables

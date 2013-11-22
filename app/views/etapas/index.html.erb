@@ -1,0 +1,39 @@
+<div class="page-header">
+  <%= link_to new_etapa_path, :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    New Etapa
+  <% end %>
+  <h1>Listing etapas</h1>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+            <th>Nombre</th>
+            <th>Hh</th>
+            <th>Fecha inicio</th>
+            <th>Fecha fin</th>
+            <th>Proyecto</th>
+            <th>Modulo</th>
+            <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @etapas) do |etapa| %>
+            <td><%= etapa.nombre %></td>
+            <td><%= etapa.hh %></td>
+            <td><%= etapa.fecha_inicio %></td>
+            <td><%= etapa.fecha_fin %></td>
+            <td><%= etapa.proyecto %></td>
+            <td><%= etapa.modulo %></td>
+            <td><%= link_to 'Show', etapa %></td>
+        <td><%= link_to 'Edit', edit_etapa_path(etapa) %></td>
+        <td><%= link_to 'Destroy', etapa, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+    </tbody>
+  </table>
+</div>

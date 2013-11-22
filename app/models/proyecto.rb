@@ -1,10 +1,15 @@
 class Proyecto < ActiveRecord::Base
-	before_save { |proyecto| proyecto.nombre = nombre.downcase.capitalize }
+	#before_save { |proyecto| proyecto.nombre = nombre.downcase.capitalize }
+
+	#attr_accessible :nombre, :hh, :fecha_inicio, :fecha_fin, :proyecto_id, :etapas_attributes
 
 	has_many :tareas, dependent: :destroy
+	has_many :etapas, dependent: :destroy
 	has_many :users, through: :tareas
 
 	belongs_to :cliente
+
+	accepts_nested_attributes_for :etapas, allow_destroy: true
 
 	validates_presence_of :nombre, :hh 
 	validates :hh, :numericality => { :greater_than_or_equal_to => 1 }

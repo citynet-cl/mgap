@@ -1,4 +1,4 @@
-<%= simple_form_for(@proyecto, :html => { :class => "form-horizontal" }) do |f| %>
+<%= form_for(@proyecto, :html => { :class => "form-horizontal" }) do |f| %>
   <% if @proyecto.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@proyecto.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -15,6 +15,26 @@
     <div class="col-lg-10">
     <%= collection_select(:proyecto, :cliente_id, Cliente.all, :id, :nombre, { },{:class => 'form-control'}) %>   
     </div>
+  </div>
+  <div class="form-group">
+	  <%= f.fields_for :etapas do |builder| %>
+		  <fieldset>
+			  <%= builder.label :nombre, "Etapa" %>
+			  <%= builder.text_field :nombre %>
+
+			  <%= builder.label :hh, "HH etapa" %>
+			  <%= builder.text_field :hh %></br>
+
+			  <%= builder.label :fecha_inicio, "Fecha Inicio etapa" %>
+			  <%= builder.date_select :fecha_inicio %>
+
+			  <%= builder.label :fecha_fin, "Fecha Fin etapa" %>
+			  <%= builder.date_select :fecha_fin %></br>
+
+			  <%= builder.check_box :_destroy %>
+			  <%= builder.label :_destroy, "eliminar etapa?" %>
+		  </fieldset>
+	  <% end %>
   </div>
   <div class="form-group">
     <%= f.label :nombre, :class => "col-lg-2 control-label" %>

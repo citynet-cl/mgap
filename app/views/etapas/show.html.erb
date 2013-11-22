@@ -1,0 +1,32 @@
+<div class="page-header">
+  <%= link_to etapas_path, :class => 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Back
+  <% end %>
+  <%= link_to edit_etapa_path(@etapa), :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+    Edit
+  <% end %>
+  <h1>Show etapa</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Nombre:</dt>
+  <dd><%= @etapa.nombre %></dd>
+
+  <dt>Hh:</dt>
+  <dd><%= @etapa.hh %></dd>
+
+  <dt>Fecha inicio:</dt>
+  <dd><%= @etapa.fecha_inicio %></dd>
+
+  <dt>Fecha fin:</dt>
+  <dd><%= @etapa.fecha_fin %></dd>
+
+  <dt>Proyecto:</dt>
+  <dd><%= @etapa.proyecto %></dd>
+
+  <dt>Modulo:</dt>
+  <dd><%= @etapa.modulo %></dd>
+
+</dl>

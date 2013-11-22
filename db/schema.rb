@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131121202506) do
+ActiveRecord::Schema.define(version: 20131122024519) do
 
   create_table "clientes", force: true do |t|
     t.string   "nombre"
@@ -30,10 +30,12 @@ ActiveRecord::Schema.define(version: 20131121202506) do
     t.date     "fecha_inicio"
     t.date     "fecha_fin"
     t.integer  "proyecto_id"
+    t.integer  "modulo_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "etapas", ["modulo_id"], name: "index_etapas_on_modulo_id"
   add_index "etapas", ["proyecto_id"], name: "index_etapas_on_proyecto_id"
 
   create_table "lugares", force: true do |t|
@@ -73,12 +75,10 @@ ActiveRecord::Schema.define(version: 20131121202506) do
     t.string   "nombre"
     t.string   "email"
     t.integer  "fono"
-    t.integer  "lugar_id"
+    t.integer  "cliente_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "responsables", ["lugar_id"], name: "index_responsables_on_lugar_id"
 
   create_table "roles", force: true do |t|
     t.string   "name"

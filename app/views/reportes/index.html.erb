@@ -17,6 +17,7 @@
       <tr>
             <th><%= ordenable "user_id", "Desarrollador" %></th>
             <th><%= ordenable "proyecto_id", "Proyecto" %></th>
+            <th><%= ordenable "modulo_id", "Modulo" %></th>
             <th><%= ordenable "hh", "HH" %></th>
             <th><%= ordenable "fecha_registro", "Fecha Registro" %></th>
 	    <th>Acciones</th>
@@ -27,7 +28,13 @@
     <tbody>
       <%= content_tag_for(:tr, @tareas) do |tarea| %>
             <td><%= tarea.user.email %></td>
-            <td><%= tarea.proyecto.nombre %></td>
+	      <% unless tarea.proyecto %>
+		      <td></td>
+		      <td><%= tarea.modulo.nombre.humanize %></td>
+	      <% else %>
+		      <td><%= tarea.proyecto.nombre.humanize %></td>
+	              <td></td>
+	      <% end  %>
             <td><%= tarea.hh %></td>
             <td><%= tarea.fecha_registro %></td>
 	    <td><%= detalles_link tarea %></td>

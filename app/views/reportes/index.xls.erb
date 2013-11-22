@@ -9,14 +9,21 @@
       <Row>
         <Cell><Data ss:Type="String">Nombre</Data></Cell>
         <Cell><Data ss:Type="String">Proyecto</Data></Cell>
+        <Cell><Data ss:Type="String">Modulo</Data></Cell>
         <Cell><Data ss:Type="String">HH</Data></Cell>
         <Cell><Data ss:Type="String">Fecha</Data></Cell>
       </Row>
     <% @tareas.each do |tarea| %>
       <Row>
         <Cell><Data ss:Type="String"><%= tarea.user.usuario %></Data></Cell>
-        <Cell><Data ss:Type="String"><%= tarea.proyecto.nombre %></Data></Cell>
-        <Cell><Data ss:Type="String"><%= tarea.hh %></Data></Cell>
+	      <% unless tarea.proyecto %>
+		      <Cell><Data ss:Type="String"></Data></Cell>
+		      <Cell><Data ss:Type="String"><%= tarea.modulo.nombre.humanize %></Data></Cell>
+	      <% else %>
+		      <Cell><Data ss:Type="String"><%= tarea.proyecto.nombre.humanize %></Data></Cell>
+		      <Cell><Data ss:Type="String"></Data></Cell>
+	      <% end  %>
+        <Cell><Data ss:Type="Number"><%= tarea.hh %></Data></Cell>
         <Cell><Data ss:Type="String"><%= tarea.fecha_registro %></Data></Cell>
       </Row>
     <% end %>
