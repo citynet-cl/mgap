@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131114165328) do
+ActiveRecord::Schema.define(version: 20131121202506) do
 
   create_table "clientes", force: true do |t|
     t.string   "nombre"
@@ -51,12 +51,10 @@ ActiveRecord::Schema.define(version: 20131114165328) do
   create_table "modulos", force: true do |t|
     t.string   "nombre"
     t.text     "descripcion"
-    t.integer  "proyecto_id"
+    t.integer  "cliente_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "modulos", ["proyecto_id"], name: "index_modulos_on_proyecto_id"
 
   create_table "proyectos", force: true do |t|
     t.string   "nombre"
@@ -69,13 +67,6 @@ ActiveRecord::Schema.define(version: 20131114165328) do
     t.integer  "cliente_id"
     t.integer  "hhi"
     t.integer  "user_id"
-  end
-
-  create_table "responsable_tareas", force: true do |t|
-    t.integer  "tarea_id"
-    t.integer  "responsable_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "responsables", force: true do |t|
@@ -101,6 +92,7 @@ ActiveRecord::Schema.define(version: 20131114165328) do
   add_index "roles", ["name"], name: "index_roles_on_name"
 
   create_table "tareas", force: true do |t|
+    t.string   "responsable_planta_id"
     t.integer  "hh"
     t.text     "actividad"
     t.datetime "created_at"
@@ -111,8 +103,9 @@ ActiveRecord::Schema.define(version: 20131114165328) do
     t.text     "observaciones"
     t.datetime "fecha_registro"
     t.string   "lugar_id"
-    t.string   "responsable_tarea_id"
+    t.string   "responsable_sistema_id"
     t.integer  "modulo_id"
+    t.integer  "cliente_id"
   end
 
   create_table "users", force: true do |t|

@@ -10,11 +10,27 @@
   <dt>Nombre:</dt>
   <dd><%= @tarea.nombre.humanize %></dd>
 
-  <dt>Proyecto:</dt>
-  <dd><%= @tarea.proyecto.nombre.humanize %></dd>
+  <% unless @tarea.proyecto %>
+	  <dt></dt>
+          <dd></dd>
 
-  <dt>Modulo:</dt>
-  <dd><%= @tarea.modulo.nombre.humanize %></dd>
+	  <dt>Modulo:</dt>
+	  <dd><%= @tarea.modulo.nombre.humanize %></dd>
+  <% else %>
+	  <dt>Proyecto:</dt>
+	  <dd><%= @tarea.proyecto.nombre.humanize %></dd>
+
+	  <dt></dt>
+	  <dd></dd>
+  <% end %>
+  <dt>HH:</dt>
+  <dd><%= @tarea.hh %></dd>
+
+  <dt>Actividad:</dt>
+  <dd><%= @tarea.actividad %></dd>
+
+  <dt>Fecha Registro:</dt>
+  <dd><%= @tarea.fecha_registro %></dd>
 
   <dt>Planta:</dt>
   <dd><%= @tarea.lugar.nombre.humanize %></dd>
@@ -24,18 +40,6 @@
 
   <dt>Responsable Sistema:</dt>
   <dd><%= @tarea.responsable_sistema_id %></dd>
-
-  <dt>Nombre:</dt>
-  <dd><%= @tarea.nombre %></dd>
-
-  <dt>HH:</dt>
-  <dd><%= @tarea.hh %></dd>
-
-  <dt>Actividad:</dt>
-  <dd><%= @tarea.actividad %></dd>
-
-  <dt>Fecha Registro:</dt>
-  <dd><%= @tarea.fecha_registro %></dd>
 
   <dt>Observaciones:</dt>
   <dd><%= @tarea.observaciones %></dd>

@@ -3,6 +3,7 @@ class Tarea < ActiveRecord::Base
 	belongs_to :proyecto
 	belongs_to :modulo
 	belongs_to :lugar
+	belongs_to :cliente
 
 	resourcify
 	

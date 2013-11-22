@@ -24,16 +24,16 @@
 #		labels: ['HH Planificadas', 'HH Invertidas']
 #		barColors: ['#0b62a4','green']
 
-jQuery ->
-	Morris.Line({
-		element: 'hh_d'
-		data: $('#hh_d').data('tareas')
-		xkey : ['created_at']
+#jQuery ->
+#	Morris.Line({
+#		element: 'hh_d'
+#		data: $('#hh_d').data('tareas')
+#		xkey : ['created_at']
 #		ykeys: ['hh', 'proyecto.tareas']
-		ykeys: ['hh']
-		labels: ['HH x Tarea']
+#		ykeys: ['hh']
+#		labels: ['HH x Tarea']
 		#labels: ['HH x Tarea', 'Tarea x Proyecto']
 #		barColors: ['#0b62a4']
-		xLabels: ["day"]
+#		xLabels: ["day"]
 #		hideHover: "false"
-	})
+#	})

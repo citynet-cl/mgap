@@ -20,6 +20,7 @@
       <tr>
 	    <th><%= ordenable "nombre" %></th>
 	    <th><%= ordenable "proyecto_id" %></th>
+	    <th>Modulo</th>
 	    <th><%= ordenable "hh" %></th>
 	    <th><%= ordenable "fecha_registro" %></th>
 	    <th>Acciones</th>
@@ -30,8 +31,14 @@
 
     <tbody>
       <%= content_tag_for(:tr, @tareas) do |tarea| %>
-            <td><%= tarea.nombre %></td>
-            <td><%= tarea.proyecto.nombre %></td>
+	      <td><%= tarea.nombre %></td>
+	      <% unless tarea.proyecto %>
+		      <td></td>
+		      <td><%= tarea.modulo.nombre.humanize %></td>
+	      <% else %>
+		      <td><%= tarea.proyecto.nombre.humanize %></td>
+	              <td></td>
+	      <% end  %>
             <td><%= tarea.hh %></td>
             <td><%= tarea.fecha_registro %></td>
 	    <td><%= link_to "Copiar", class: "btn btn-primary btn-sm" %> </td>

@@ -2,6 +2,7 @@ class Cliente < ActiveRecord::Base
 	has_many :proyectos
 	has_many :lugares
 	has_many :modulos
+	has_many :tareas
 #	has_many :responsables, through: :lugares
 
 
