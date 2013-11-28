@@ -32,7 +32,7 @@ class ApplicationController < ActionController::Base
 
     def ordenar_columna
 	    #params[:direction] || "desc"
-	Tarea.column_names.include?(params[:sort]) ? params[:sort] : "fecha_registro"
+	Tarea.column_names.include?(params[:sort]) ? params[:sort] : "id"
     end
 
   helper_method :ordenar_columna, :ordenar_direccion

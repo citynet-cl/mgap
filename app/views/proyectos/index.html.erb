@@ -25,8 +25,7 @@
             <td><%= proyecto.nombre.humanize %></td>
 	    <td><%= proyecto.hh %></td>
 	    <td><%= proyecto.tareas.sum(:hh) %></td>
-	    <td><%= link_to "Tareas" %></td>
-	    <td><%= link_to "Cerrar" %></td>
+	    <td><%= link_to "Cerrar" ,{} , class: "btn btn-danger btn-sm " %></td>
 	    <td><%= link_to "Editar", edit_proyecto_path(proyecto), class: "btn btn-primary btn-sm " %></td>
 	    <td><%= detalles_link proyecto %></td>
 	    <td><%= delete_link proyecto_path(proyecto) %></td>

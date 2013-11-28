@@ -24,16 +24,41 @@
 		<ul class="nav navbar-nav">
 			<% if current_user %>
 				<li><%= link_to "Tareas", tareas_path, "data-no-turbolink" => true %></li>
-				<li><%= link_to "Proyectos", proyectos_path %></li>
-				<li><%= link_to "Modulos", modulos_path %></li>
 
 				<% if current_user.has_role? :admin %>
+					<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Categorias<b class="caret"></b></a>
+					<ul class="dropdown-menu">
+						<li><%= link_to "Proyectos", proyectos_path %></li>
+						<li><%= link_to "Modulos", modulos_path %></li>
+						<li><%= link_to "Otros", otros_path %></li>
+					</ul>
+					</li>
+
+					<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Listados<b class="caret"></b></a>
+					<ul class="dropdown-menu">
+						<li><%= link_to "Todas", reportes_path  %></li>
+						<li><%= link_to "Mensual", reportes_path  %></li>
+						<li><%= link_to "Segun Desarrollador", reportes_path  %></li>
+						<li><%= link_to "Segun Proyecto", reportes_path  %></li>
+						<li><%= link_to "Segun Modulo", reportes_path  %></li>
+						<li><%= link_to "Segun Otros", reportes_path  %></li>
+					</ul>
+					</li>
 
 					<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Reportes<b class="caret"></b></a>
 					<ul class="dropdown-menu">
-						<li><%= link_to "Listado1", reportes_path  %></li>
 						<li><%= link_to "Reporte1", reportes1_path  %></li>
+					</ul>
+					</li>
+
+					<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Graficos<b class="caret"></b></a>
+					<ul class="dropdown-menu">
+						<li><%= link_to "Segun Proyecto", {}  %></li>
+						<li><%= link_to "Segun Desarrollador", {}  %></li>
 					</ul>
 					</li>
 

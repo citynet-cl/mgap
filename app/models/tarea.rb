@@ -4,6 +4,7 @@ class Tarea < ActiveRecord::Base
 	belongs_to :modulo
 	belongs_to :lugar
 	belongs_to :cliente
+	belongs_to :otro
 
 	resourcify
 	

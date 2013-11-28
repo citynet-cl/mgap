@@ -11,41 +11,7 @@
     </div>
   <% end %>
   <div class="row clearfix">
-	  <div class="col-md-6 column">
-		  <div class="form-group">
-				  <%= f.label :nombre, :class => "col-sm-4 control-label" %>
-				  <div class="col-sm-6">
-					  <%= f.text_field :nombre, :class => "form-control" %>
-				  </div>
-			  </div>
-			  <div class="form-group">
-				  <%= f.label :hh, :class => "col-sm-4 control-label" %>
-				  <div class="col-sm-6">
-					  <%= f.text_field :hh, :class => "form-control" %>
-				  </div>
-			  </div>
-			  <div class="form-group">
-				  <%= f.label :actividad, :class => "col-sm-4 control-label" %>
-				  <div class="col-sm-6">
-					  <%= f.text_area :actividad, rows: 4, :class => "form-control" %>
-				  </div>
-			  </div>
-			  <div class="form-group">
-				  <%= f.label :fecha_registro, :class => "col-sm-4 control-label" %>
-				  <div class="col-sm-6">
-					  <%= f.datetime_select :fecha_registro, :class => "form-control" %>
-				  </div>
-			  </div>
-			  <div class="form-group">
-				  <%= f.label :observaciones, :class => "col-sm-4 control-label" %>
-				  <div class="col-sm-6">
-					  <%= f.text_area :observaciones, :class => "form-control" %>
-				  </div>
-			  </div>
-		  </div>
-
-		  
-	  <div class="col-md-6 column">
+	 	  <div class="col-md-6 column">
 			  <div class="form-group">
 				  <%= f.label :cliente, :class => "col-sm-4 control-label" %>
 				  <div class="col-sm-6">
@@ -65,6 +31,12 @@
 				  </div>
 			  </div>
 			  <div class="form-group">
+				  <%= f.label :otro, :class => "col-sm-4 control-label" %>
+				  <div class="col-sm-6">
+					  <%= f.grouped_collection_select :otro_id, Cliente.order(:nombre), :otros, :nombre, :id, :nombre,{include_blank: true}, class: "form-control" %>
+				  </div>
+			  </div>
+			  <div class="form-group">
 				  <%= f.label "Planta", :class => "col-sm-4 control-label" %>
 				  <div class="col-sm-6">
 					  <%= f.grouped_collection_select :lugar_id, Cliente.order(:nombre), :lugares, :nombre, :id, :nombre,{include_blank: true}, class: "form-control" %>
@@ -80,6 +52,38 @@
 				  <%= f.label "Responsable Planta", :class => "col-sm-4 control-label" %>
 				  <div class="col-sm-6">
 					  <%= f.grouped_collection_select(:responsable_planta_id, Cliente.order(:nombre), :responsables, :nombre, :id, :nombre,{include_blank: true}, class: "form-control") %>
+				  </div>
+			  </div>
+		  </div>
+ <div class="col-md-6 column">
+		  <div class="form-group">
+				  <%= f.label :nombre, :class => "col-sm-4 control-label" %>
+				  <div class="col-sm-6">
+					  <%= f.text_field :nombre, :class => "form-control" %>
+				  </div>
+			  </div>
+			  <div class="form-group">
+				  <%= f.label :actividad, :class => "col-sm-4 control-label" %>
+				  <div class="col-sm-6">
+					  <%= f.text_area :actividad, rows: 4, :class => "form-control" %>
+				  </div>
+			  </div>
+			  <div class="form-group">
+				  <%= f.label "Tiempo estimado", :class => "col-sm-4 control-label" %>
+				  <div class="col-sm-6">
+					  <%= f.text_field :hh, :class => "form-control" %>
+				  </div>
+			  </div>
+			  <div class="form-group">
+				  <%= f.label "Fecha Tarea", :class => "col-sm-4 control-label" %>
+				  <div class="col-sm-6">
+					  <%= f.date_select :fecha_registro, :class => "form-control" %>
+				  </div>
+			  </div>
+			  <div class="form-group">
+				  <%= f.label :observaciones, :class => "col-sm-4 control-label" %>
+				  <div class="col-sm-6">
+					  <%= f.text_area :observaciones, :class => "form-control" %>
 				  </div>
 			  </div>
 		  </div>

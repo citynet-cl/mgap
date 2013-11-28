@@ -16,11 +16,13 @@ jQuery ->
 	lugares = $('#tarea_lugar_id').html()
 	responsables1 = $('#tarea_responsable_sistema_id').html()
 	responsables2 = $('#tarea_responsable_planta_id').html()
+	otros = $('#tarea_otro_id').html()
 	$('#tarea_proyecto_id').empty()
 	$('#tarea_lugar_id').empty()
 	$('#tarea_modulo_id').empty()
 	$('#tarea_responsable_sistema_id').empty()
 	$('#tarea_responsable_planta_id').empty()
+	$('#tarea_otro_id').empty()
 	$('#tarea_cliente_id').change ->
 		cliente = $('#tarea_cliente_id :selected').text()
 		opciones1 = $(proyectos).filter("optgroup[label='#{cliente}']").html()
@@ -30,15 +32,19 @@ jQuery ->
 		opciones2 = $(lugares).filter("optgroup[label='#{cliente}']").html()
 		opciones4 = $(responsables1).filter("optgroup[label='#{cliente}']").html()
 		opciones5 = $(responsables2).filter("optgroup[label='#{cliente}']").html()
-		if opciones2 || opciones4 || opciones5 || opciones1 || opciones3
+		opciones6 = $(otros).filter("optgroup[label='#{cliente}']").html()
+		opciones6 = '<option value=""></option>\n' + opciones6
+		if opciones2 || opciones4 || opciones5 || opciones1 || opciones3 || opciones6
 			$('#tarea_proyecto_id').html(opciones1)
 			$('#tarea_lugar_id').html(opciones2)
 			$('#tarea_modulo_id').html(opciones3)
 			$('#tarea_responsable_sistema_id').html(opciones4)
 			$('#tarea_responsable_planta_id').html(opciones5)
+			$('#tarea_otro_id').html(opciones6)
 		else
 			$('#tarea_proyecto_id').empty()
 			$('#tarea_lugar_id').empty()
 			$('#tarea_modulo_id').empty()
 			$('#tarea_responsable_sistema_id').empty()
 			$('#tarea_responsable_planta_id').empty()
+			$('#tarea_otro_id').empty()

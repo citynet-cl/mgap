@@ -4,6 +4,7 @@ class Cliente < ActiveRecord::Base
 	has_many :modulos
 	has_many :tareas
 	has_many :responsables
+	has_many :otros
 
 
 	validates_uniqueness_of  :nombre, :email

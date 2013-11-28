@@ -1,6 +1,8 @@
 MgapUser::Application.routes.draw do
 
 
+  resources :otros
+
   resources :etapas
 
   resources :modulos
