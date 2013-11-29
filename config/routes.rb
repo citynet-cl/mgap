@@ -1,6 +1,7 @@
 MgapUser::Application.routes.draw do
 
 
+  get "listados1/index", to: 'listados1#index', as: 'listados1'
   resources :otros
 
   resources :etapas

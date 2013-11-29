@@ -39,6 +39,3 @@
 #	})
 #
 
-body = d3.select("body")
-body.style("color", "yellow")
-

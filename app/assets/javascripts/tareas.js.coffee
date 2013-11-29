@@ -10,7 +10,6 @@
 #		todayHighlight: true
 #
 
-jQuery ->
 	proyectos = $('#tarea_proyecto_id').html()
 	modulos = $('#tarea_modulo_id').html()
 	lugares = $('#tarea_lugar_id').html()
