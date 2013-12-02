@@ -1,7 +1,13 @@
 MgapUser::Application.routes.draw do
 
 
+  get "listados6/index"
   get "listados1/index", to: 'listados1#index', as: 'listados1'
+  get "listados2/index", to: 'listados2#index', as: 'listados2'
+  get "listados3/index", to: 'listados3#index', as: 'listados3'
+  get "listados4/index", to: 'listados4#index', as: 'listados4'
+  get "listados5/index", to: 'listados5#index', as: 'listados5'
+  get "listados6/index", to: 'listados6#index', as: 'listados6'
   resources :otros
 
   resources :etapas

@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
 	  method = "#{resource}_params"
 	  params[resource] &&= send(method) if respond_to?(method, true)
   end
+
   rescue_from CanCan::AccessDenied do |exception|
 	  flash[:alert] = exception.message
 	  redirect_to root_url

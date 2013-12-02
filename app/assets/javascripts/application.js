@@ -16,7 +16,7 @@
 //= require dataTables/jquery.dataTables
 //= require dataTables/jquery.dataTables.bootstrap3
 //= require bootstrap
+//= require bootstrap-datepicker
 //= require turbolinks
 //= require d3.v3.min 
 //= require_self
-//= require_tree .

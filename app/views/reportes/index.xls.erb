@@ -10,17 +10,24 @@
         <Cell><Data ss:Type="String">Nombre</Data></Cell>
         <Cell><Data ss:Type="String">Proyecto</Data></Cell>
         <Cell><Data ss:Type="String">Modulo</Data></Cell>
+        <Cell><Data ss:Type="String">Otro</Data></Cell>
         <Cell><Data ss:Type="String">HH</Data></Cell>
         <Cell><Data ss:Type="String">Fecha</Data></Cell>
       </Row>
-    <% @tareas.each do |tarea| %>
+    <% @tareas_listado_completo.each do |tarea| %>
       <Row>
         <Cell><Data ss:Type="String"><%= tarea.user.usuario %></Data></Cell>
-	      <% unless tarea.proyecto %>
+	      <% if tarea.proyecto.blank? and tarea.otro.blank? %>
 		      <Cell><Data ss:Type="String"></Data></Cell>
 		      <Cell><Data ss:Type="String"><%= tarea.modulo.nombre.humanize %></Data></Cell>
+		      <Cell><Data ss:Type="String"></Data></Cell>
+	      <% elsif tarea.proyecto.blank? and tarea.modulo.blank? %>
+		      <Cell><Data ss:Type="String"></Data></Cell>
+		      <Cell><Data ss:Type="String"></Data></Cell>
+		      <Cell><Data ss:Type="String"><%= tarea.otro.nombre.humanize %></Data></Cell>
 	      <% else %>
 		      <Cell><Data ss:Type="String"><%= tarea.proyecto.nombre.humanize %></Data></Cell>
+		      <Cell><Data ss:Type="String"></Data></Cell>
 		      <Cell><Data ss:Type="String"></Data></Cell>
 	      <% end  %>
         <Cell><Data ss:Type="Number"><%= tarea.hh %></Data></Cell>

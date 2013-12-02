@@ -1,0 +1,42 @@
+<%= content_tag :h2, "Tareas segun Desarrollador" %>
+
+
+<% @tareas_d.keys.sort.each do |desarrollador| %>
+	<h2><%= desarrollador %></h2>
+
+	<div class="table-responsive">
+
+		        <table class="table table-striped table-hover">
+		                <thead>
+		        <tr>
+		            <th>Proyecto</th>
+		            <th>Modulo</th>
+		            <th>Otro</th>
+		            <th>HH</th>
+		            <th>Fecha Registro</th>
+		            <th>Acciones</th>
+		    </tr>
+		        </thead>
+		        <tbody>
+	<%  @tareas_d[desarrollador].each do |tareas| %>
+			                <tr>
+		                              <% if tarea.proyecto.blank? and tarea.otro.blank? %>
+			                                              <td></td>
+		                                      <td><%= tarea.modulo.nombre.humanize %></td>
+		                                      <td></td>
+		                              <% elsif tarea.proyecto.blank? and tarea.modulo.blank? %>
+			                                                      <td></td>
+		                                              <td></td>
+		                                              <td><%= tarea.otro.nombre.humanize %></td>
+		                              <% else %>
+			                                              <td><%= tarea.proyecto.nombre.humanize %></td>
+		                                      <td></td>
+		                                      <td></td>
+		                              <% end  %>
+					      <td><%= tarea.hh %></td>
+
+
+
+	<% end  %>
+<% end  %>
+

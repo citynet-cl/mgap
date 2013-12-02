@@ -8,7 +8,8 @@ class TareasController < ApplicationController
   def index
 	  	@user = User.find(current_user)
 		#@tareas = @user.tareas.search(params[:search]).page(params[:page]).per_page(5).order('id DESC')
-		@tareas = @user.tareas.order(ordenar_columna + ' ' + ordenar_direccion).search(params[:search]).page(params[:page]).per_page(5)
+		#@tareas = @user.tareas.order(ordenar_columna + ' ' + ordenar_direccion).search(params[:search]).page(params[:page]).per_page(5)
+		@tareas = @user.tareas.order('fecha_registro DESC')
 		#@proyectos = Proyecto.order(params[:sort])
 		
   end

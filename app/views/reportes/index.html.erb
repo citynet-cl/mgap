@@ -1,6 +1,4 @@
-<h1>Listado de tareas</h1>
-
-<%= content_tag :h3, "Todas las Tareas" %>
+<%= content_tag :h2, "Listado de todas las Tareas" %>
 
 <%= form_tag reportes_path, method: 'get' do %>
 	<p>
@@ -52,50 +50,7 @@
   </table>
 </div>
 
-<%= content_tag :h2, "Tareas segun Mes" %>
+<%= will_paginate @tareas_listado %>
 
 
-<% @tareas_mes.keys.sort.each do |mes| %>
-	<h3><%= mes.strftime("%B %Y") %></h3>
-	<%  for tareas in @tareas_mes[mes] %>
-		<p><%= tareas.nombre %> registrada en <%= tareas.fecha_registro %></p>
-	<% end  %>
-<% end  %>
 
-<%= content_tag :h2, "Tareas segun Desarrollador" %>
-
-
-<% @tareas_d.keys.sort.each do |desarrollador| %>
-	<h2><%= desarrollador %></h2>
-	<%  for tareas in @tareas_d[desarrollador] %>
-		<p><%= tareas.nombre %> registrada en <%= tareas.fecha_registro %></p>
-	<% end  %>
-<% end  %>
-
-
-<%= content_tag :h2, "Tareas segun Proyecto" %>
-
-<% @tareas_p.each do |proyecto, tareas| %>
-	<h2><%= proyecto %></h2>
-	<%  tareas.each do |tarea| %>
-		<p><%= tarea.nombre %> registrada en <%= tarea.fecha_registro %></p>
-	<% end  %>
-<% end  %>
-
-<%= content_tag :h2, "Tareas segun Modulo" %>
-
-<% @tareas_m.each do |modulo, tareas| %>
-	<h2><%= modulo %></h2>
-		<%  tareas.each do |tarea| %>
-			<p><%= tarea.nombre %> registrada en <%= tarea.fecha_registro %></p>
-		<% end %>
-<% end  %>
-
-<%= content_tag :h2, "Tareas segun Otros" %>
-
-<% @tareas_o.each do |otro, tareas| %>
-	<h2><%= otro %></h2>
-		<%  tareas.each do |tarea| %>
-			<p><%= tarea.nombre %> registrada en <%= tarea.fecha_registro %></p>
-		<% end %>
-<% end  %>
