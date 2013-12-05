@@ -1,4 +1,7 @@
 class Cliente < ActiveRecord::Base
+	before_save {|cliente| cliente.nombre = nombre.downcase.capitalize }
+	before_save {|cliente| cliente.email = email.downcase }
+
 	has_many :proyectos
 	has_many :lugares
 	has_many :modulos

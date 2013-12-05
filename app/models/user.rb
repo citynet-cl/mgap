@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+	before_save {|user| user.usuario = usuario.downcase }
+	before_save {|user| user.email = email.downcase }
+
 	has_many :tareas
 	has_many :proyectos, through: :tareas
 
@@ -14,13 +17,5 @@ class User < ActiveRecord::Base
 
 	validates :password, length: {in: 5..20}, allow_blank: true
 	validates_confirmation_of :password
-
-  	before_save :downcase_fields
-
-    	def downcase_fields
-		self.usuario.downcase
-	end
-
-
 end
 

@@ -1,7 +1,5 @@
 class Proyecto < ActiveRecord::Base
-	#before_save { |proyecto| proyecto.nombre = nombre.downcase.capitalize }
-
-	#attr_accessible :nombre, :hh, :fecha_inicio, :fecha_fin, :proyecto_id, :etapas_attributes
+	before_save { |proyecto| proyecto.nombre = nombre.downcase.capitalize }
 
 	has_many :tareas, dependent: :destroy
 	has_many :etapas, dependent: :destroy

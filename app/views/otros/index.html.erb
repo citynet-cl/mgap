@@ -7,11 +7,11 @@
 </div>
 
 <div class="table-responsive">
-  <table class="table table-striped table-bordered table-hover">
+  <table class="table table-striped table-hover">
     <thead>
       <tr>
+            <th>Cliente</th>
             <th>Nombre</th>
-            <th>Descripcion</th>
             <th></th>
         <th></th>
         <th></th>
@@ -20,11 +20,11 @@
 
     <tbody>
       <%= content_tag_for(:tr, @otros) do |otro| %>
-            <td><%= otro.nombre %></td>
-            <td><%= otro.descripcion %></td>
-            <td><%= link_to 'Show', otro %></td>
-        <td><%= link_to 'Edit', edit_otro_path(otro) %></td>
-        <td><%= link_to 'Destroy', otro, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= otro.cliente.nombre.humanize %></td>
+            <td><%= otro.nombre.humanize %></td>
+	    <td><%= link_to "Editar", edit_otro_path(otro), class: "btn btn-primary btn-sm " %></td>
+	    <td><%= detalles_link otro %></td>
+	    <td><%= delete_link otro_path(otro) %></td>
       <% end %>
     </tbody>
   </table>

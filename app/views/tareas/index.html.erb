@@ -46,7 +46,7 @@
 	              <td></td>
 	      <% end  %>
             <td><%= tarea.hh %></td>
-	    <td><%= link_to "Copiar",{} , class: "btn btn-success btn-sm" %> </td>
+	    <td><%= link_to "Copiar",{} , class: "btn btn-success btn-sm", "data-no-turbolink" => true %> </td>
 	    <td><%= detalles_link tarea %></td>
 	    <td><%= delete_link tarea_path(tarea) %></td>
       <% end %>

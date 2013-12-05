@@ -8,8 +8,8 @@ class Tarea < ActiveRecord::Base
 
 	resourcify
 	
-	validates_presence_of :hh, :actividad
-	validates :hh, :numericality => { :greater_than => 1, :less_than => 24 }
+	validates_presence_of :nombre, :hh, :actividad, :cliente
+	validates :hh, :numericality => { :greater_than => 1, :less_than => 100 }
 
 	def self.search(search)
 		if search

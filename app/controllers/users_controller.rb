@@ -31,10 +31,18 @@ class UsersController < ApplicationController
 		  params[:user].delete(:password_confirmation)
 	  end
 	  params[:user][:role_ids] ||= []
-		if @user.update(user_params)
-			redirect_to users_url, notice: "usuario editado exitosamente"
+	  	if current_user.has_role? :admin
+			if @user.update(user_params)
+				redirect_to users_url, notice: "usuario editado exitosamente"
+			else
+				render action: 'edit'
+			end
 		else
-			render action: 'edit'
+			if @user.update(user_params)
+				redirect_to edit_user_path(current_user), notice: "usuario editado exitosamente"
+			else
+				render action: 'edit'
+			end
 		end
 	end
 

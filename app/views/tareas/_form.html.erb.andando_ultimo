@@ -1,14 +1,17 @@
 <%= javascript_include_tag params[:controller] %>
 
-<%= simple_form_for(@tarea, :html => { :class => "form-horizontal" }) do |f| %>
-	<% if notification = f.error_notification %>
-    <div class="alert alert-error fade in">
-	      <a class="close" data-dismiss="alert" href="#">&times;</a>
-	      <%= notification %>
-	    </div>
-	  <% end %>
+<%= form_for(@tarea, :html => { :class => "form-horizontal" }) do |f| %>
+  <% if @tarea.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@tarea.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-
+      <ul>
+      <% @tarea.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
   <div class="row clearfix">
 	 	  <div class="col-md-6 column">
 			  <div class="form-group">
@@ -55,22 +58,22 @@
 			  </div>
 		  </div>
  <div class="col-md-6 column">
-			  <div class="form-group">
+		  <div class="form-group">
 				  <%= f.label :nombre, :class => "col-sm-4 control-label" %>
 				  <div class="col-sm-6">
-					  <%= f.input :nombre, :input_html => { :class => "form-control"}, :label => false %>
+					  <%= f.text_field :nombre, :class => "form-control" %>
 				  </div>
 			  </div>
 			  <div class="form-group">
 				  <%= f.label :actividad, :class => "col-sm-4 control-label" %>
 				  <div class="col-sm-6">
-					  <%= f.input :actividad, :input_html => { rows: 5, :class => "form-control"}, :label => false %>
+					  <%= f.text_area :actividad, rows: 4, :class => "form-control" %>
 				  </div>
 			  </div>
 			  <div class="form-group">
-				  <%= f.label :hh, :class => "col-sm-4 control-label", :hint => "Tiempo estimado" %>
+				  <%= f.label "Tiempo estimado", :class => "col-sm-4 control-label" %>
 				  <div class="col-sm-6">
-					  <%= f.input :hh, :input_html => { :class => "form-control"}, :label => false, :hint => "Tiempo dedicado a la tarea" %>
+					  <%= f.text_field :hh, :class => "form-control" %>
 				  </div>
 			  </div>
 			  <div class="form-group">
@@ -96,9 +99,7 @@
 	  <div class="form-group">
 		  <%= f.label " ", :class => "col-sm-4 control-label" %>
 		  <div class="col-sm-6">
-			  <%= f.button :submit, "Guardar", :class => "btn btn-primary" %>
-			  <%= link_to tareas_path, :class => 'btn btn-danger', "data-no-turbolink" => true do %> Cancelar
-			  <% end %>
+			  <%= f.submit :class => "btn btn-primary" %>
 		  </div>
 	  </div>
   </div>

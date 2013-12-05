@@ -59,7 +59,6 @@ gem 'jquery-turbolinks'
 gem 'bootstrap-datepicker-rails', :require => 'bootstrap-datepicker-rails',
 	                              :git => 'git://github.com/Nerian/bootstrap-datepicker-rails.git'
 
-gem 'client_side_validations'
 #"gem 'sunspot_solr', :git => "https://github.com/mrcsparker/sunspot.git"
 #
 #gem 'sunspot_rails', github: 'sunspot/sunspot', branch: 'master'

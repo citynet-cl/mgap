@@ -17,6 +17,7 @@ class ProyectosController < ApplicationController
   # GET /proyectos/new
   def new
     @proyecto = Proyecto.new
+    @proyecto.etapas.build
   end
 
   # GET /proyectos/1/edit
@@ -71,6 +72,6 @@ class ProyectosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def proyecto_params
-      params.require(:proyecto).permit(:nombre, :hh, :descripcion, :cliente_id, :fecha_inicio, :fecha_fin, :etapas_attributes)
+      params.require(:proyecto).permit(:nombre, :hh, :descripcion, :cliente_id, :fecha_inicio, :fecha_fin, etapas_attributes: [:nombre, :hh, :fecha_inicio, :fecha_fin])
     end
 end
