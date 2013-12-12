@@ -52,6 +52,7 @@ GEM
     builder (3.1.4)
     cancan (1.6.10)
     choice (0.1.6)
+    cocoon (1.2.5)
     coderay (1.0.9)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
@@ -78,6 +79,8 @@ GEM
     jquery-ui-rails (4.0.5)
       railties (>= 3.1.0)
     json (1.8.1)
+    lodash-rails (2.4.0)
+      railties (>= 3.1)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -85,6 +88,8 @@ GEM
     mime-types (1.25)
     minitest (4.7.5)
     multi_json (1.8.2)
+    paranoia (2.0.1)
+      activerecord (~> 4.0)
     polyglot (0.3.3)
     pry (0.9.12.2)
       coderay (~> 1.0.5)
@@ -167,12 +172,15 @@ DEPENDENCIES
   bootstrap-datepicker-rails!
   bootstrap-generators!
   cancan
+  cocoon
   coffee-rails (~> 4.0.0)
   jbuilder (~> 1.2)
   jquery-datatables-rails!
   jquery-rails
   jquery-turbolinks
   jquery-ui-rails
+  lodash-rails
+  paranoia
   pry-rails
   rails (= 4.0.0)
   rails-erd

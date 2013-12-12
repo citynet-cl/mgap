@@ -15,8 +15,14 @@
 //= require jquery_ujs
 //= require dataTables/jquery.dataTables
 //= require dataTables/jquery.dataTables.bootstrap3
+//= require jquery.dataTables.columnFilter
+//= require dataTables/extras/ZeroClipboard
+//= require dataTables/extras/TableTools
 //= require bootstrap
 //= require bootstrap-datepicker
 //= require turbolinks
-//= require d3.v3.min 
+//= require cocoon
+//= require d3
+//= require crossfilter 
+//= require dc
 //= require_self

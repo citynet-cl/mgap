@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
 	before_save {|user| user.usuario = usuario.downcase }
 	before_save {|user| user.email = email.downcase }
 
-	has_many :tareas
+	has_many :tareas, dependent: :destroy
 	has_many :proyectos, through: :tareas
 
 	rolify

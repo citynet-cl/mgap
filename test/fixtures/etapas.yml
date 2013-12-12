@@ -2,16 +2,8 @@
 
 one:
   nombre: MyString
-  hh: 1
-  fecha_inicio: 2013-11-21
-  fecha_fin: 2013-11-21
   proyecto_id: 
-  modulo_id: 
 
 two:
   nombre: MyString
-  hh: 1
-  fecha_inicio: 2013-11-21
-  fecha_fin: 2013-11-21
   proyecto_id: 
-  modulo_id: 

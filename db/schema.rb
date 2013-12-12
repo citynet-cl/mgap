@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131125153238) do
+ActiveRecord::Schema.define(version: 20131207020314) do
 
   create_table "clientes", force: true do |t|
     t.string   "nombre"
@@ -19,23 +19,20 @@ ActiveRecord::Schema.define(version: 20131125153238) do
     t.datetime "updated_at"
     t.string   "rut"
     t.string   "email"
-    t.date     "fecha_registro"
     t.string   "direccion"
     t.integer  "fono"
   end
 
   create_table "etapas", force: true do |t|
     t.string   "nombre"
-    t.integer  "hh"
-    t.date     "fecha_inicio"
-    t.date     "fecha_fin"
     t.integer  "proyecto_id"
-    t.integer  "modulo_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.date     "fecha_inicio"
+    t.date     "fecha_fin"
+    t.integer  "hh"
   end
 
-  add_index "etapas", ["modulo_id"], name: "index_etapas_on_modulo_id"
   add_index "etapas", ["proyecto_id"], name: "index_etapas_on_proyecto_id"
 
   create_table "lugares", force: true do |t|
@@ -111,15 +108,14 @@ ActiveRecord::Schema.define(version: 20131125153238) do
     t.integer  "user_id"
     t.string   "nombre"
     t.text     "observaciones"
-    t.date "fecha_registro"
+    t.date     "fecha_registro"
     t.string   "lugar_id"
     t.string   "responsable_sistema_id"
     t.integer  "modulo_id"
     t.integer  "cliente_id"
     t.integer  "otro_id"
+    t.string   "modulo"
   end
-
-  add_index "tareas", ["otro_id"], name: "index_tareas_on_otro_id"
 
   create_table "users", force: true do |t|
     t.string   "email"

@@ -11,3 +11,13 @@ jQuery ->
     language: "es"
     format: "yyyy-mm-dd"
     todayHighlight: true
+
+  $('#datepicker3').datepicker
+    language: "es"
+    format: "yyyy-mm-dd"
+    todayHighlight: true
+
+  $('#datepicker4').datepicker
+    language: "es"
+    format: "yyyy-mm-dd"
+    todayHighlight: true

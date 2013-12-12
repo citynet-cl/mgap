@@ -47,9 +47,11 @@ jQuery ->
       $('#tarea_responsable_sistema_id').empty()
       $('#tarea_responsable_planta_id').empty()
       $('#tarea_otro_id').empty()
-  
-  oTable = $('#tareas_usuario').dataTable
+
+  tableContainer = $('#tareas_usuario')
+  tableContainer.dataTable
     sPaginationType: "bootstrap"
+
     oLanguage:
       sSearch: "Buscar:"
       sZeroRecords: "No se encontraron resultados"

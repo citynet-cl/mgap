@@ -1,24 +1,13 @@
 class Tarea < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :proyecto
-	belongs_to :modulo
 	belongs_to :lugar
 	belongs_to :cliente
-	belongs_to :otro
 
 	resourcify
 	
-	validates_presence_of :nombre, :hh, :actividad, :cliente
-	validates :hh, :numericality => { :greater_than => 1, :less_than => 100 }
-
-	def self.search(search)
-		if search
-
-			where('nombre LIKE ? OR user_id LIKE ?', "%#{search}%","%#{search}%")
-		else
-			scoped
-		end
-	end
+	validates_presence_of :nombre, :hh, :actividad, :cliente, :proyecto
+	validates :hh, :numericality => { :greater_than => 0, :less_than => 100 }
 
 	def self.to_csv(options = {})
 		CSV.generate(options) do |csv|

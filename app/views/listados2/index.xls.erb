@@ -8,12 +8,10 @@
     <Table>
       <Row>
         <Cell><Data ss:Type="String">HH</Data></Cell>
-        <Cell><Data ss:Type="String">Fecha</Data></Cell>
       </Row>
-    <% @tareas_mes[mes].each do |tarea| %>
+<% @tareas_mes.keys.sort.reverse.each do |mes| %>
       <Row>
-        <Cell><Data ss:Type="Number"><%= tarea.hh %></Data></Cell>
-        <Cell><Data ss:Type="String"><%= tarea.fecha_registro %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= mes.tareas %></Data></Cell>
       </Row>
     <% end %>
     </Table>

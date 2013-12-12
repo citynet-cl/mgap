@@ -24,18 +24,6 @@
 				  </div>
 			  </div>
 			  <div class="form-group">
-				  <%= f.label :modulo, :class => "col-sm-4 control-label" %>
-				  <div class="col-sm-6">
-					  <%= f.grouped_collection_select :modulo_id, Cliente.order(:nombre), :modulos, :nombre, :id, :nombre,{include_blank: true}, class: "form-control" %>
-				  </div>
-			  </div>
-			  <div class="form-group">
-				  <%= f.label :otro, :class => "col-sm-4 control-label" %>
-				  <div class="col-sm-6">
-					  <%= f.grouped_collection_select :otro_id, Cliente.order(:nombre), :otros, :nombre, :id, :nombre,{include_blank: true}, class: "form-control" %>
-				  </div>
-			  </div>
-			  <div class="form-group">
 				  <%= f.label "Planta", :class => "col-sm-4 control-label" %>
 				  <div class="col-sm-6">
 					  <%= f.grouped_collection_select :lugar_id, Cliente.order(:nombre), :lugares, :nombre, :id, :nombre,{include_blank: true}, class: "form-control" %>
@@ -68,6 +56,12 @@
 				  </div>
 			  </div>
 			  <div class="form-group">
+				  <%= f.label :modulo, :class => "col-sm-4 control-label" %>
+				  <div class="col-sm-6">
+					  <%= f.input :modulo, :input_html => { rows: 5, :class => "form-control"}, :label => false %>
+				  </div>
+			  </div>
+			  <div class="form-group">
 				  <%= f.label :hh, :class => "col-sm-4 control-label", :hint => "Tiempo estimado" %>
 				  <div class="col-sm-6">
 					  <%= f.input :hh, :input_html => { :class => "form-control"}, :label => false, :hint => "Tiempo dedicado a la tarea" %>
@@ -96,8 +90,8 @@
 	  <div class="form-group">
 		  <%= f.label " ", :class => "col-sm-4 control-label" %>
 		  <div class="col-sm-6">
-			  <%= f.button :submit, "Guardar", :class => "btn btn-primary" %>
-			  <%= link_to tareas_path, :class => 'btn btn-danger', "data-no-turbolink" => true do %> Cancelar
+			  <%= f.button :submit, "Guardar", :class => "btn btn-primary btn-lg" %>
+			  <%= link_to tareas_path, :class => 'btn btn-danger btn-md', "data-no-turbolink" => true do %> Cancelar
 			  <% end %>
 		  </div>
 	  </div>

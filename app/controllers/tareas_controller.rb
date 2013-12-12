@@ -6,18 +6,18 @@ class TareasController < ApplicationController
   # GET /tareas
   # GET /tareas.json
   def index
+	  if current_user.has_role? :admin
+		  @tareas = Tarea.order('fecha_registro ASC')
+	  else
 	  	@user = User.find(current_user)
-		#@tareas = @user.tareas.search(params[:search]).page(params[:page]).per_page(5).order('id DESC')
-		#@tareas = @user.tareas.order(ordenar_columna + ' ' + ordenar_direccion).search(params[:search]).page(params[:page]).per_page(5)
-		@tareas = @user.tareas.order('fecha_registro DESC')
-		#@proyectos = Proyecto.order(params[:sort])
+		@tareas = @user.tareas.order('fecha_registro ASC')
+	  end
 		
   end
 
   # GET /tareas/1
   # GET /tareas/1.json
   def show
-	        @responsables = Responsable.all
   end
 
   # GET /tareas/new
@@ -32,17 +32,9 @@ class TareasController < ApplicationController
   # POST /tareas
   # POST /tareas.json
   def create
-		@proyectos = Proyecto.all
-		@lugares= Lugar.all
-		#@responsables = Responsable.all
-		#@proyecto = Proyecto.find(params[:proyecto_id])
-		#@proyectos = Proyecto.all
-		#@user = User.find(session[:user_id])
-		#@tarea(:user_id) = @user(:user_id)
 	  	@user = User.find(current_user)
 		@tarea = @user.tareas.create(tarea_params)
 
-    #@tarea = Tarea.new(tarea_params)
 
     respond_to do |format|
       if @tarea.save
@@ -87,7 +79,7 @@ class TareasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tarea_params
-      params.require(:tarea).permit(:nombre, :hh, :actividad, :proyecto_id, :user_id, :fecha_registro, :observaciones, :lugar_id, :responsable_planta_id, :responsable_sistema_id, :modulo_id, :otro_id, :cliente_id)
+      params.require(:tarea).permit(:nombre, :hh, :actividad, :proyecto_id, :user_id, :fecha_registro, :observaciones, :lugar_id, :responsable_planta_id, :responsable_sistema_id, :cliente_id, :modulo)
     end
 
 end

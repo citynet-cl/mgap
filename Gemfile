@@ -50,8 +50,6 @@ gem 'rolify'
 
 gem 'cancan'
 
-gem 'will_paginate'
-
 gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-rails.git'
 
 gem 'jquery-turbolinks'
@@ -59,13 +57,14 @@ gem 'jquery-turbolinks'
 gem 'bootstrap-datepicker-rails', :require => 'bootstrap-datepicker-rails',
 	                              :git => 'git://github.com/Nerian/bootstrap-datepicker-rails.git'
 
-#"gem 'sunspot_solr', :git => "https://github.com/mrcsparker/sunspot.git"
-#
-#gem 'sunspot_rails', github: 'sunspot/sunspot', branch: 'master'
+gem 'lodash-rails'
 
-#gem 'sunspot_rails', '>= 2.1.0'
+gem 'cocoon'
 
-#gem 'sunspot_solr'
+gem 'paranoia'
+
+gem 'will_paginate'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 

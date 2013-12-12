@@ -1,11 +1,12 @@
-<%= content_tag :h2, "Tareas Mensuale " %>
+<%= javascript_include_tag params[:controller] %>
+<%= content_tag :h2, "Tareas Mensuales " %>
 
 <% @tareas_mes.keys.sort.reverse.each do |mes| %>
 	<h3><%= mes.strftime("%B %Y") %></h3>
 
 	<div class="table-responsive">
 		
-	<table class="table table-striped table-hover">
+	<table id="listado2" class="table table-striped table-hover">
 		<thead>
 	<tr>
 	<th>Desarrollador</th>
@@ -47,7 +48,7 @@
 	</div>
 	<p>
         Descarga 
-          <%= link_to "Excel", reportes_path(format: "xls") %>
+          <%= link_to "Excel", listados2_path(format: "xls") %>
         </p>
 <% end  %>
 

@@ -1,22 +1,17 @@
 MgapUser::Application.routes.draw do
 
 
-  get "listados6/index"
   get "listados1/index", to: 'listados1#index', as: 'listados1'
   get "listados2/index", to: 'listados2#index', as: 'listados2'
   get "listados3/index", to: 'listados3#index', as: 'listados3'
   get "listados4/index", to: 'listados4#index', as: 'listados4'
   get "listados5/index", to: 'listados5#index', as: 'listados5'
   get "listados6/index", to: 'listados6#index', as: 'listados6'
-  resources :otros
-
-  resources :etapas
-
-  resources :modulos
-
+  get "graficos", to: 'graficos#index', as: 'graficos'
+  get "graficos1", to: 'graficos1#index', as: 'graficos1'
+  get "graficos2", to: 'graficos2#index', as: 'graficos2'
   #resources :responsables
 
-  get "graficos/index"
   get "reportes1/index", to: 'reportes1#index', as: 'reportes1'
   get "reportes/index", to: 'reportes#index', as: 'reportes'
   get "home/index"
