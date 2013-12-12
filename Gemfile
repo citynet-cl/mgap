@@ -66,10 +66,10 @@ gem 'paranoia'
 gem 'will_paginate'
 
 # Use unicorn as the app server
-# gem 'unicorn'
+ gem 'unicorn'
 
 # Use Capistrano for deployment
-# gem 'capistrano', group: :development
-
+gem 'capistrano', group: :development
+gem 'rvm-capistrano'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
