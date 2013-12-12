@@ -1,5 +1,6 @@
 class ResponsablesController < ApplicationController
   before_action :set_cliente#, only: [:show, :edit, :update, :destroy]
+  before_filter :authorize
   ####before_action :set_cliente#, only: [:show, :edit, :update, :destroy]
 
   # GET /responsable

@@ -10,6 +10,8 @@ MgapUser::Application.routes.draw do
   get "graficos", to: 'graficos#index', as: 'graficos'
   get "graficos1", to: 'graficos1#index', as: 'graficos1'
   get "graficos2", to: 'graficos2#index', as: 'graficos2'
+  get "proyectos_cerrados", to: 'proyectos_cerrados#index', as: 'proyectos_cerrados'
+  get "proyectos_cerrados/:id", to: 'proyectos_cerrados#show', as: 'proyecto_cerrado'
   #resources :responsables
 
   get "reportes1/index", to: 'reportes1#index', as: 'reportes1'
@@ -24,6 +26,7 @@ MgapUser::Application.routes.draw do
   resources :proyectos do
 	  resources :tareas
   end
+
 
   resources :tareas
   resources :users

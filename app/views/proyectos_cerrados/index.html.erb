@@ -1,10 +1,4 @@
-<div class="page-header">
-  <%= link_to new_proyecto_path, :class => 'btn btn-primary' do %>
-    <span class="glyphicon glyphicon-plus"></span>
-    Nuevo Proyecto 
-  <% end %>
-  <h1>Listado Proyectos</h1>
-</div>
+<h1>Listado Proyectos Cerrados</h1>
 
 <div class="table-responsive">
   <table class="table table-striped table-hover">
@@ -21,13 +15,13 @@
     </thead>
 
     <tbody>
-      <%= content_tag_for(:tr, @proyectos) do |proyecto| %>
+      <%= content_tag_for(:tr, @proyectos_c) do |proyecto| %>
             <td><%= proyecto.nombre.humanize %></td>
 	    <td><%= proyecto.hh %></td>
 	    <td><%= proyecto.tareas.sum(:hh) %></td>
-	    <td><%= link_to "Editar", edit_proyecto_path(proyecto), class: "btn btn-primary btn-sm " %></td>
-	    <td><%= detalles_link proyecto %></td>
-	    <td><%= delete_link proyecto_path(proyecto) %></td>
+	    <!--td><#%= link_to "Editar", edit_proyecto_path(proyecto), class: "btn btn-primary btn-sm " %></td-->
+	    <td><%= link_to "Detalles", proyecto_cerrado_path(proyecto), class: "btn btn-warning btn-sm" %></td>
+	    <td><!--%= delete_link proyecto_path(proyecto) %--></td>
       <% end %>
     </tbody>
   </table>

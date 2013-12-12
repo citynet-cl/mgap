@@ -12,40 +12,25 @@
 		            <th>Fecha Registro</th>
 		            <th>HH</th>
 		            <th>Proyecto</th>
-		            <th>Modulo</th>
-		            <th>Otro</th>
 		            <th>Acciones</th>
 		        </tr>
 		        </thead>
 		        <tbody>
-	<%  @tareas_d[desarrollador].each do |tarea| %>
-			                <tr>
-		            			<td><%= truncate(tarea.nombre, length: 20) %></td>
-						<td><%= tarea.fecha_registro %></td>
-					      <td><%= tarea.hh %></td>
-		                              <% if tarea.proyecto.blank? and tarea.otro.blank? %>
-			                                              <td></td>
-		                                      <td><%= tarea.modulo.nombre.humanize %></td>
-		                                      <td></td>
-		                              <% elsif tarea.proyecto.blank? and tarea.modulo.blank? %>
-			                                                      <td></td>
-		                                              <td></td>
-		                                              <td><%= tarea.otro.nombre.humanize %></td>
-		                              <% else %>
-			                                              <td><%= tarea.proyecto.nombre.humanize %></td>
-		                                      <td></td>
-		                                      <td></td>
-		                              <% end  %>
-                            <td><%= detalles_link tarea %></td>
-                            </tr>
+			<%  @tareas_d[desarrollador].each do |tarea| %>
+				<tr>
+					<td><%= truncate(tarea.nombre, length: 20) %></td>
+					<td><%= tarea.fecha_registro %></td>
+					<td><%= tarea.hh %></td>
+					<td><%= tarea.proyecto.nombre.humanize %></td>
+					<td><%= detalles_link tarea %></td>
+				</tr>
+			<% end  %>
 
-        <% end  %>
         </tbody>
         </table>
         </div>
         <p>
-        Descarga
-          <%= link_to "Excel", listados3_path(format: "xls") %>
+          <!--%= link_to "Excel", listados3_path(format: "xls") %-->
         </p>
 	<% end  %>
 

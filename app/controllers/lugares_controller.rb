@@ -1,4 +1,5 @@
 class LugaresController < ApplicationController
+  before_filter :authorize
   before_action :set_lugar#, only: [:show, :edit, :update, :destroy]
 
   # GET /lugares

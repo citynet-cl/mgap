@@ -23,6 +23,8 @@ class TareasController < ApplicationController
   # GET /tareas/new
   def new
     @tarea = Tarea.new
+    @clientes = Cliente.joins(:proyectos).where(proyectos: {:estado => false}).distinct
+    #@proyectos = Proyecto.where(:estado => false).order(:nombre)
   end
 
   # GET /tareas/1/edit

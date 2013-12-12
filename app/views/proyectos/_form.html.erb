@@ -48,6 +48,12 @@
       <%= f.text_area :descripcion, :class => "form-control" %>
     </div>
   </div>
+  <div class="form-group">
+    <%= f.label "Cerrado?", :class => "col-lg-2 control-label" %>
+    <div class="col-lg-10">
+      <%= f.check_box :estado, :class => "form-control" %>
+    </div>
+  </div>
 
   <div id="etapas">
 	  <%= f.fields_for :etapas do |etapa| %>

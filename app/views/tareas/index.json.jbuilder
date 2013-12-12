@@ -3,5 +3,6 @@ json.array! @tareas do |tarea|
   json.hh tarea.hh
   json.actividad tarea.actividad
   json.proyecto tarea.proyecto.nombre
+  json.estado_proyecto tarea.proyecto.estado
   json.usuario tarea.user.usuario
 end

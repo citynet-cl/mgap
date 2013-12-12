@@ -6,7 +6,7 @@ class ProyectosController < ApplicationController
   # GET /proyectos
   # GET /proyectos.json
   def index
-    @proyectos = Proyecto.all
+    @proyectos = Proyecto.where(:estado => false)
   end
 
   # GET /proyectos/1
@@ -72,6 +72,6 @@ class ProyectosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def proyecto_params
-      params.require(:proyecto).permit(:nombre, :hh, :descripcion, :cliente_id, :fecha_inicio, :fecha_fin, etapas_attributes: [:id, :nombre, :fecha_inicio, :fecha_fin, :hh,  :_destroy])
+      params.require(:proyecto).permit(:nombre, :hh, :descripcion, :cliente_id, :fecha_inicio, :fecha_fin, :estado, etapas_attributes: [:id, :nombre, :fecha_inicio, :fecha_fin, :hh,  :_destroy])
     end
 end

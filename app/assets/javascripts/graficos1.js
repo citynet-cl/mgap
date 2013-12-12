@@ -3,9 +3,10 @@ var dataTable = dc.dataTable("#t1");
 var hhChart = dc.barChart("#g1");
 var desChart = dc.rowChart("#g2");
 var proyChart = dc.rowChart("#g3");
+var estChart = dc.rowChart("#g4");
 
 // load data from a csv file
-d3.json("http://192.168.0.222:3000/tareas.json", function (data) {
+d3.json("http://localhost:3000/tareas.json", function (data) {
 //
 //var data = [
 //    {fecha_registro:"1-May-12",hh:"58"},
@@ -52,6 +53,11 @@ d3.json("http://192.168.0.222:3000/tareas.json", function (data) {
   var proyGroup = proy.group().reduceSum(function(d){
     return +d.hh;});
   
+  var est = facts.dimension(function (d){
+    return d.estado_proyecto;});
+  
+  var estGroup = est.group().reduceSum(function(d){
+    return +d.hh;});
 
  // var hhValue = facts.dimension(function (d) {
  //   return d.h;
@@ -67,13 +73,17 @@ d3.json("http://192.168.0.222:3000/tareas.json", function (data) {
 
   //var hhValueGroup = frValue.group();
   // Setup the charts
-  desChart.width(350).height(200)
+  desChart.width(300).height(150)
 	.dimension(des)
 	.group(desGroup);
   
- proyChart.width(350).height(200)
+ proyChart.width(300).height(150)
 	.dimension(proy)
 	.group(proyGroup);
+
+  estChart.width(300).height(150)
+	.dimension(est)
+	.group(estGroup);
 
   hhChart.width(960)
 	.height(150)

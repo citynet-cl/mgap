@@ -1,0 +1,28 @@
+<div class="page-header">
+  <%= link_to proyectos_cerrados_path, :class => 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Volver 
+  <% end %>
+  <h1>Detalles del proyecto</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Nombre:</dt>
+  <dd><%= @proyecto_c.nombre.humanize %></dd>
+
+  <dt>Cliente:</dt>
+  <dd><%= @proyecto_c.cliente.nombre.humanize %></dd>
+
+  <dt>HH Planificadas:</dt>
+  <dd><%= @proyecto_c.hh %></dd>
+
+  <dt>HH Dedicadas:</dt>
+  <dd><%= @proyecto_c.tareas.sum(:hh) %></dd>
+
+  <dt>Fecha Inicio:</dt>
+  <dd><%= @proyecto_c.fecha_inicio %></dd>
+
+  <dt>Fecha Fin:</dt>
+  <dd><%= @proyecto_c.fecha_fin %></dd>
+
+</dl>
