@@ -7,6 +7,7 @@ class Cliente < ActiveRecord::Base
 	has_many :tareas, dependent: :destroy
 	has_many :responsables, dependent: :destroy
 	acts_as_paranoid 
+	resourcify
 
 	validates_uniqueness_of  :nombre, :email, :rut
 	validates_presence_of :nombre

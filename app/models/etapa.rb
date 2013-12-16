@@ -1,3 +1,6 @@
 class Etapa < ActiveRecord::Base
-  belongs_to :proyecto
+	before_save { |etapa| etapa.nombre = nombre.downcase.capitalize }
+	
+	belongs_to :proyecto
+	has_many :tareas
 end

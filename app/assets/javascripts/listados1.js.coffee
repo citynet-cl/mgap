@@ -6,6 +6,7 @@
 jQuery ->
   $("#listado1").dataTable(
     sDom: 'T<"clear">lfrtip'
+    aaSorting: [[ 5, "desc"]]
     oLanguage:
       sSearch: "Buscar:"
       sZeroRecords: "No se encontraron resultados"

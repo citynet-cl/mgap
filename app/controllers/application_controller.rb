@@ -1,6 +1,4 @@
 class ApplicationController < ActionController::Base
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
  before_filter do
@@ -9,13 +7,15 @@ class ApplicationController < ActionController::Base
 	  params[resource] &&= send(method) if respond_to?(method, true)
   end
 
+  before_filter :prepare_for_mobile
+
   rescue_from CanCan::AccessDenied do |exception|
 	  flash[:alert] = exception.message
 	  redirect_to root_url
   end
 
   def authorize
-  	redirect_to root_url, alert: "logeate primero" if current_user.nil?
+  	redirect_to root_url, alert: "Es necesario iniciar sesión." if current_user.nil?
   end
 
   private
@@ -26,16 +26,13 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user
 
-    def ordenar_direccion
-	   # params[:sort] || "fecha_registro"
-	%w[asc desc].include?(params[:direction]) ? params[:direction] : "desc"
-    end
+  def mobile_device?
+	  request.user_agent =~ /Mobile/  	
+  end
+  helper_method :mobile_device?
 
-    def ordenar_columna
-	    #params[:direction] || "desc"
-	Tarea.column_names.include?(params[:sort]) ? params[:sort] : "id"
-    end
-
-  helper_method :ordenar_columna, :ordenar_direccion
-
+  def prepare_for_mobile
+  	session[:mobile_param] = params[:mobile] if params[:mobile]
+	request.format = :mobile if mobile_device?
+  end
 end

@@ -1,0 +1,11 @@
+<% content_for :header do %>
+	<h1>Tareas</h1>
+	<%= link_to "Nueva tarea", new_tarea_path %>
+<% end %>
+
+<ul data-role="listview">
+<% @tareas.each do |tarea| %>
+	<li><%= tarea.actividad %> - <%= tarea.fecha_registro.strftime("%d %b %Y") %> - <%= tarea.hh %></li>
+<% end %>
+</ul>
+

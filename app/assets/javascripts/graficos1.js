@@ -1,35 +1,22 @@
-// Create the dc.js chart objects & link to div
 var dataTable = dc.dataTable("#t1");
 var hhChart = dc.barChart("#g1");
 var desChart = dc.rowChart("#g2");
 var proyChart = dc.rowChart("#g3");
 var estChart = dc.rowChart("#g4");
+//var mesChart = dc.rowChart("#g5");
 
-// load data from a csv file
 d3.json("http://localhost:3000/tareas.json", function (data) {
-//
-//var data = [
-//    {fecha_registro:"1-May-12",hh:"58"},
-//    {fecha_registro:"30-Apr-12",hh:"53"},
-//    {fecha_registro:"27-Apr-12",hh:"67"},
-//    {fecha_registro:"26-Apr-12",hh:"89"},
-//    {fecha_registro:"25-Apr-12",hh:"99"}
-//];
 
         var dateFormat = d3.time.format("%Y-%m-%d");
-  // format our data
 
         data.forEach(function (d) {
             d.fr = dateFormat.parse(d.fecha_registro);
 	    d.dia = d3.time.day(d.fr);
-//	    d.h   = +d.hh;
+//	    d.mes = d3.time.month(d.fr);
 });
 
-  // Run the data through crossfilter and load our 'facts'
   var facts = crossfilter(data);
 
-  // Create dataTable dimension
-  //
   var frValue = facts.dimension(function (d) {
     return d.fr;
   });
@@ -59,48 +46,54 @@ d3.json("http://localhost:3000/tareas.json", function (data) {
   var estGroup = est.group().reduceSum(function(d){
     return +d.hh;});
 
- // var hhValue = facts.dimension(function (d) {
- //   return d.h;
- // });
+  //var mes = facts.dimension(function (d){
+   // return d.mes;});
   
+  //var mesGroup = mes.group().reduceSum(function(d){
+   // return +d.hh;});
 
- //var hhValueGroupCount = hhValue.group()
- //	.reduceCount(function(d) { return d.h;});
+  function obtenerFecha(d) {
+  	return new Date(d.fecha_registro);
+  }
 
- // var timeDimension = facts.dimension(function (d) {
-   // return d.fr;
- // });
+  var minFecha = obtenerFecha(data[0]),
+      maxFecha = obtenerFecha(data[data.length-1]);
 
-  //var hhValueGroup = frValue.group();
-  // Setup the charts
   desChart.width(300).height(150)
 	.dimension(des)
-	.group(desGroup);
+	.group(desGroup)
+	.colors(d3.scale.category10());
   
- proyChart.width(300).height(150)
+ proyChart.width(350).height(150)
 	.dimension(proy)
-	.group(proyGroup);
+	.group(proyGroup)
+	.colors(d3.scale.category10());
 
-  estChart.width(300).height(150)
+  estChart.width(220).height(150)
 	.dimension(est)
-	.group(estGroup);
+	.group(estGroup)
+	.colors(d3.scale.category10());
+
+ // mesChart.width(220).height(150)
+//	.dimension(mes)
+//	.group(mesGroup)
+//	.colors(d3.scale.category10());
 
   hhChart.width(960)
 	.height(150)
+	.colors(d3.scale.category10())
 	.margins({top: 10, right: 10, bottom: 20, left: 40})
 	.dimension(moveMes)
 	.group(volumePorMes)
-    	.x(d3.time.scale().domain([new Date(2013, 10, 1), new Date(2013, 12, 31)]))
+//    	.x(d3.time.scale().domain([minFecha, maxFecha]))
+    	.x(d3.time.scale().domain([new Date(2013, 5, 18), new Date(2014, 1, 31)]))
 	.yAxisLabel("HH");
-	//.x(d3.scale.linear().domain([1, 30]));
 
-  
-  // Table of earthquake data
   dataTable.width(960).height(800)
     .dimension(moveMes)
 	.group(function(d) { return "Detalle tareas"
 	 })
-	.size(10)
+	.size(50)
     .columns([
       function(d) { return d.fecha_registro; },
       function(d) { return d.usuario; },
@@ -109,9 +102,8 @@ d3.json("http://localhost:3000/tareas.json", function (data) {
       function(d) { return d.actividad; },
     ])
     .sortBy(function(d){ return d.fr; })
-    .order(d3.ascending);
+    .order(d3.descending);
 
-  // Render the Charts
   dc.renderAll();
   
 });

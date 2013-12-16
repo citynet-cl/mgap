@@ -19,7 +19,7 @@
     <% @tareas_listado1.each do |tarea| %>
 	    <tr>
             <td><%= tarea.cliente.nombre %></td>
-            <td><%= truncate(tarea.nombre, length: 40) %></td>
+            <td><%= truncate(tarea.actividad, length: 40) %></td>
             <td><%= tarea.user.usuario %></td>
 	    <td><%= tarea.proyecto.nombre.humanize %></td>
             <td><%= tarea.hh %></td>

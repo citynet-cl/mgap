@@ -10,9 +10,13 @@ class TareasController < ApplicationController
 		  @tareas = Tarea.order('fecha_registro ASC')
 	  else
 	  	@user = User.find(current_user)
-		@tareas = @user.tareas.order('fecha_registro ASC')
+		@tareas = @user.tareas.order('id ASC')
 	  end
-		
+	  respond_to do |format|
+		  format.html
+		  format.mobile
+		  format.json
+	  end
   end
 
   # GET /tareas/1
@@ -81,7 +85,7 @@ class TareasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tarea_params
-      params.require(:tarea).permit(:nombre, :hh, :actividad, :proyecto_id, :user_id, :fecha_registro, :observaciones, :lugar_id, :responsable_planta_id, :responsable_sistema_id, :cliente_id, :modulo)
+      params.require(:tarea).permit(:nombre, :hh, :actividad, :proyecto_id, :user_id, :fecha_registro, :observaciones, :lugar_id, :responsable_planta_id, :responsable_sistema_id, :cliente_id, :modulo, :etapa_id)
     end
 
 end

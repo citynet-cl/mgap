@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131212230054) do
+ActiveRecord::Schema.define(version: 20131213211948) do
 
   create_table "aers", force: true do |t|
     t.string   "nombre"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20131212230054) do
     t.string   "email"
     t.string   "direccion"
     t.integer  "fono"
+    t.datetime "deleted_at"
   end
 
   create_table "etapas", force: true do |t|
@@ -124,6 +125,8 @@ ActiveRecord::Schema.define(version: 20131212230054) do
     t.integer  "cliente_id"
     t.integer  "otro_id"
     t.string   "modulo"
+    t.datetime "deleted_at"
+    t.integer  "etapa_id"
   end
 
   create_table "users", force: true do |t|

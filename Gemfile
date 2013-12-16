@@ -41,10 +41,8 @@ end
  gem 'pry-rails'
 
  gem 'thin'
-gem 'simple_form'
-gem 'bootstrap-generators', :git => 'git://github.com/decioferreira/bootstrap-generators.git'
 
-gem 'rails-erd'
+gem 'bootstrap-generators', :git => 'git://github.com/decioferreira/bootstrap-generators.git'
 
 gem 'rolify'
 
@@ -62,14 +60,3 @@ gem 'lodash-rails'
 gem 'cocoon'
 
 gem 'paranoia'
-
-gem 'will_paginate'
-
-# Use unicorn as the app server
- gem 'unicorn'
-
-# Use Capistrano for deployment
-gem 'capistrano', group: :development
-gem 'rvm-capistrano'
-# Use debugger
-# gem 'debugger', group: [:development, :test]

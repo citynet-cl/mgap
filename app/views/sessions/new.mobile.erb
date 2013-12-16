@@ -1,0 +1,9 @@
+<%= form_for :sessions, { url: sessions_path} do |f| %>
+	<div data-role="fieldcontain">
+		<%= f.text_field :usuario, placeholder: "Usuario" %>
+        </div>
+        <div data-role="fieldcontain">
+		<%= f.password_field :password, placeholder: "Clave" %>
+        </div>
+	<%= submit_tag "Ingresar" %>
+<% end %>

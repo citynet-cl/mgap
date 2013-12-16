@@ -24,6 +24,18 @@ class Ability
 	       can :read, Proyecto
        end
 
+       if user.has_role? :"Ver Clientes"
+	       can :read, Cliente
+       end
+
+       if user.has_role? :"Actualizar Lugares"
+	       can :manage, Lugar
+       end
+
+       if user.has_role? :"Actualizar Responsables"
+	       can :manage, Responsable 
+       end
+
        end
     #
     # The first argument to `can` is the action you are giving the user 

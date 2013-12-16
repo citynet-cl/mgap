@@ -1,6 +1,6 @@
 <% if current_user.has_role? :admin %>
 <div class="page-header">
-  <%= link_to users_path, :class => 'btn btn-default' do %>
+	<%= link_to users_path, "data-no-turbolink" => true,  :class => 'btn btn-default' do %>
     <span class="glyphicon glyphicon-list-alt"></span>
    Volver 
   <% end %>
@@ -9,7 +9,7 @@
 
 <% else %>
 <div class="page-header">
-  <%= link_to tareas_path, :class => 'btn btn-default' do %>
+	<%= link_to tareas_path, "data-no-turbolink" => true,  :class => 'btn btn-default' do %>
     <span class="glyphicon glyphicon-list-alt"></span>
    Volver 
   <% end %>

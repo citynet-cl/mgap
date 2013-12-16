@@ -1,6 +1,6 @@
 class ClientesController < ApplicationController
   before_action :set_cliente, only: [:show, :edit, :update, :destroy]
-  before_filter :authorize#, only: [:edit,:update]
+  before_filter :authorize
   load_and_authorize_resource
 
   # GET /clientes

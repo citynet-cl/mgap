@@ -24,6 +24,12 @@
 				  </div>
 			  </div>
 			  <div class="form-group">
+				  <%= f.label "Etapa", :class => "col-sm-4 control-label" %>
+				  <div class="col-sm-6">
+					  <%= f.grouped_collection_select :etapa_id , Proyecto.order(:nombre), :etapas, :nombre, :id, :nombre,{include_blank: true}, class: "form-control" %>
+				  </div>
+			  </div>
+			  <div class="form-group">
 				  <%= f.label "Planta", :class => "col-sm-4 control-label" %>
 				  <div class="col-sm-6">
 					  <%= f.grouped_collection_select :lugar_id, Cliente.order(:nombre), :lugares, :nombre, :id, :nombre,{include_blank: true}, class: "form-control" %>

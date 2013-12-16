@@ -16,5 +16,8 @@
  *= require dataTables/extras/TableTools
  *= require dataTables/extras/TableTools_JUI
  *= require dc
- *= require_tree .
+ *= require layout 
+ *= require bootstrap-generators
+ *= require bootstrap-variables
+ *= require scaffolds 
  */

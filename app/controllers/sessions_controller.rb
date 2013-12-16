@@ -6,9 +6,13 @@ class SessionsController < ApplicationController
 	  user = User.find_by_usuario(params[:sessions][:usuario].downcase)
 	  if user && user.authenticate(params[:sessions][:password])
 		  session[:user_id] = user.id
-		  redirect_to tareas_url, notice: "logeado!"
+		  unless current_user.has_role? :admin
+			  redirect_to tareas_url, notice: "Bienvenido."
+		  else
+			  redirect_to proyectos_url, notice: "Bienvenido."
+		  end
 	  else
-		  flash.now.alert = "datos invalidos"
+		  flash.now.alert = "Datos inválidos."
 		  render "new"	  	
 	  end
 	  
@@ -16,7 +20,7 @@ class SessionsController < ApplicationController
   end
   def destroy
 	  session[:user_id] = nil
-	  redirect_to root_url, notice: "deslogeao!"
+	  redirect_to root_url, notice: "Hasta pronto!."
   	
   end
 	private
