@@ -1,13 +1,34 @@
+<%= content_tag :h2, "Tareas de los desarrolladores" %>
+
 <div class="container">
 	<div class="row">
 		<div class="span4" id='g2'>
-			<h4>Desarrollador</h4>
+			<h4>Filtrar por Desarrollador
+			<a class="reset"
+			    href="javascript:partChart.filterAll();dc.redrawAll();"
+			    style="display: none;">
+			    Reset
+			  </a></h4>
 		</div>
-		<div class="span4" id='g3'>
-			<h4>Proyecto</h4>
-		</div>
-		<div class="span4" id='g4'>
-			<h4>Estado Proyecto</h4>
+		<div class="span8">
+			<div class="row">
+				<div class="span4" id="g3">
+					<h4>Filtrar por Proyecto
+						<a class="reset"
+							href="javascript:proyChart.filterAll();dc.redrawAll();"
+							style="display: none;">
+							Reset</a>
+					</h4>
+				</div>
+				<div class="span4" id="g4">
+					<h4>Filtrar por Cliente 
+						<a class="reset"
+							href="javascript:clienteChart.filterAll();dc.redrawAll();"
+							style="display: none;">
+							Reset</a>
+					</h4>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
@@ -15,9 +36,26 @@
 <div class="container">
 	<div class="row">
 		<div class="span12" id='g1'>
-			<h4>Tareas</h4>
+			<h4>Tareas en HH en función del tiempo
+				<a class="reset"
+					href="javascript:hhChart.filterAll();dc.redrawAll();"
+					style="display: none;">
+					Reset</a>
+				</h4>
 		</div>
 	</div>
+</div>
+
+<div class="dc-data-count" style="float: left;">
+	<h3>Tareas registradas, 
+		<span>
+			<span class="filter-count"></span>
+			seleccionadas de un total de
+			<span class="total-count"></span>
+			.|
+			<a href="javascript:dc.filterAll(); dc.renderAll();">Reset todo</a>
+		</span>
+	</h3>
 </div>
 
 <div class="container" style='font: 12px sans-serif'>

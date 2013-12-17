@@ -1,8 +1,9 @@
 var dataTable = dc.dataTable("#t1");
 var hhChart = dc.barChart("#g1");
+var desChart = dc.rowChart("#g2");
 var proyChart = dc.rowChart("#g3");
-var clienteChart = dc.rowChart("#g4");
-var partChart = dc.pieChart("#g2");
+var estChart = dc.rowChart("#g4");
+//var mesChart = dc.rowChart("#g5");
 
 d3.json("http://localhost:3000/tareas.json", function (data) {
 
@@ -15,13 +16,6 @@ d3.json("http://localhost:3000/tareas.json", function (data) {
 });
 
   var facts = crossfilter(data);
-  var all = facts.groupAll();
-
-  dc.dataCount(".dc-data-count")
-  .dimension(facts)
-  .group(all);
-
-
 
   var frValue = facts.dimension(function (d) {
     return d.fr;
@@ -46,10 +40,10 @@ d3.json("http://localhost:3000/tareas.json", function (data) {
   var proyGroup = proy.group().reduceSum(function(d){
     return +d.hh;});
   
-  var cliente = facts.dimension(function (d){
-    return d.cliente ;});
+  var est = facts.dimension(function (d){
+    return d.estado_proyecto;});
   
-  var clienteGroup = cliente.group().reduceSum(function(d){
+  var estGroup = est.group().reduceSum(function(d){
     return +d.hh;});
 
   //var mes = facts.dimension(function (d){
@@ -65,24 +59,20 @@ d3.json("http://localhost:3000/tareas.json", function (data) {
   var minFecha = obtenerFecha(data[0]),
       maxFecha = obtenerFecha(data[data.length-1]);
 
- partChart.width(300).height(200)
+  desChart.width(300).height(150)
 	.dimension(des)
 	.group(desGroup)
 	.colors(d3.scale.category10());
   
- proyChart.width(400).height(200)
+ proyChart.width(350).height(150)
 	.dimension(proy)
 	.group(proyGroup)
-	.elasticX(true)
-	.renderLabel(true)
-	.colors(d3.scale.category20c());
+	.colors(d3.scale.category10());
 
- clienteChart.width(300).height(200)
-	.dimension(cliente)
-	.group(clienteGroup)
-	.elasticX(true)
-	.colors(d3.scale.category20c());
-
+  estChart.width(220).height(150)
+	.dimension(est)
+	.group(estGroup)
+	.colors(d3.scale.category10());
 
  // mesChart.width(220).height(150)
 //	.dimension(mes)
@@ -91,18 +81,12 @@ d3.json("http://localhost:3000/tareas.json", function (data) {
 
   hhChart.width(960)
 	.height(150)
-        .transitionDuration(1000)
 	.colors(d3.scale.category10())
 	.margins({top: 10, right: 10, bottom: 20, left: 40})
-	.colors(d3.scale.category10())
 	.dimension(moveMes)
-        .mouseZoomable(true)
 	.group(volumePorMes)
-        .renderHorizontalGridLines(true)
-	.elasticY(true)
-	.elasticX(true)
-    	.x(d3.time.scale().domain([minFecha, maxFecha]))
-   // 	.x(d3.time.scale().domain([new Date(2013, 5, 18), new Date(2014, 1, 31)]))
+//    	.x(d3.time.scale().domain([minFecha, maxFecha]))
+    	.x(d3.time.scale().domain([new Date(2013, 5, 18), new Date(2014, 1, 31)]))
 	.yAxisLabel("HH");
 
   dataTable.width(960).height(800)

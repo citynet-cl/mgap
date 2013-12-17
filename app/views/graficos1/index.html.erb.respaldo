@@ -1,0 +1,42 @@
+<div class="container">
+	<div class="row">
+		<div class="span4" id='g2'>
+			<h4>Desarrollador</h4>
+		</div>
+		<div class="span4" id='g3'>
+			<h4>Proyecto</h4>
+		</div>
+		<div class="span4" id='g4'>
+			<h4>Cliente</h4>
+		</div>
+	</div>
+</div>
+
+<div class="container">
+	<div class="row">
+		<div class="span12" id='g1'>
+			<h4>Tareas</h4>
+		</div>
+	</div>
+</div>
+
+<div class="container" style='font: 12px sans-serif'>
+	<div class="row">
+		<div class="span12">
+			<table id="t1" class="table table-bordered table-hover">
+				<thead>
+					<tr>
+						<th>Fecha Registro</th>
+						<th>Desarrollador</th>
+						<th>Proyecto</th>
+						<th>HH</th>
+						<th>Actividad</th>
+					</tr>
+				</thead>
+			</table>
+		</div>
+	</div>
+</div>
+
+
+<%= javascript_include_tag params[:controller] %>
