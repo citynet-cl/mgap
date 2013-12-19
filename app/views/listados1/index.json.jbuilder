@@ -1,4 +1,4 @@
-json.array! @tareas do |tarea|
+json.array! @tareas_listado1 do |tarea|
   json.fecha_registro tarea.fecha_registro
   json.hh tarea.hh
   json.actividad tarea.actividad
@@ -9,7 +9,4 @@ json.array! @tareas do |tarea|
    # json.etapa_proyecto tarea.etapa.nombre
   #end
   json.usuario tarea.user.usuario.humanize
-  if tarea.tipo_tarea
-    json.tipo tarea.tipo_tarea.nombre.humanize
-  end
 end

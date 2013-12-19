@@ -4,6 +4,7 @@ class Tarea < ActiveRecord::Base
 	belongs_to :lugar
 	belongs_to :cliente
 	belongs_to :etapa
+	belongs_to :tipo_tarea
 
 	acts_as_paranoid 
 	resourcify

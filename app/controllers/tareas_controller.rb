@@ -10,13 +10,13 @@ class TareasController < ApplicationController
 		  @tareas = Tarea.order('fecha_registro ASC')
 	  else
 	  	@user = User.find(current_user)
-		@tareas = @user.tareas.order('id ASC')
+		@tareas = @user.tareas.order('id DESC')
 	  end
-	  respond_to do |format|
-		  format.html
-		  format.mobile
-		  format.json
-	  end
+#	  respond_to do |format|
+#		  format.html
+#		  format.mobile
+#		  format.json
+	 # end
   end
 
   # GET /tareas/1
@@ -45,9 +45,11 @@ class TareasController < ApplicationController
     respond_to do |format|
       if @tarea.save
       format.html { redirect_to tareas_path, notice: 'Tarea was successfully created.' }
+      format.mobile { redirect_to tareas_path, notice: 'Tarea was successfully created.' }
       format.json { render action: 'show', status: :created, location: @tarea }
      else
        format.html { render action: 'new' }
+       format.mobile { render action: 'new' }
         format.json { render json: @tarea.errors, status: :unprocessable_entity }
       end
     end
@@ -85,7 +87,7 @@ class TareasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tarea_params
-      params.require(:tarea).permit(:nombre, :hh, :actividad, :proyecto_id, :user_id, :fecha_registro, :observaciones, :lugar_id, :responsable_planta_id, :responsable_sistema_id, :cliente_id, :modulo, :etapa_id)
+      params.require(:tarea).permit(:nombre, :hh, :actividad, :proyecto_id, :user_id, :fecha_registro, :observaciones, :lugar_id, :responsable_planta_id, :responsable_sistema_id, :cliente_id, :modulo, :etapa_id, :tipo_tarea_id)
     end
 
 end

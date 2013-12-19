@@ -1,32 +1,6 @@
-
 <% content_for :header do %>
-	<h1>Tareas</h1>
+	<h1>Nueva Tarea</h1>
 	<%= link_to "Volver", tareas_path %>
 <% end %>
 
-<%= form_for :tareas do |f| %>
-	<div data-role="fieldcontain">
-	  	<%= f.collection_select :cliente_id, @clientes, :id,:nombre,{include_blank: true} %>
-        </div>
-	<div data-role="fieldcontain">
-		<%= f.grouped_collection_select :proyecto_id , @clientes, :p_a, :nombre, :id, :nombre,{include_blank: true} %>
-        </div>
-	<div data-role="fieldcontain">
-		<%= f.grouped_collection_select :lugar_id, Cliente.order(:nombre), :lugares, :nombre, :id, :nombre,{include_blank: true} %>
-        </div>
-	<div data-role="fieldcontain">
-		<%= f.grouped_collection_select(:responsable_sistema_id, Cliente.order(:nombre), :responsables, :nombre, :id, :nombre,{include_blank: true}, class: "form-control") %>
-        </div>
-	<div data-role="fieldcontain">
-		<%= f.grouped_collection_select(:responsable_planta_id, Cliente.order(:nombre), :responsables, :nombre, :id, :nombre,{include_blank: true}, class: "form-control") %>
-        </div>
-	<div data-role="fieldcontain">
-		<%= f.text_area :actividad, placeholder: "Actividad" %>
-        </div>
-        <div data-role="fieldcontain">
-		<%= f.text_field :modulo, placeholder: "Modulo" %>
-        </div>
-	<%= submit_tag "guardar" %>
-<% end %>
-
-<%= javascript_include_tag params[:controller] %>
+<%= render :partial => 'form' %>

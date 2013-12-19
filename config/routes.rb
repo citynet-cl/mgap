@@ -1,6 +1,8 @@
 MgapUser::Application.routes.draw do
 
 
+  resources :tipo_tareas
+
   get "graficos2/index"
   get "listados1/index", to: 'listados1#index', as: 'listados1'
   get "listados2/index", to: 'listados2#index', as: 'listados2'

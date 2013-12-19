@@ -7,6 +7,7 @@ class ProyectosController < ApplicationController
   # GET /proyectos.json
   def index
     @proyectos = Proyecto.where(:estado => false)
+    @proyectos_t = Proyecto.order(:nombre)
   end
 
   # GET /proyectos/1

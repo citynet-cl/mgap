@@ -1,8 +1,13 @@
 var dataTable = dc.dataTable("#t1");
+//var hhChart = dc.barChart("#g1");
+//var desChart = dc.rowChart("#g2");
 var proyplChart = dc.barChart("#g1");
 var proyiiChart = dc.barChart("#g2");
 var clienteChart = dc.rowChart("#g3");
-var totalChart = dc.pieChart("#g4");
+var estadoChart = dc.rowChart("#g4");
+//var proyiChart = dc.pieChart("#g2");
+//var piroyiChart = dc.rowChart("#g2");
+//var estChart = dc.rowChart("#g4");
 
 d3.json("http://localhost:3000/proyectos.json", function (data) {
 
@@ -14,24 +19,37 @@ d3.json("http://localhost:3000/proyectos.json", function (data) {
 	    //d.dia = d3.time.day(d.fr);
 });
 
-  var facts = crossfilter(data);
-  var all = facts.groupAll();
 
-  dc.dataCount(".dc-data-count")
-  .dimension(facts)
-  .group(all);
+  var facts = crossfilter(data);
 
   var proy = facts.dimension(function (d){
     return d.proyecto;});
 
-  var totalGroup = proy.group().reduceSum(function(d){
-    return +d.hhi;});
-  
   var proyplGroup = proy.group().reduceSum(function(d){
     return +d.hhp;});
 
   var proyiiGroup = proy.group().reduceSum(function(d){
     return +d.hhi;});
+
+  var proypGroup = proy.group().reduce(
+        //add
+        function(p,v){
+//            p.var += v.hhp - v.hhi;
+            p.var += v.hhp;
+            return p;
+        },
+        //remove
+        function(p,v){
+  //          p.var -= v.hhp - v.hhi;
+           p.var -= v.hhp;
+            return p;
+        },
+        //init
+        function(p,v) {
+ 	 return {var: 0};
+	}
+    );
+
 
   var proyiGroup = proy.group().reduceSum(function(d){
     return +d.hhi;});
@@ -48,39 +66,39 @@ d3.json("http://localhost:3000/proyectos.json", function (data) {
   var estGroup = est.group().reduceSum(function(d){
     return +d.hhi;});
 
- proyplChart.width(480).height(250)
+ proyplChart.width(480).height(300)
 	.dimension(proy)
 	.group(proyplGroup)
 	.x(d3.scale.ordinal().domain(proy))
-	.gap(30)
-	//.xAxis().tickFormat()
         .renderHorizontalGridLines(true)
-	.yAxisLabel("HH Planificadas")
 	.xUnits(dc.units.ordinal)
 	.y(d3.scale.linear().domain([0, 500]))
 	.renderTitle(true)
 	.colors(d3.scale.category20c());
 
- proyiiChart.width(480).height(250)
+ proyiiChart.width(480).height(300)
 	.dimension(proy)
 	.group(proyiiGroup)
-	.gap(30)
 	.x(d3.scale.ordinal().domain(proy))
-	.yAxisLabel("HH Reales")
         .renderHorizontalGridLines(true)
 	.renderTitle(true)
 	.xUnits(dc.units.ordinal)
 	.y(d3.scale.linear().domain([0, 500]))
 	.colors(d3.scale.category20c());
  
+//proypChart.width(480).height(200)
+//	.dimension(proy)
+//	.group(proyiGroup);
+
  clienteChart.width(480).height(150)
 	.dimension(cliente)
 	.elasticX(true)
 	.group(clienteGroup);
 
- totalChart.width(480).height(150)
-	.dimension(proy)
-	.group(totalGroup);
+ estadoChart.width(480).height(150)
+	.dimension(est)
+	.elasticX(true)
+	.group(estGroup);
 
   dataTable.width(960).height(800)
     .dimension(proy)

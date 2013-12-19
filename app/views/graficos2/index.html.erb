@@ -1,14 +1,54 @@
 <div class="container">
 	<div class="row">
-		<div class="span4" id='g1'>
-			<h4>Proyectos</h4>
+		<div class="span6" id='g1'>
+			<h4>HH Planificadas por Proyecto
+			<a class="reset"
+			    href="javascript:proyplChart.filterAll();dc.redrawAll();"
+			    style="display: none;">
+			    Reset
+			  </a></h4>
 		</div>
-		<div class="span4" id='g2'>
-			<h4>HH Invertidas </h4>
+		<div class="span6" id='g2'>
+			<h4>HH Invertidas por Proyecto
+			<a class="reset"
+			    href="javascript:proyiiChart.filterAll();dc.redrawAll();"
+			    style="display: none;">
+			    Reset
+			  </a></h4>
+		</div>
+	</div>
+	<div class="row">
+		<div class="span6" id='g3'>
+			<h4>Filtrar por Cliente
+			<a class="reset"
+			    href="javascript:clienteChart.filterAll();dc.redrawAll();"
+			    style="display: none;">
+			    Reset
+			  </a></h4>
+		</div>
+		<div class="span6" id='g4'>
+			<h4>Total HH Invertidas por Proyecto 
+			<a class="reset"
+			    href="javascript:totalChart.filterAll();dc.redrawAll();"
+			    style="display: none;">
+			    Reset
+			  </a></h4>
 		</div>
 	</div>
 </div>
 
+
+<div class="dc-data-count" style="float: left;">
+	<h4>Proyectos seleccionados: 
+		<span>
+			<span class="filter-count"></span>
+			, de un total de
+			<span class="total-count"></span>
+			.|
+			<a href="javascript:dc.filterAll(); dc.renderAll();">Reset todo</a>
+		</span>
+	</h4>
+</div>
 <div class="container" style='font: 12px sans-serif'>
 	<div class="row">
 		<div class="span12">

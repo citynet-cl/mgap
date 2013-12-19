@@ -3,6 +3,7 @@ var hhChart = dc.barChart("#g1");
 var proyChart = dc.rowChart("#g3");
 var clienteChart = dc.rowChart("#g4");
 var partChart = dc.pieChart("#g2");
+var hhpdChart = dc.barChart("#g5");
 
 d3.json("http://localhost:3000/tareas.json", function (data) {
 
@@ -52,6 +53,11 @@ d3.json("http://localhost:3000/tareas.json", function (data) {
   var clienteGroup = cliente.group().reduceSum(function(d){
     return +d.hh;});
 
+  var tt = facts.dimension(function (d){
+    return d.tipo ;});
+  
+  var ttGroup = tt.group().reduceSum(function(d){
+    return +d.hh;});
   //var mes = facts.dimension(function (d){
    // return d.mes;});
   
@@ -78,18 +84,29 @@ d3.json("http://localhost:3000/tareas.json", function (data) {
 	.colors(d3.scale.category20c());
 
  clienteChart.width(300).height(200)
-	.dimension(cliente)
-	.group(clienteGroup)
+	.dimension(tt)
+	.group(ttGroup)
 	.elasticX(true)
 	.colors(d3.scale.category20c());
 
+ hhpdChart.width(300).height(150)
+	.dimension(des)
+	.renderTitle(true)
+	.gap(20)
+	.yAxisLabel("HH Proyectadas")
+	.group(desGroup)
+	.x(d3.scale.ordinal().domain(des))
+        .renderHorizontalGridLines(true)
+	.xUnits(dc.units.ordinal)
+	.y(d3.scale.linear().domain([0, 180]))
+	.colors(d3.scale.category10());
 
  // mesChart.width(220).height(150)
 //	.dimension(mes)
 //	.group(mesGroup)
 //	.colors(d3.scale.category10());
 
-  hhChart.width(960)
+  hhChart.width(620)
 	.height(150)
         .transitionDuration(1000)
 	.colors(d3.scale.category10())
@@ -100,9 +117,10 @@ d3.json("http://localhost:3000/tareas.json", function (data) {
 	.group(volumePorMes)
         .renderHorizontalGridLines(true)
 	.elasticY(true)
-	.elasticX(true)
-    	.x(d3.time.scale().domain([minFecha, maxFecha]))
-   // 	.x(d3.time.scale().domain([new Date(2013, 5, 18), new Date(2014, 1, 31)]))
+	//.elasticX(true)
+	.xUnits(function(){return 150;})
+    	//.x(d3.time.scale().domain([minFecha, maxFecha]))
+    	.x(d3.time.scale().domain([new Date(2013, 10, 18), new Date(2014, 1,1)]))
 	.yAxisLabel("HH");
 
   dataTable.width(960).height(800)

@@ -1,0 +1,27 @@
+<div class="page-header">
+  <%= link_to new_tipo_tarea_path, :class => 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    Nuevo Tipo de tarea
+  <% end %>
+  <h1>Listado de tipos de tareas</h1>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+            <th>Nombre</th>
+            <th>Acciones</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+    <%= content_tag_for(:tr, @tipo_tareas) do |tipo_tarea| %>
+	    <td><%= tipo_tarea.nombre %></td>
+	    <td><%= link_to "Editar", edit_tipo_tarea_path(tipo_tarea), class: "btn btn-primary btn-sm" %></td>
+	    <td><%= delete_link tipo_tarea_path(tipo_tarea) %></td>
+      <% end %>
+    </tbody>
+  </table>
+</div>

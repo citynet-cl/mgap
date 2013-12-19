@@ -3,43 +3,47 @@
     <span class="glyphicon glyphicon-list-alt"></span>
     Volver 
   <% end %>
-  <h1>Detalles de la tarea</h1>
+  <h1>Detalles</h1>
 </div>
 
 <dl class="dl-horizontal">
-  <dt>Nombre:</dt>
-  <dd><%= @tarea.nombre.humanize %></dd>
+  <dt>Cliente:</dt>
+  <dd><%= @tarea.cliente.nombre.humanize %></dd>
 
-  <% unless @tarea.proyecto %>
-	  <dt></dt>
-          <dd></dd>
+  <dt>Proyecto:</dt>
+  <dd><%= @tarea.proyecto.nombre.humanize %></dd>
 
-	  <dt>Modulo:</dt>
-	  <dd><%= @tarea.modulo.nombre.humanize %></dd>
-  <% else %>
-	  <dt>Proyecto:</dt>
-	  <dd><%= @tarea.proyecto.nombre.humanize %></dd>
-
-	  <dt></dt>
-	  <dd></dd>
+  <% if @tarea.etapa %>
+	  <dt>Etapa Proyecto:</dt>
+	  <dd><%= @tarea.etapa.nombre.humanize %></dd>
   <% end %>
-  <dt>HH:</dt>
-  <dd><%= @tarea.hh %></dd>
-
-  <dt>Actividad:</dt>
-  <dd><%= @tarea.actividad %></dd>
-
-  <dt>Fecha Registro:</dt>
-  <dd><%= @tarea.fecha_registro %></dd>
 
   <dt>Planta:</dt>
   <dd><%= @tarea.lugar.nombre.humanize %></dd>
 
+  <dt>Responsable Sistema:</dt>
+  <dd><%= @tarea.responsable_sistema_id %></dd>
+
   <dt>Responsable Planta:</dt>
   <dd><%= @tarea.responsable_planta_id %></dd>
 
-  <dt>Responsable Sistema:</dt>
-  <dd><%= @tarea.responsable_sistema_id %></dd>
+  <dt>Tipo Tarea:</dt>
+  <dd><%= @tarea.tipo_tarea.nombre.humanize %></dd>
+
+  <dt>Nombre:</dt>
+  <dd><%= @tarea.nombre.humanize %></dd>
+
+  <dt>Actividad:</dt>
+  <dd><%= @tarea.actividad %></dd>
+
+  <dt>Modulo:</dt>
+  <dd><%= @tarea.modulo %></dd>
+
+  <dt>HH:</dt>
+  <dd><%= @tarea.hh %></dd>
+
+  <dt>Fecha Registro:</dt>
+  <dd><%= @tarea.fecha_registro %></dd>
 
   <dt>Observaciones:</dt>
   <dd><%= @tarea.observaciones %></dd>
