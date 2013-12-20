@@ -3,13 +3,9 @@
 <head>
 <title>MgapUser</title>
 <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-<% if mobile_device? %>
-	<%= stylesheet_link_tag    "jquery.mobile-1.3.2" , media: "all", "data-turbolinks-track" => true %>
-  	<%= javascript_include_tag "jquery.mobile-1.3.2" %>
-<% end %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+<%= csrf_meta_tags %>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body class='<%= controller.controller_name %>'>
 
@@ -21,7 +17,13 @@
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 		</button>
-		<%= link_to "Inicio", root_path, class: "navbar-brand" %>
+		<% if current_user %>
+			<% unless current_user.has_role? :admin %>
+				<%= link_to "Inicio", tareas_path, "data-no-turbolink" => true, class: "navbar-brand" %>
+			<% else %>
+				<%= link_to "Inicio", proyectos_path, class: "navbar-brand" %>
+			<% end  %>
+		<% end %>
 	</div>
 
 	<div class="collapse navbar-collapse navbar-ex1-collapse">
@@ -30,12 +32,6 @@
 				<% unless current_user.has_role? :admin %>
 					<li><%= link_to "Tareas", tareas_path, "data-no-turbolink" => true %></li>
 					<li><%= link_to "Clientes", clientes_path %></li>
-					<% if mobile_device? %>
-						<li><!--%= link_to "Full", :mobile => 0 %--></li>
-					<% else %>
-						<li><!--%= link_to "Movil", :mobile => 1 %--></li>
-						
-					<% end %>
 				<%  end %>
 
 				<% if current_user.has_role? :admin %>

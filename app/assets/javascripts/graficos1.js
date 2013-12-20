@@ -5,7 +5,7 @@ var clienteChart = dc.rowChart("#g4");
 var partChart = dc.pieChart("#g2");
 var hhpdChart = dc.barChart("#g5");
 
-d3.json("http://localhost:3000/tareas.json", function (data) {
+d3.json("http://192.168.0.222:3000/tareas.json", function (data) {
 
         var dateFormat = d3.time.format("%Y-%m-%d");
 

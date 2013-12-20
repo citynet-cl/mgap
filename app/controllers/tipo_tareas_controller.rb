@@ -1,28 +1,22 @@
 class TipoTareasController < ApplicationController
   before_action :set_tipo_tarea, only: [:show, :edit, :update, :destroy]
+  before_filter :authorize
+  load_and_authorize_resource
 
-  # GET /tipo_tareas
-  # GET /tipo_tareas.json
   def index
     @tipo_tareas = TipoTarea.all
   end
 
-  # GET /tipo_tareas/1
-  # GET /tipo_tareas/1.json
   def show
   end
 
-  # GET /tipo_tareas/new
   def new
     @tipo_tarea = TipoTarea.new
   end
 
-  # GET /tipo_tareas/1/edit
   def edit
   end
 
-  # POST /tipo_tareas
-  # POST /tipo_tareas.json
   def create
     @tipo_tarea = TipoTarea.new(tipo_tarea_params)
 
@@ -37,8 +31,6 @@ class TipoTareasController < ApplicationController
     end
   end
 
-  # PATCH/PUT /tipo_tareas/1
-  # PATCH/PUT /tipo_tareas/1.json
   def update
     respond_to do |format|
       if @tipo_tarea.update(tipo_tarea_params)
@@ -51,8 +43,6 @@ class TipoTareasController < ApplicationController
     end
   end
 
-  # DELETE /tipo_tareas/1
-  # DELETE /tipo_tareas/1.json
   def destroy
     @tipo_tarea.destroy
     respond_to do |format|
@@ -62,12 +52,10 @@ class TipoTareasController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_tipo_tarea
       @tipo_tarea = TipoTarea.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def tipo_tarea_params
       params.require(:tipo_tarea).permit(:nombre)
     end

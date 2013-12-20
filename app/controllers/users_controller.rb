@@ -17,7 +17,6 @@ class UsersController < ApplicationController
 	def create
 		@user = User.new(user_params)
 		if @user.save
-			#session[:user_id] = @user.id 
 			redirect_to users_url, notice: "usuario creado exitosamente"
 		else
 			render "new"
@@ -60,6 +59,6 @@ class UsersController < ApplicationController
 
 
 	def user_params
-		params.require(:user).permit(:usuario, :nombre, :apellido, :email, :password, :password_confirmation, :role_ids => [])
+		params.require(:user).permit(:usuario, :nombre, :apellido, :email, :password, :password_confirmation, :activo, :role_ids => [])
 	end
 end

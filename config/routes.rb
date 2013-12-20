@@ -15,11 +15,11 @@ MgapUser::Application.routes.draw do
   get "graficos2", to: 'graficos2#index', as: 'graficos2'
   get "proyectos_cerrados", to: 'proyectos_cerrados#index', as: 'proyectos_cerrados'
   get "proyectos_cerrados/:id", to: 'proyectos_cerrados#show', as: 'proyecto_cerrado'
+  get "login", to: 'sessions#new', as: 'login'
   #resources :responsables
 
   get "reportes1/index", to: 'reportes1#index', as: 'reportes1'
   get "reportes/index", to: 'reportes#index', as: 'reportes'
-  get "home/index"
 
   resources :clientes do
 	  resources :lugares 
@@ -30,12 +30,18 @@ MgapUser::Application.routes.draw do
 	  resources :tareas
   end
 
+  resources :tareas do
+	  member do
+		  get 'copiar'
+	  end
+  end
 
   resources :tareas
-  resources :users
+  resources :users 
+  	
   resources :sessions
 
-  root 'home#index'
+  root 'sessions#new'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,0 +1,121 @@
+<div class="page-header">
+  <%= link_to tareas_path, :class => 'btn btn-default', "data-no-turbolink" => true do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Volver
+  <% end %>
+  <h3>Copiar tarea</h3>
+</div>
+
+
+<%= simple_form_for(@tarea, :html => { :class => "form-horizontal" }) do |f| %>
+	<% if notification = f.error_notification %>
+    <div class="alert alert-error fade in">
+	      <a class="close" data-dismiss="alert" href="#">&times;</a>
+	      <%= notification %>
+	    </div>
+	  <% end %>
+
+
+  <div class="row clearfix">
+	 	  <div class="col-md-6 column">
+			  <div class="form-group">
+				  <%= f.label :cliente, :class => "col-sm-4 control-label" %>
+				  <div class="col-sm-6">
+					  <%= f.collection_select :cliente_id, @clientes, :id,:nombre,{}, class: "form-control" %>
+				  </div>
+			  </div>
+			  <div class="form-group">
+				  <%= f.label :proyecto, :class => "col-sm-4 control-label" %>
+				  <div class="col-sm-6">
+					  <%= f.grouped_collection_select :proyecto_id , @clientes, :p_a, :nombre, :id, :nombre,{include_blank: true}, class: "form-control" %>
+				  </div>
+			  </div>
+			  <div class="form-group">
+				  <%= f.label "Etapa", :class => "col-sm-4 control-label" %>
+				  <div class="col-sm-6">
+					  <%= f.grouped_collection_select :etapa_id , Proyecto.order(:nombre), :etapas, :nombre, :id, :nombre,{include_blank: true}, class: "form-control" %>
+				  </div>
+			  </div>
+			  <div class="form-group">
+				  <%= f.label "Planta", :class => "col-sm-4 control-label" %>
+				  <div class="col-sm-6">
+					  <%= f.grouped_collection_select :lugar_id, Cliente.order(:nombre), :lugares, :nombre, :id, :nombre,{include_blank: true}, class: "form-control" %>
+				  </div>
+			  </div>
+			  <div class="form-group">
+				  <%= f.label "Responsable Sistema", :class => "col-sm-4 control-label" %>
+				  <div class="col-sm-6">
+					  <%= f.grouped_collection_select(:responsable_sistema_id, Cliente.order(:nombre), :responsables, :nombre, :id, :nombre,{include_blank: true}, class: "form-control") %>
+				  </div>
+			  </div>
+			  <div class="form-group">
+				  <%= f.label "Responsable Planta", :class => "col-sm-4 control-label" %>
+				  <div class="col-sm-6">
+					  <%= f.grouped_collection_select(:responsable_planta_id, Cliente.order(:nombre), :responsables, :nombre, :id, :nombre,{include_blank: true}, class: "form-control") %>
+				  </div>
+			  </div>
+			  <div class="form-group">
+				  <%= f.label :tipo_tarea, :class => "col-sm-4 control-label" %>
+				  <div class="col-sm-6">
+					  <%= f.collection_select :tipo_tarea_id, TipoTarea.order(:nombre), :id,:nombre,{include_blank: false}, class: "form-control" %>
+				  </div>
+			  </div>
+		  </div>
+ <div class="col-md-6 column">
+			  <div class="form-group">
+				  <%= f.label :nombre, :class => "col-sm-4 control-label" %>
+				  <div class="col-sm-6">
+					  <%= f.input :nombre, :input_html => { :class => "form-control"}, :label => false %>
+				  </div>
+			  </div>
+			  <div class="form-group">
+				  <%= f.label :actividad, :class => "col-sm-4 control-label" %>
+				  <div class="col-sm-6">
+					  <%= f.input :actividad, :input_html => { rows: 5, :class => "form-control"}, :label => false %>
+				  </div>
+			  </div>
+			  <div class="form-group">
+				  <%= f.label :modulo, :class => "col-sm-4 control-label" %>
+				  <div class="col-sm-6">
+					  <%= f.input :modulo, :input_html => { rows: 5, :class => "form-control"}, :label => false %>
+				  </div>
+			  </div>
+			  <div class="form-group">
+				  <%= f.label :hh, :class => "col-sm-4 control-label", :hint => "Tiempo estimado" %>
+				  <div class="col-sm-6">
+					  <%= f.input :hh, :input_html => { :class => "form-control"}, :label => false, :hint => "Tiempo dedicado a la tarea" %>
+				  </div>
+			  </div>
+			  <div class="form-group">
+				  <%= f.label "Fecha Tarea", :class => "col-sm-4 control-label" %>
+				  <div class="col-sm-6">
+					  <%= f.text_field :fecha_registro, :value => Date.today ,:id => "datepicker1", :class => "form-control" %>
+				  </div>
+			  </div>
+			  <div class="form-group">
+				  <%= f.label :observaciones, :class => "col-sm-4 control-label" %>
+				  <div class="col-sm-6">
+					  <%= f.text_area :observaciones, :class => "form-control" %>
+				  </div>
+			  </div>
+		  </div>
+
+  </div>
+
+<div class="row">
+  <div class="col-md-6 column">
+  </div>
+  <div class="col-md-6 column">
+	  <div class="form-group">
+		  <%= f.label " ", :class => "col-sm-4 control-label" %>
+		  <div class="col-sm-6">
+			  <%= f.button :submit, "Guardar", :class => "btn btn-primary btn-lg" %>
+			  <%= link_to tareas_path, :class => 'btn btn-danger btn-md', "data-no-turbolink" => true do %> Cancelar
+			  <% end %>
+		  </div>
+	  </div>
+  </div>
+</div>
+
+
+<% end  %>

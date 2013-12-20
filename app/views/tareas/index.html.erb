@@ -1,12 +1,13 @@
+<% unless mobile_device? %>
 
-<%= javascript_include_tag params[:controller] %>
+	<%= javascript_include_tag params[:controller] %>
 
 <div class="page-header">
 	<%= link_to new_tarea_path, "data-no-turbolink" => true,  :class => 'btn btn-primary btn-lg' do %>
     <span class="glyphicon glyphicon-plus"></span>
     Nueva Tarea
   <% end %>
-  <h1>Listado de tareas</h1>
+  <h3>Listado de tareas</h3>
 </div>
 
 
@@ -30,7 +31,7 @@
 	      <td><%= tarea.proyecto.nombre.humanize %></td>
             <td><%= tarea.hh %></td>
             <td><%= tarea.fecha_registro.strftime("%d %B %Y") %></td>
-	    <td><%= link_to "Copiar",{} , class: "btn btn-success btn-sm", "data-no-turbolink" => true %> </td>
+	    <td><%= link_to "Copiar",copiar_tarea_path(tarea) , class: "btn btn-success btn-sm", "data-no-turbolink" => true %> </td>
 	    <td><%= detalles_link tarea %></td>
 	    <td><%= delete_link tarea_path(tarea) %></td>
       <% end %>
@@ -38,3 +39,47 @@
   </table>
 </div>
 
+<% else %>
+
+	<%= javascript_include_tag "tareas_mobil" %>
+
+<div class="page-header">
+	<%= link_to new_tarea_path, "data-no-turbolink" => true,  :class => 'btn btn-primary btn-lg' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    Nueva Tarea
+  <% end %>
+  <h4>Listado de tareas</h4>
+</div>
+
+
+<div class="table-responsive">
+  <table class="table table-striped table-hover" id="tareas_usuario">
+    <thead>
+      <tr>
+	    <th>Tarea</th>
+	    <th>Fecha</th>
+	    <th></th>
+	    <th></th>
+	    <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @tareas) do |tarea| %>
+	      <td><%= truncate(tarea.actividad, length: 30) %></td>
+	      <td><%= tarea.fecha_registro.strftime("%d %b") %></td>
+	      <td><%= link_to tarea, :class => 'btn btn-warning btn-xs' do %>
+		      <span class="glyphicon glyphicon-align-justify"></span>
+	      <% end %></td>
+	      <td><%= link_to tarea_path(tarea), method: :delete, data: {confirm: 'Esta seguro?'}, :class => 'btn btn-danger btn-xs' do %>
+		      <span class="glyphicon glyphicon-remove"></span>
+	      <% end %></td>
+      <td><%= link_to copiar_tarea_path(tarea), :class => 'btn btn-success btn-xs' do %>
+		      <span class="glyphicon glyphicon-plus"></span>
+	      <% end %></td>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<% end %>

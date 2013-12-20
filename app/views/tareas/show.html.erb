@@ -22,10 +22,10 @@
   <dd><%= @tarea.lugar.nombre.humanize %></dd>
 
   <dt>Responsable Sistema:</dt>
-  <dd><%= @tarea.responsable_sistema_id %></dd>
+  <dd><%= Responsable.find(@tarea.responsable_sistema_id).nombre %></dd>
 
   <dt>Responsable Planta:</dt>
-  <dd><%= @tarea.responsable_planta_id %></dd>
+  <dd><%= Responsable.find(@tarea.responsable_planta_id).nombre %></dd>
 
   <dt>Tipo Tarea:</dt>
   <dd><%= @tarea.tipo_tarea.nombre.humanize %></dd>

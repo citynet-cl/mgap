@@ -3,31 +3,23 @@ class ResponsablesController < ApplicationController
   before_filter :authorize
   load_and_authorize_resource
 
-  # GET /responsable
-  # GET /responsable.json
   def index
 	  @responsables = @cliente.responsables
   end
 
-  # GET /responsable/1
-  # GET /responsable/1.json
   def show
 	  @responsable = @cliente.responsables.find(params[:id])
   end
 
-  # GET /responsable/new
   def new
 	  @cliente = Cliente.find(params[:cliente_id])
 	  @responsable = @cliente.responsables.build
   end
 
-  # GET /responsable/1/edit
   def edit
 	  @responsable = @cliente.responsables.find(params[:id])
   end
 
-  # POST /responsable
-  # POST /responsable.json
   def create
 	  @responsable = @cliente.responsables.build(params[:responsable])
 
@@ -42,8 +34,6 @@ class ResponsablesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /responsable/1
-  # PATCH/PUT /responsable/1.json
   def update
 	  @responsable = @cliente.responsables.find(params[:id])
     respond_to do |format|
@@ -57,8 +47,6 @@ class ResponsablesController < ApplicationController
     end
   end
 
-  # DELETE /responsable/1
-  # DELETE /responsable/1.json
   def destroy
 	  @responsable = @cliente.responsables.find(params[:id])
 	  @responsable.destroy
@@ -70,12 +58,10 @@ class ResponsablesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_cliente
 	    @cliente = Cliente.find(params[:cliente_id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def responsable_params
       params.require(:responsable).permit(:nombre, :email, :fono, :cliente_id)
     end

@@ -49,7 +49,15 @@
   </div>
   <div class="form-group">
   <div class="form-group">
-	  			<% if current_user.has_role? :admin %>
+	  <% if current_user.has_role? :admin %>
+
+  <div class="form-group">
+    <%= f.label "Puede acceder al sistema?", :class => "col-lg-2 control-label" %>
+    <div class="col-lg-10">
+      <%= f.check_box :activo, :class => "form-control" %>
+    </div>
+  </div>
+
 					<%= f.label "Permisos", :class => "col-lg-2 control-label" %>
 				<%  end %>
     <div class="col-lg-10">
@@ -75,7 +83,7 @@
 	  </div>
   <div class="form-group">
     <div class="col-lg-offset-2 col-lg-10">
-      <%= f.submit :class => "btn btn-primary" %>
+      <%= f.submit :class => "btn btn-primary", :value => "Guardar" %>
     </div>
   </div>
 <% end %>

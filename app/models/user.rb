@@ -17,5 +17,9 @@ class User < ActiveRecord::Base
 
 	validates :password, length: {in: 5..20}, allow_blank: true
 	validates_confirmation_of :password
+
+	def activo?
+		self.activo		
+	end
 end
 

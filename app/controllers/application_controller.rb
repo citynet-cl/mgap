@@ -7,8 +7,6 @@ class ApplicationController < ActionController::Base
 	  params[resource] &&= send(method) if respond_to?(method, true)
   end
 
-  before_filter :prepare_for_mobile
-
   rescue_from CanCan::AccessDenied do |exception|
 	  flash[:alert] = exception.message
 	  redirect_to root_url
@@ -30,9 +28,4 @@ class ApplicationController < ActionController::Base
 	  request.user_agent =~ /Mobile/  	
   end
   helper_method :mobile_device?
-
-  def prepare_for_mobile
-  	session[:mobile_param] = params[:mobile] if params[:mobile]
-	request.format = :mobile if mobile_device?
-  end
 end

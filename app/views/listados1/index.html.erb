@@ -1,29 +1,40 @@
 <%= javascript_include_tag params[:controller] %>
 
-<%= content_tag :h2, "Listado Tareas" %>
-<%= content_tag :h4, "pd: Filtrar por mes, y cambiar extension de archivo a .xls" %>
+
+<%= content_tag :h2, "Listado de Tareas" %>
+<br/>
+<%= content_tag :h4, "Instrucciones para exportar a Excel:" %>
+<%= content_tag :h5, "1.Filtrar por mes (escribir nombre) o el elemento de interés." %>
+<%= content_tag :h5, "2.Presionar botón 'Excel'." %>
+<%= content_tag :h5, "3.Cambiar extensión de archivo a .xls" %>
 <br/>
 <table id="listado1" class="table table-striped table-hover">
     <thead>
       <tr>
-            <th>Cliente</th>
-            <th>Tarea</th>
-            <th>Desarrollador</th>
             <th>Proyecto</th>
-            <th>HH</th>
             <th>Fecha Registro</th>
+            <th>Modulo</th>
+            <th>Planta</th>
+            <th>Actividad</th>
+            <th>R.Sistema</th>
+            <th>R.Planta</th>
+            <th>HH</th>
+            <th>Desarrollador</th>
       </tr>
     </thead>
 
     <tbody>
     <% @tareas_listado1.each do |tarea| %>
 	    <tr>
-            <td><%= tarea.cliente.nombre %></td>
-            <td><%= truncate(tarea.actividad, length: 40) %></td>
-            <td><%= tarea.user.usuario %></td>
 	    <td><%= tarea.proyecto.nombre.humanize %></td>
+            <td><%= tarea.fecha_registro.strftime("%d-%B-%Y") %></td>
+            <td><%= tarea.modulo %></td>
+            <td><%= tarea.lugar.nombre %></td>
+            <td><%= truncate(tarea.actividad, length: 40) %></td>
+            <td><%= Responsable.find(tarea.responsable_sistema_id).nombre %></td>
+            <td><%= Responsable.find(tarea.responsable_planta_id).nombre %></td>
             <td><%= tarea.hh %></td>
-            <td><%= tarea.fecha_registro.strftime("%d %B %Y") %></td>
+            <td><%= tarea.user.usuario.humanize %></td>
 	    </tr>
       <% end %>
     </tbody>

@@ -3,7 +3,7 @@
     <span class="glyphicon glyphicon-plus"></span>
     Nuevo Usuario
   <% end %>
-  <h1>Listado Usuarios</h1>
+  <h3>Listado Usuarios</h3>
 </div>
 
 <div class="table-responsive">
@@ -28,7 +28,7 @@
 		      <%= link_to "Editar", edit_user_path(user), class: "btn btn-primary btn-sm" %>
       		</td>
 	      <td>
-		      <%= link_to "Deshabilitar",{}  , class: "btn btn-success btn-sm" %>
+		      <%= link_to "Habilitar", {}, class: "btn btn-success btn-sm" %>
       		</td>
 
 	    <td><%= delete_link user_path(user) %></td>
