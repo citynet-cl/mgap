@@ -1,9 +1,0 @@
-<%= simple_form_for @proyecto do |f| %>
-      <%= f.association :cliente, label_method: :nombre, value_method: :id, include_blank: false %>
-      <%= f.input :nombre %>
-      <%= f.input :hh %>
-      <%= f.input :fecha_inicio %>
-      <%= f.input :fecha_fin %>
-      <%= f.input :descripcion %><br />
-      <%= f.submit :class => "btn btn-primary" %>
-<% end %>

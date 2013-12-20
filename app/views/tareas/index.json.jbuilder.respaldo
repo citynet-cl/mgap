@@ -1,4 +1,0 @@
-json.array!(@tareas) do |tarea|
-  json.extract! tarea, :hh, :fecha_registro, :actividad, tarea.user_id.to_sym
-  json.url tarea_url(tarea, format: :json)
-end
