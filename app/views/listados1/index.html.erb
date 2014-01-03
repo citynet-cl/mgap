@@ -27,10 +27,10 @@
     <% @tareas_listado1.each do |tarea| %>
 	    <tr>
 	    <td><%= tarea.proyecto.nombre.humanize %></td>
-            <td><%= tarea.fecha_registro.strftime("%d-%B-%Y") %></td>
+            <td><%= l tarea.fecha_registro, format: :short %></td>
             <td><%= tarea.modulo %></td>
             <td><%= tarea.lugar.nombre %></td>
-            <td><%= truncate(tarea.actividad, length: 40) %></td>
+            <td><%= tarea.actividad %></td>
             <td><%= Responsable.find(tarea.responsable_sistema_id).nombre %></td>
             <td><%= Responsable.find(tarea.responsable_planta_id).nombre %></td>
             <td><%= tarea.hh %></td>

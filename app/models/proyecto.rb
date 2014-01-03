@@ -12,7 +12,14 @@ class Proyecto < ActiveRecord::Base
 
 	accepts_nested_attributes_for :etapas, :reject_if => :all_blank, allow_destroy: true
 
-	validates_presence_of :nombre, :hh 
+	validates_presence_of :nombre, :hh, :cliente 
 	validates :hh, :numericality => { :greater_than_or_equal_to => 1 }
 
+	def hhi
+		self.tareas.sum(:hh)		
+	end
+
+	def cerrado?
+		self.estado		
+	end
 end

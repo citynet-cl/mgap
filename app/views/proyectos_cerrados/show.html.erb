@@ -1,5 +1,5 @@
 <div class="page-header">
-  <%= link_to proyectos_cerrados_path, :class => 'btn btn-default' do %>
+	<%= link_to proyectos_cerrados_path, "data-no-turbolink" => true, :class => 'btn btn-default' do %>
     <span class="glyphicon glyphicon-list-alt"></span>
     Volver 
   <% end %>
@@ -20,9 +20,9 @@
   <dd><%= @proyecto_c.tareas.sum(:hh) %></dd>
 
   <dt>Fecha Inicio:</dt>
-  <dd><%= @proyecto_c.fecha_inicio %></dd>
+  <dd><%= l @proyecto_c.fecha_inicio, format: :long %></dd>
 
   <dt>Fecha Fin:</dt>
-  <dd><%= @proyecto_c.fecha_fin %></dd>
+  <dd><%= l @proyecto_c.fecha_fin, format: :long %></dd>
 
 </dl>

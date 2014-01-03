@@ -1,8 +1,14 @@
-<%= form_for([@cliente, @responsable], :html => { :class => "form-horizontal" }) do |f| %>
+<%= simple_form_for([@cliente, @responsable], :html => { :class => "form-horizontal" }) do |f| %>
   <% if @responsable.errors.any? %>
     <div class="alert alert-danger alert-dismissable">
       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-      <h4><%= pluralize(@responsable.errors.count, "error") %> prohibited this responsable from being saved:</h4>
+      <h4>No se pudo registrar esta Persona porque se encontró <%= @responsable.errors.count %>
+	      <% if @responsable.errors.count==1 %> 
+		      <%= render text: "error" %>
+	      <% else  %>
+		      <%= render text: "errores" %>
+	      <% end %>
+      </h4>
 
       <ul>
       <% @responsable.errors.full_messages.each do |msg| %>
@@ -11,7 +17,6 @@
       </ul>
     </div>
   <% end %>
-
   <div class="form-group">
     <%= f.label :nombre, :class => "col-lg-2 control-label" %>
     <div class="col-lg-10">
@@ -21,13 +26,13 @@
   <div class="form-group">
     <%= f.label :email, :class => "col-lg-2 control-label" %>
     <div class="col-lg-10">
-      <%= f.text_field :email, :class => "form-control" %>
+      <%= f.email_field :email, :class => "form-control" %>
     </div>
   </div>
   <div class="form-group">
     <%= f.label :fono, :class => "col-lg-2 control-label" %>
     <div class="col-lg-10">
-      <%= f.number_field :fono, :class => "form-control" %>
+      <%= f.telephone_field :fono, :class => "form-control" %>
     </div>
   </div>
   <div class="form-group">

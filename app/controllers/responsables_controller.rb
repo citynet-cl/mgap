@@ -1,5 +1,5 @@
 class ResponsablesController < ApplicationController
-  before_action :set_cliente#, only: [:show, :edit, :update, :destroy]
+  before_action :set_cliente
   before_filter :authorize
   load_and_authorize_resource
 
@@ -25,11 +25,9 @@ class ResponsablesController < ApplicationController
 
     respond_to do |format|
       if @responsable.save
-        format.html { redirect_to cliente_responsables_path, notice: 'Lugar was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @responsable }
+        format.html { redirect_to cliente_responsables_path, notice: 'Responsable creado exitosamente.' }
       else
         format.html { render action: 'new' }
-        format.json { render json: @responsable.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -38,11 +36,9 @@ class ResponsablesController < ApplicationController
 	  @responsable = @cliente.responsables.find(params[:id])
     respond_to do |format|
       if @responsable.update(responsable_params)
-        format.html { redirect_to cliente_responsables_path, notice: 'Lugar was successfully updated.' }
-        format.json { head :no_content }
+        format.html { redirect_to cliente_responsables_path, notice: 'Responsable editado exitosamente.' }
       else
         format.html { render action: 'edit' }
-        format.json { render json: @responsable.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -52,8 +48,7 @@ class ResponsablesController < ApplicationController
 	  @responsable.destroy
 
     respond_to do |format|
-      format.html { redirect_to cliente_responsables_url }
-      format.json { head :no_content }
+      format.html { redirect_to cliente_responsables_url, notice: 'Responsable anulado.' }
     end
   end
 

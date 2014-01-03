@@ -1,9 +1,14 @@
-<%= form_for([@cliente, @lugar], :html => { :class => "form-horizontal" }) do |f| %>
-
+<%= simple_form_for([@cliente, @lugar], :html => { :class => "form-horizontal" }) do |f| %>
   <% if @lugar.errors.any? %>
     <div class="alert alert-danger alert-dismissable">
       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-      <h4><%= pluralize(@lugar.errors.count, "error") %> prohibited this lugar from being saved:</h4>
+      <h4>No se pudo registrar este Lugar porque se encontró <%= @lugar.errors.count %>
+	      <% if @lugar.errors.count==1 %> 
+		      <%= render text: "error" %>
+	      <% else  %>
+		      <%= render text: "errores" %>
+	      <% end %>
+      </h4>
 
       <ul>
       <% @lugar.errors.full_messages.each do |msg| %>
@@ -12,7 +17,6 @@
       </ul>
     </div>
   <% end %>
-
   <div class="form-group">
     <%= f.label :nombre, :class => "col-lg-2 control-label" %>
     <div class="col-lg-10">

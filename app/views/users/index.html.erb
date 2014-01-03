@@ -27,8 +27,12 @@
 	      <td>
 		      <%= link_to "Editar", edit_user_path(user), class: "btn btn-primary btn-sm" %>
       		</td>
-	      <td>
-		      <%= link_to "Habilitar", {}, class: "btn btn-success btn-sm" %>
+		<td>
+			<% if user.activo? %>
+				<%= link_to "Deshabilitar", estado_user_path(user), method: :put, class: "btn btn-success btn-sm" %>
+			<% else %>
+				<%= link_to "Habilitar", estado_user_path(user), method: :put, class: "btn btn-success btn-sm" %>
+			<% end %>
       		</td>
 
 	    <td><%= delete_link user_path(user) %></td>

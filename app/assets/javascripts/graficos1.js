@@ -5,7 +5,7 @@ var clienteChart = dc.rowChart("#g4");
 var partChart = dc.pieChart("#g2");
 var hhpdChart = dc.barChart("#g5");
 
-d3.json("http://192.168.0.222:3000/tareas.json", function (data) {
+d3.json("http://localhost/listados1/index.json", function (data) {
 
         var dateFormat = d3.time.format("%Y-%m-%d");
 
@@ -134,6 +134,10 @@ d3.json("http://192.168.0.222:3000/tareas.json", function (data) {
       function(d) { return d.proyecto; },
       function(d) { return d.hh; },
       function(d) { return d.actividad; },
+      function(d) { return d.modulo; },
+      function(d) { return d.responsable_sistema; },
+      function(d) { return d.responsable_planta; },
+      function(d) { return d.lugar; }
     ])
     .sortBy(function(d){ return d.fr; })
     .order(d3.descending);

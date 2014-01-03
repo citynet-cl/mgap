@@ -32,7 +32,12 @@
 				<% unless current_user.has_role? :admin %>
 					<li><%= link_to "Tareas", tareas_path, "data-no-turbolink" => true %></li>
 					<li><%= link_to "Clientes", clientes_path %></li>
+				<% else %>
+					<% if current_user.has_role? "Actualizar Tareas" %>
+						<li><%= link_to "Tareas", tareas_path, "data-no-turbolink" => true %></li>
+					<% end %>
 				<%  end %>
+
 
 				<% if current_user.has_role? :admin %>
 					<li class="dropdown">
@@ -85,14 +90,14 @@
 		<ul class="nav navbar-nav navbar-right">
 
 				<li>
-					<%= link_to 'Ingresar', new_session_path %> 
+					<%= link_to 'Ingresar', login_path %> 
 				</li>
 		</ul>
 			<% end %>
 		</div>
 	</nav>
 
-  <div class="container"> <!--style="text-align: center"> -->
+  <div class="container">
 	  <% flash.each do |name, msg| %>
 		  <% if msg.is_a?(String) %>
 			  <div class="alert alert-<%= name == :notice ? "success" : "danger" %>">

@@ -6,6 +6,5 @@ module ApplicationHelper
   def detalles_link(recurso)
   	link_to "Detalles", recurso, class: "btn btn-warning btn-sm"
   end
-
 end
 

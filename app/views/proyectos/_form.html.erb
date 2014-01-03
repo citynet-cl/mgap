@@ -1,9 +1,16 @@
 <%= javascript_include_tag params[:controller] %>
 
-<%= form_for(@proyecto, :html => { :class => "form-horizontal" }) do |f| %>
+<%= simple_form_for(@proyecto, :html => { :class => "form-horizontal" }) do |f| %>
   <% if @proyecto.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@proyecto.errors.count, "error") %> prohibited this user from being saved:</h2>
+    <div class="alert alert-danger alert-dismissable">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <h4>No se pudo registrar este Proyecto porque se encontró <%= @proyecto.errors.count %>
+	      <% if @proyecto.errors.count==1 %> 
+		      <%= render text: "error" %>
+	      <% else  %>
+		      <%= render text: "errores" %>
+	      <% end %>
+      </h4>
 
       <ul>
       <% @proyecto.errors.full_messages.each do |msg| %>
@@ -15,7 +22,7 @@
   <div class="form-group">
     <%= f.label :cliente, :class => "col-lg-2 control-label" %>
     <div class="col-lg-10">
-    <%= collection_select(:proyecto, :cliente_id, Cliente.all, :id, :nombre, { },{:class => 'form-control'}) %>   
+	    <%= f.collection_select :cliente_id, Cliente.order(:nombre), :id,:nombre,{include_blank: true}, class: "form-control" %>
     </div>
   </div>
   <div class="form-group">
@@ -27,7 +34,7 @@
   <div class="form-group">
     <%= f.label "HH comtempladas", :class => "col-lg-2 control-label" %>
     <div class="col-lg-10">
-      <%= f.text_field :hh, :class => "form-control" %>
+      <%= f.number_field :hh, :class => "form-control" %>
     </div>
   </div>
   <div class="form-group">
@@ -48,13 +55,6 @@
       <%= f.text_area :descripcion, :class => "form-control" %>
     </div>
   </div>
-  <div class="form-group">
-    <%= f.label "Cerrado?", :class => "col-lg-2 control-label" %>
-    <div class="col-lg-10">
-      <%= f.check_box :estado, :class => "form-control" %>
-    </div>
-  </div>
-
   <div id="etapas">
 	  <%= f.fields_for :etapas do |etapa| %>
 		  <%= render 'etapa_fields', :f => etapa %>

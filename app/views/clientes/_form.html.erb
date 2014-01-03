@@ -1,7 +1,14 @@
 <%= simple_form_for(@cliente, :html => { :class => "form-horizontal" }) do |f| %>
   <% if @cliente.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@cliente.errors.count, "error") %> prohibited this user from being saved:</h2>
+    <div class="alert alert-danger alert-dismissable">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <h4>No se pudo registrar este Cliente porque se encontró <%= @cliente.errors.count %>
+	      <% if @cliente.errors.count==1 %> 
+		      <%= render text: "error" %>
+	      <% else  %>
+		      <%= render text: "errores" %>
+	      <% end %>
+      </h4>
 
       <ul>
       <% @cliente.errors.full_messages.each do |msg| %>
@@ -10,7 +17,6 @@
       </ul>
     </div>
   <% end %>
-
   <div class="form-group">
     <%= f.label :nombre, :class => "col-lg-2 control-label" %>
     <div class="col-lg-10">
@@ -38,7 +44,7 @@
   <div class="form-group">
     <%= f.label :fono, :class => "col-lg-2 control-label" %>
     <div class="col-lg-10">
-      <%= f.number_field :fono, :class => "form-control" %>
+      <%= f.telephone_field :fono, :class => "form-control" %>
     </div>
   </div>
   <div class="form-group">

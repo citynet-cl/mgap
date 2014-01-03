@@ -61,3 +61,6 @@ gem 'lodash-rails'
 gem 'cocoon'
 
 gem 'paranoia'
+
+gem 'passenger'
+

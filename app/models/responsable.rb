@@ -5,6 +5,7 @@ class Responsable < ActiveRecord::Base
 
 	validates_presence_of :nombre
 	validates_uniqueness_of  :nombre
+	validates :email, :email_format => true, allow_blank: true
 	
-	validates :fono, :numericality => { :greater_than => 1, :less_than => 9999999999 }
+	validates :fono, :numericality => { :greater_than => 0, :less_than => 9999999999 }, allow_blank: true
 end

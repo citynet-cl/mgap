@@ -13,8 +13,6 @@ class User < ActiveRecord::Base
 	validates_presence_of :usuario, :email
 	validates :email, :presence => true, :uniqueness => true, :email_format => true
 
-	#validates :password, :presence => false 
-
 	validates :password, length: {in: 5..20}, allow_blank: true
 	validates_confirmation_of :password
 

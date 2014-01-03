@@ -43,7 +43,7 @@
   <dd><%= @tarea.hh %></dd>
 
   <dt>Fecha Registro:</dt>
-  <dd><%= @tarea.fecha_registro %></dd>
+  <dd><%= l @tarea.fecha_registro, format: :long %></dd>
 
   <dt>Observaciones:</dt>
   <dd><%= @tarea.observaciones %></dd>

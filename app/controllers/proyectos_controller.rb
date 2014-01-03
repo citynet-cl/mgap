@@ -1,6 +1,6 @@
 class ProyectosController < ApplicationController
   before_action :set_proyecto, only: [:show, :edit, :update, :destroy]
-  before_filter :authorize#, only: [:edit,:update]
+  before_filter :authorize
   load_and_authorize_resource
 
   def index
@@ -9,6 +9,8 @@ class ProyectosController < ApplicationController
   end
 
   def show
+      @proyecto = Proyecto.find(params[:id])
+      @etapas = @proyecto.etapas
   end
 
   def new
@@ -24,11 +26,9 @@ class ProyectosController < ApplicationController
 
     respond_to do |format|
       if @proyecto.save
-        format.html { redirect_to proyectos_path, notice: 'Proyecto was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @proyecto }
+        format.html { redirect_to proyectos_path, notice: 'Proyecto registrado exitosamente.' }
       else
         format.html { render action: 'new' }
-        format.json { render json: @proyecto.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -36,11 +36,9 @@ class ProyectosController < ApplicationController
   def update
     respond_to do |format|
       if @proyecto.update(proyecto_params)
-        format.html { redirect_to proyectos_path, notice: 'Proyecto was successfully updated.' }
-        format.json { head :no_content }
+        format.html { redirect_to proyectos_path, notice: 'Proyecto editado exitosamente.' }
       else
         format.html { render action: 'edit' }
-        format.json { render json: @proyecto.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -48,10 +46,21 @@ class ProyectosController < ApplicationController
   def destroy
     @proyecto.destroy
     respond_to do |format|
-      format.html { redirect_to proyectos_url }
-      format.json { head :no_content }
+      format.html { redirect_to proyectos_url, notice: 'Proyecto anulado.' }
     end
   end
+
+
+  def cerrar
+	  @proyecto = Proyecto.find(params[:id])
+	  unless @proyecto.cerrado? 
+		  @proyecto.update_attributes(estado: true)
+		  redirect_to proyectos_cerrados_path
+	  else
+		  redirect_to proyectos_url
+	  end
+  end
+
 
   private
     def set_proyecto

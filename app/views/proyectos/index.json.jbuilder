@@ -6,4 +6,12 @@ json.array! @proyectos do |proyecto|
   json.fecha_fin proyecto.fecha_fin
   json.cliente proyecto.cliente.nombre.humanize
  #json.estado_proyecto proyecto.estado ? 'Cerrados' : 'En curso'
+
+json.etapas proyecto.etapas do |etapa|
+  json.etapa etapa.nombre
+  json.hh etapa.hh
+  json.hhi etapa.hhi
+  json.e_fecha_inicio etapa.fecha_inicio
+  json.e_fecha_fin etapa.fecha_fin
+end
 end

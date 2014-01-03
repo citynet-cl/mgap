@@ -12,13 +12,8 @@ class SessionsController < ApplicationController
 			  redirect_to proyectos_url, notice: "Bienvenido."
 		  end
 	  else
-		  unless user.activo?
-			  flash.now.alert = "Usuario deshabilitado"
-			  render "new"
-		  else
 			  flash.now.alert = "Datos inválidos."
 			  render "new"
-		  end
 	  end
 	  
   	

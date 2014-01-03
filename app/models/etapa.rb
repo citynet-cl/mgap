@@ -3,4 +3,8 @@ class Etapa < ActiveRecord::Base
 	
 	belongs_to :proyecto
 	has_many :tareas
+
+	def hhi
+		self.tareas.sum(:hh)		
+	end
 end

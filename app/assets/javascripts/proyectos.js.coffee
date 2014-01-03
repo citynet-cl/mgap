@@ -2,7 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 jQuery ->
-  $('#datepicker1').datepicker
+  $('.input-datarange').datepicker
     language: "es"
     format: "yyyy-mm-dd"
     todayHighlight: true
@@ -17,7 +17,7 @@ jQuery ->
     format: "yyyy-mm-dd"
     todayHighlight: true
 
-  $('#datepicker4').datepicker
+  $('.dp-p').datepicker
     language: "es"
     format: "yyyy-mm-dd"
     todayHighlight: true

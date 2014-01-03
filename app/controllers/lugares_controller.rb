@@ -1,5 +1,5 @@
 class LugaresController < ApplicationController
-  before_action :set_lugar#, only: [:show, :edit, :update, :destroy]
+  before_action :set_lugar
   before_filter :authorize
   load_and_authorize_resource
 
@@ -24,11 +24,9 @@ class LugaresController < ApplicationController
 
     respond_to do |format|
       if @lugar.save
-        format.html { redirect_to cliente_lugares_path, notice: 'Lugar was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @lugar }
+        format.html { redirect_to cliente_lugares_path, notice: 'Lugar creado exitosamente.' }
       else
         format.html { render action: 'new' }
-        format.json { render json: @lugar.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -37,11 +35,9 @@ class LugaresController < ApplicationController
 	  @lugar = @cliente.lugares.find(params[:id])
     respond_to do |format|
       if @lugar.update(lugar_params)
-        format.html { redirect_to cliente_lugares_path, notice: 'Lugar was successfully updated.' }
-        format.json { head :no_content }
+        format.html { redirect_to cliente_lugares_path, notice: 'Lugar editado exitosamente.' }
       else
         format.html { render action: 'edit' }
-        format.json { render json: @lugar.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -51,8 +47,7 @@ class LugaresController < ApplicationController
 	  @lugar.destroy
 
     respond_to do |format|
-      format.html { redirect_to cliente_lugares_url }
-      format.json { head :no_content }
+      format.html { redirect_to cliente_lugares_url, notice: 'Lugar anulado.' }
     end
   end
 

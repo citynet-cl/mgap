@@ -4,7 +4,7 @@ var proyiiChart = dc.barChart("#g2");
 var clienteChart = dc.rowChart("#g3");
 var totalChart = dc.pieChart("#g4");
 
-d3.json("http://192.168.0.222:3000/proyectos.json", function (data) {
+d3.json("http://localhost/proyectos.json", function (data) {
 
         var dateFormat = d3.time.format("%Y-%m-%d");
 

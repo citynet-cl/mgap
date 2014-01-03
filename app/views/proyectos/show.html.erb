@@ -1,3 +1,4 @@
+
 <div class="page-header">
   <%= link_to proyectos_path, :class => 'btn btn-default' do %>
     <span class="glyphicon glyphicon-list-alt"></span>
@@ -13,15 +14,51 @@
   <dt>Cliente:</dt>
   <dd><%= @proyecto.cliente.nombre.humanize %></dd>
 
-  <dt>HH:</dt>
+  <dt>HH Estimadas:</dt>
   <dd><%= @proyecto.hh %></dd>
 
+  <dt>HH Invertidas:</dt>
+  <dd><%= @proyecto.tareas.sum(:hh) %></dd>
+
   <dt>Fecha Inicio:</dt>
-  <dd><%= @proyecto.fecha_inicio %></dd>
+  <dd><%= l @proyecto.fecha_inicio, format: :long %></dd>
 
   <dt>Fecha Fin:</dt>
-  <dd><%= @proyecto.fecha_fin %></dd>
+  <dd><%= l @proyecto.fecha_fin, format: :long %></dd>
 
-  <dt>Estado:</dt>
-  <dd><%= @proyecto.estado %></dd>
+  <dt>Etapas:</dt>
+  <br/>
+  <div class="col-lg-2">
+  	
+  </div>
+<div class="col-lg-10">
+	
+<div class="table-responsive">
+  <table class="table table-striped table-hover table-bordered">
+    <thead>
+      <tr>
+            <th>Nombre</th>
+            <th>HH Estimadas</th>
+            <th>HH Invertidas</th>
+            <th>Fecha Inicio</th>
+	    <th>Fecha Fin</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @etapas) do |etapa| %>
+            <td><%= etapa.nombre.humanize %></td>
+	    <td><%= etapa.hh %></td>
+	    <td><%= etapa.hhi %></td>
+	    <td><%= l etapa.fecha_inicio, format: :long %></td>
+	    <td><%= l etapa.fecha_fin, format: :long %></td>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+</div>
+
+</div>
 </dl>
+
+<%= javascript_include_tag "detalle_proyectos" %>

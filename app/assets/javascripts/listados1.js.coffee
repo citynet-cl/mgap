@@ -6,6 +6,8 @@
 jQuery ->
   $("#listado1").dataTable(
     sDom: 'T<"clear">lfrtip'
+    sScrollX: "100%"
+    bScrollCollapse: true
     aaSorting: [[ 1, "desc"]]
     oLanguage:
       sSearch: "Buscar:"
@@ -30,5 +32,5 @@ jQuery ->
         sSortDescending: ": Activar para ordenar la columna de manera descendente"
 
     oTableTools:
-      sSwfPath: "http://192.168.0.222:3000/copy_csv_xls_pdf.swf"
+      sSwfPath: "http://localhost/copy_csv_xls_pdf.swf"
       aButtons: ["xls"])

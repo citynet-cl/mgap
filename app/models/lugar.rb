@@ -6,4 +6,5 @@ class Lugar < ActiveRecord::Base
 	resourcify
 	has_many :tareas
 	belongs_to :cliente
+	validates_presence_of :nombre
 end

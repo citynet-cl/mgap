@@ -22,11 +22,9 @@ class TipoTareasController < ApplicationController
 
     respond_to do |format|
       if @tipo_tarea.save
-        format.html { redirect_to @tipo_tarea, notice: 'Tipo tarea was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @tipo_tarea }
+        format.html { redirect_to @tipo_tarea, notice: 'Tipo tarea creada exitosamente.' }
       else
         format.html { render action: 'new' }
-        format.json { render json: @tipo_tarea.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -34,11 +32,9 @@ class TipoTareasController < ApplicationController
   def update
     respond_to do |format|
       if @tipo_tarea.update(tipo_tarea_params)
-        format.html { redirect_to @tipo_tarea, notice: 'Tipo tarea was successfully updated.' }
-        format.json { head :no_content }
+        format.html { redirect_to @tipo_tarea, notice: 'Tipo tarea editada exitosamente.' }
       else
         format.html { render action: 'edit' }
-        format.json { render json: @tipo_tarea.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -46,8 +42,7 @@ class TipoTareasController < ApplicationController
   def destroy
     @tipo_tarea.destroy
     respond_to do |format|
-      format.html { redirect_to tipo_tareas_url }
-      format.json { head :no_content }
+      format.html { redirect_to tipo_tareas_url, notice: "Tipo de tarea anulada"}
     end
   end
 
