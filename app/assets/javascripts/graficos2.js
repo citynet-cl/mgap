@@ -53,7 +53,6 @@ d3.json("http://localhost/proyectos.json", function (data) {
 	.group(proyplGroup)
 	.x(d3.scale.ordinal().domain(proy))
 	.gap(30)
-	//.xAxis().tickFormat()
         .renderHorizontalGridLines(true)
 	.yAxisLabel("HH Planificadas")
 	.xUnits(dc.units.ordinal)

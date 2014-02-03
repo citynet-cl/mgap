@@ -28,11 +28,11 @@ d3.json("http://localhost/listados1/index.json", function (data) {
     return d.fr;
   });
 
-  var moveMes = facts.dimension(function (d){
+  var rangoMes = facts.dimension(function (d){
     return d.dia;
   });
 
-  var volumePorMes = moveMes.group().reduceSum(function(d){
+  var rangoPorMes = rangoMes.group().reduceSum(function(d){
   return d.hh;});
 
   var des = facts.dimension(function (d){
@@ -58,18 +58,16 @@ d3.json("http://localhost/listados1/index.json", function (data) {
   
   var ttGroup = tt.group().reduceSum(function(d){
     return +d.hh;});
-  //var mes = facts.dimension(function (d){
-   // return d.mes;});
-  
-  //var mesGroup = mes.group().reduceSum(function(d){
-   // return +d.hh;});
 
   function obtenerFecha(d) {
   	return new Date(d.fecha_registro);
   }
 
-  var minFecha = obtenerFecha(data[0]),
-      maxFecha = obtenerFecha(data[data.length-1]);
+  var minFechaA = obtenerFecha(data[0]);
+  var minFecha = minFechaA.setMonth(minFechaA.getMonth() - 1.5);
+
+  var maxFechaB = obtenerFecha(data[data.length-1]);
+  var maxFecha = maxFechaB.setMonth(maxFechaB.getMonth() + 2.5);
 
  partChart.width(300).height(200)
 	.dimension(des)
@@ -101,30 +99,23 @@ d3.json("http://localhost/listados1/index.json", function (data) {
 	.y(d3.scale.linear().domain([0, 180]))
 	.colors(d3.scale.category10());
 
- // mesChart.width(220).height(150)
-//	.dimension(mes)
-//	.group(mesGroup)
-//	.colors(d3.scale.category10());
-
   hhChart.width(620)
 	.height(150)
         .transitionDuration(1000)
 	.colors(d3.scale.category10())
 	.margins({top: 10, right: 10, bottom: 20, left: 40})
 	.colors(d3.scale.category10())
-	.dimension(moveMes)
+	.dimension(rangoMes)
         .mouseZoomable(true)
-	.group(volumePorMes)
+	.group(rangoPorMes)
         .renderHorizontalGridLines(true)
 	.elasticY(true)
-	//.elasticX(true)
 	.xUnits(function(){return 150;})
-    	//.x(d3.time.scale().domain([minFecha, maxFecha]))
-    	.x(d3.time.scale().domain([new Date(2013, 10, 18), new Date(2014, 1,1)]))
+    	.x(d3.time.scale().domain([minFecha, maxFecha]))
 	.yAxisLabel("HH");
 
   dataTable.width(960).height(800)
-    .dimension(moveMes)
+    .dimension(rangoMes)
 	.group(function(d) { return "Detalle tareas"
 	 })
 	.size(50)

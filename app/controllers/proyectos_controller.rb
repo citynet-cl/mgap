@@ -23,6 +23,7 @@ class ProyectosController < ApplicationController
 
   def create
     @proyecto = Proyecto.new(proyecto_params)
+    @proyecto.update_attributes(estado: false)
 
     respond_to do |format|
       if @proyecto.save

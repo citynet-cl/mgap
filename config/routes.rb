@@ -6,6 +6,7 @@ MgapUser::Application.routes.draw do
   get "graficos2", to: 'graficos2#index', as: 'graficos2'
   get "proyectos_cerrados", to: 'proyectos_cerrados#index', as: 'proyectos_cerrados'
   get "proyectos_cerrados/:id", to: 'proyectos_cerrados#show', as: 'proyecto_cerrado'
+  delete "proyectos_cerrados/:id", to: 'proyectos_cerrados#destroy'
   get "login", to: 'sessions#new', as: 'login'
 
   resources :clientes do
