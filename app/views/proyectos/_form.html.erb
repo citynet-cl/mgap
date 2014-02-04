@@ -38,15 +38,14 @@
     </div>
   </div>
   <div class="form-group">
-    <%= f.label :fecha_inicio, :class => "col-lg-2 control-label" %>
-    <div class="col-lg-10">
-	    <%= f.text_field :fecha_inicio, :id => "datepicker1", :class => "form-control" %>
+    <%= f.label "Rango Fechas", :class => "col-lg-2 control-label" %>
+    <div class="input-daterange">
+    	<div class="col-lg-5">
+		<%= f.text_field :fecha_inicio, :class => "form-control", :placeholder => "Fecha Inicio" %>
     </div>
-  </div>
-  <div class="form-group">
-    <%= f.label "Fecha fin estimada", :class => "col-lg-2 control-label" %>
-    <div class="col-lg-10">
-	    <%= f.text_field :fecha_fin, :id => "datepicker2", :class => "form-control" %>
+    	<div class="col-lg-5">
+		<%= f.text_field :fecha_fin, :class => "form-control", :placeholder => "Fecha Fin" %>
+    </div>
     </div>
   </div>
   <div class="form-group">

@@ -2,7 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 jQuery ->
-  $('.input-datarange').datepicker
+  $('.input-daterange').datepicker
     language: "es"
     format: "yyyy-mm-dd"
     todayHighlight: true
@@ -21,3 +21,5 @@ jQuery ->
     language: "es"
     format: "yyyy-mm-dd"
     todayHighlight: true
+
+  $('#nested-f').empty()
