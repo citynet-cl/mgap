@@ -2,13 +2,22 @@
 <html>
 <head>
 <title>MgapUser</title>
-<%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+<% if current_user %>
+	<%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+<% else %>
+	<% unless mobile_device? %>
+		<%= stylesheet_link_tag    "login", media: "all", "data-turbolinks-track" => true %>
+	<% else %>
+		<%= stylesheet_link_tag    "login-mobil", media: "all", "data-turbolinks-track" => true %>
+	<% end %>
+<% end %>
 <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 <%= csrf_meta_tags %>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body class='<%= controller.controller_name %>'>
 
+<% if current_user %>
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 	<div class="navbar-header">
 		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -66,7 +75,7 @@
 					</li>
 
 					<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Administracion<b class="caret"></b></a>
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span>  Administracion<b class="caret"></b></a>
 					<ul class="dropdown-menu">
 						<li><%= link_to "Usuarios", users_path %></li>
 						<li><%= link_to "Clientes", clientes_path %></li>
@@ -78,10 +87,15 @@
 
 		<ul class="nav navbar-nav navbar-right">
 			<li>
-			    <%= link_to current_user.usuario.humanize, edit_user_path(current_user) %>
+			    <%= link_to edit_user_path(current_user) do %>
+				<span class="glyphicon glyphicon-user"></span>
+			    <%= current_user.usuario.humanize %>
+			<% end %>
 			</li>
 			<li>
-			<%= link_to "Salir", session_path("current"), method: :delete %>
+			<%= link_to session_path("current"), method: :delete do %>
+				<span class="glyphicon glyphicon-log-out"></span>
+			<% end %>
 			</li>
 		</ul>
 
@@ -89,13 +103,11 @@
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
 
-				<li>
-					<%= link_to 'Ingresar', login_path %> 
-				</li>
 		</ul>
 			<% end %>
 		</div>
 	</nav>
+<% end %>
 
   <div class="container">
 	  <% flash.each do |name, msg| %>

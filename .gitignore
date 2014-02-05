@@ -21,3 +21,5 @@ config/deploy.rb
 config/deploy/*
 
 Capfile
+app/assets/javascripts/graficos1.js
+app/assets/javascripts/graficos2.js

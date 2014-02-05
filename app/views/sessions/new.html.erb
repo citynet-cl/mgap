@@ -1,10 +1,32 @@
+<% unless mobile_device? %>
+
+<%= stylesheet_link_tag params[:controller] %>
+
+<%= image_tag "logo2.png" %>
 <%= simple_form_for :sessions, { url: sessions_path} do |f| %>
 	<div class="form-group">
-		<%= f.input :usuario , :required => false  %>
-		<%= f.input :password , :required => false %>
+		<%= f.input :usuario , placeholder: "Ingrese Usuario", :label => false  %>
+		<%= f.input :password , placeholder: "Ingrese su clave", :label => false %>
 	</div>
 
 	<div class="form-actions">
-		<%= f.button :submit, "Ingresar" %>
+		<%= f.button :submit, "Ingresar", class: "btn btn-primary btn-lg" %>
 	</div>
+
+<% end %>
+
+<% else %>
+
+<%= image_tag "logo2.png" %>
+<%= simple_form_for :sessions, { url: sessions_path} do |f| %>
+	<div class="form-group">
+		<%= f.input :usuario , placeholder: "Ingrese Usuario", :label => false  %>
+		<%= f.input :password , placeholder: "Ingrese Clave", :label => false %>
+	</div>
+
+	<div class="form-actions">
+		<%= f.button :submit, "Ingresar", class: "btn btn-primary btn-lg" %>
+	</div>
+
+<% end %>
 <% end %>
