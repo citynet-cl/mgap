@@ -8,6 +8,7 @@ MgapUser::Application.routes.draw do
   get "proyectos_cerrados/:id", to: 'proyectos_cerrados#show', as: 'proyecto_cerrado'
   delete "proyectos_cerrados/:id", to: 'proyectos_cerrados#destroy'
   get "login", to: 'sessions#new', as: 'login'
+  get "logout" , to: 'sessions#destroy', as: 'logout'
 
   resources :clientes do
 	  resources :lugares 

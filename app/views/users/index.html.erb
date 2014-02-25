@@ -13,8 +13,6 @@
             <th>Usuario</th>
             <th>Acciones</th>
             <th></th>
-            <th></th>
-            <th></th>
       </tr>
     </thead>
 
@@ -25,17 +23,25 @@
 		      <%= user.usuario %> 
 	      </td>
 	      <td>
-		      <%= link_to "Editar", edit_user_path(user), class: "btn btn-primary btn-sm" %>
+			<%= edit_link edit_user_path(user) %>
       		</td>
 		<td>
 			<% if user.activo? %>
-				<%= link_to "Deshabilitar", estado_user_path(user), method: :put, class: "btn btn-success btn-sm" %>
+				<%= link_to estado_user_path(user), method: :put, :class => 'btn btn-danger btn-sm' do %>
+					<span class="glyphicon glyphicon-thumbs-down"></span> 
+				Bloquear acceso
+				<% end %>
 			<% else %>
-				<%= link_to "Habilitar", estado_user_path(user), method: :put, class: "btn btn-success btn-sm" %>
+				<%= link_to estado_user_path(user), method: :put, :class => 'btn btn-success btn-sm' do %>
+					<span class="glyphicon glyphicon-thumbs-up"></span> 
+				Habilitar acceso
+				<% end %>
 			<% end %>
       		</td>
 
-	    <td><%= delete_link user_path(user) %></td>
+		<td>
+			<%= delete_link user_path(user) %>
+	</td>
       <% end %>
     </tbody>
   </table>

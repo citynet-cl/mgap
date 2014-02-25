@@ -5,7 +5,7 @@ var clienteChart = dc.rowChart("#g4");
 var partChart = dc.pieChart("#g2");
 var hhpdChart = dc.barChart("#g5");
 
-d3.json("http://mgap.citynet.cl:3000/listados1/index.json", function (data) {
+d3.json("http://localhost/listados1/index.json", function (data) {
 
         var dateFormat = d3.time.format("%Y-%m-%d");
 

@@ -19,7 +19,7 @@
     <tbody>
     <%= content_tag_for(:tr, @tipo_tareas) do |tipo_tarea| %>
 	    <td><%= tipo_tarea.nombre %></td>
-	    <td><%= link_to "Editar", edit_tipo_tarea_path(tipo_tarea), class: "btn btn-primary btn-sm" %></td>
+	    <td><%= edit_link edit_tipo_tarea_path(tipo_tarea)%></td>
 	    <td><%= delete_link tipo_tarea_path(tipo_tarea) %></td>
       <% end %>
     </tbody>

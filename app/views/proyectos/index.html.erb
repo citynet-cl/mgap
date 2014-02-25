@@ -26,8 +26,8 @@
             <td><%= proyecto.nombre.humanize %></td>
             <td><%= proyecto.cliente.nombre.humanize %></td>
 	    <td><%= proyecto.hh %></td>
-	    <td><%= link_to "Cerrar", cerrar_proyecto_path(proyecto), method: :put, data: { confirm: 'Seguro?'}, class: "btn btn-success btn-sm" %></td>
-	    <td><%= link_to "Editar", edit_proyecto_path(proyecto), class: "btn btn-primary btn-sm " %></td>
+	    <td><%= cerrar_proyecto cerrar_proyecto_path(proyecto) %></td>
+	    <td><%= edit_link edit_proyecto_path(proyecto) %></td>
 	    <td><%= detalles_link proyecto %></td>
 	    <td><%= delete_link proyecto_path(proyecto) %></td>
       <% end %>

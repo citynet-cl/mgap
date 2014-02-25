@@ -31,7 +31,7 @@
 	      <td><%= tarea.proyecto.nombre.humanize %></td>
             <td><%= tarea.hh %></td>
             <td><%= l tarea.fecha_registro, format: :short %></td>
-	    <td><%= link_to "Copiar",copiar_tarea_path(tarea) , class: "btn btn-success btn-sm", "data-no-turbolink" => true %> </td>
+	    <td><%= copiar_tarea copiar_tarea_path(tarea) %> </td>
 	    <td><%= detalles_link tarea %></td>
 	    <td><%= delete_link tarea_path(tarea) %></td>
       <% end %>

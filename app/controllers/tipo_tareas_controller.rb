@@ -22,7 +22,7 @@ class TipoTareasController < ApplicationController
 
     respond_to do |format|
       if @tipo_tarea.save
-        format.html { redirect_to @tipo_tarea, notice: 'Tipo tarea creada exitosamente.' }
+        format.html { redirect_to tipo_tareas_url, notice: 'Tipo tarea creada exitosamente.' }
       else
         format.html { render action: 'new' }
       end
@@ -32,7 +32,7 @@ class TipoTareasController < ApplicationController
   def update
     respond_to do |format|
       if @tipo_tarea.update(tipo_tarea_params)
-        format.html { redirect_to @tipo_tarea, notice: 'Tipo tarea editada exitosamente.' }
+        format.html { redirect_to tipo_tareas_url, notice: 'Tipo tarea editada exitosamente.' }
       else
         format.html { render action: 'edit' }
       end
